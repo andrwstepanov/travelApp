@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2166089287DFCEA0035EA42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166061287DFCEA0035EA42 /* SceneDelegate.swift */; };
+		C216608A287DFCEA0035EA42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2166062287DFCEA0035EA42 /* Info.plist */; };
+		C216608B287DFCEA0035EA42 /* CitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166064287DFCEA0035EA42 /* CitySearchVC.swift */; };
+		C216608C287DFCEA0035EA42 /* CreateNewTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166065287DFCEA0035EA42 /* CreateNewTripVC.swift */; };
+		C216608D287DFCEA0035EA42 /* CitySuggestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166066287DFCEA0035EA42 /* CitySuggestionsTableVC.swift */; };
+		C216608E287DFCEA0035EA42 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166067287DFCEA0035EA42 /* SettingsVC.swift */; };
+		C216608F287DFCEA0035EA42 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166068287DFCEA0035EA42 /* OnboardingVC.swift */; };
+		C2166090287DFCEA0035EA42 /* TripCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166069287DFCEA0035EA42 /* TripCollectionView.swift */; };
+		C2166091287DFCEA0035EA42 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606A287DFCEA0035EA42 /* MainScreen.swift */; };
+		C2166092287DFCEA0035EA42 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606B287DFCEA0035EA42 /* DatePickerVC.swift */; };
+		C2166093287DFCEA0035EA42 /* ItemEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606C287DFCEA0035EA42 /* ItemEditVC.swift */; };
+		C2166094287DFCEA0035EA42 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606D287DFCEA0035EA42 /* TripView.swift */; };
+		C2166095287DFCEA0035EA42 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606F287DFCEA0035EA42 /* TripModel.swift */; };
+		C2166096287DFCEA0035EA42 /* TripModel — old without Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166070287DFCEA0035EA42 /* TripModel — old without Realm.swift */; };
+		C2166097287DFCEA0035EA42 /* CodableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166071287DFCEA0035EA42 /* CodableResponse.swift */; };
+		C2166098287DFCEA0035EA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166072287DFCEA0035EA42 /* AppDelegate.swift */; };
+		C2166099287DFCEA0035EA42 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166074287DFCEA0035EA42 /* Extentions.swift */; };
+		C216609A287DFCEA0035EA42 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166075287DFCEA0035EA42 /* RealmManager.swift */; };
+		C216609B287DFCEA0035EA42 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166076287DFCEA0035EA42 /* Config.swift */; };
+		C216609C287DFCEA0035EA42 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166077287DFCEA0035EA42 /* WeatherManager.swift */; };
+		C216609D287DFCEA0035EA42 /* PackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166078287DFCEA0035EA42 /* PackingManager.swift */; };
+		C216609E287DFCEA0035EA42 /* GeocodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166079287DFCEA0035EA42 /* GeocodingManager.swift */; };
+		C216609F287DFCEA0035EA42 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216607A287DFCEA0035EA42 /* DownloadManager.swift */; };
+		C21660A0287DFCEA0035EA42 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216607B287DFCEA0035EA42 /* PhotoManager.swift */; };
+		C21660A1287DFCEA0035EA42 /* PacklistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C216607D287DFCEA0035EA42 /* PacklistCell.xib */; };
+		C21660A2287DFCEA0035EA42 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216607E287DFCEA0035EA42 /* WeatherCell.swift */; };
+		C21660A3287DFCEA0035EA42 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C216607F287DFCEA0035EA42 /* WeatherCell.xib */; };
+		C21660A4287DFCEA0035EA42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2166080287DFCEA0035EA42 /* LaunchScreen.storyboard */; };
+		C21660A5287DFCEA0035EA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2166082287DFCEA0035EA42 /* Main.storyboard */; };
+		C21660A6287DFCEA0035EA42 /* PacklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166084287DFCEA0035EA42 /* PacklistCell.swift */; };
+		C21660A7287DFCEA0035EA42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166085287DFCEA0035EA42 /* OnboardingCell.swift */; };
+		C21660A8287DFCEA0035EA42 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166086287DFCEA0035EA42 /* TripCollectionViewCell.swift */; };
+		C21660A9287DFCEA0035EA42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2166087287DFCEA0035EA42 /* Localizable.strings */; };
+		C21660AA287DFCEA0035EA42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2166088287DFCEA0035EA42 /* Assets.xcassets */; };
+		C23B722D284B201400DA60D2 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C23B722C284B201400DA60D2 /* Nuke */; };
+		C23B7230284B224900DA60D2 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C23B722F284B224900DA60D2 /* Nuke */; };
+		C23B7233284CB1E100DA60D2 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C23B7232284CB1E100DA60D2 /* FSCalendar */; };
+		C2755C78287C42CF00F94833 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2755C77287C42CF00F94833 /* IQKeyboardManagerSwift */; };
+		C2818B9B2853116500E8D6DE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9A2853116500E8D6DE /* Realm */; };
+		C2818B9D2853116500E8D6DE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9C2853116500E8D6DE /* RealmSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C2166061287DFCEA0035EA42 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = travelApp/SceneDelegate.swift; sourceTree = "<group>"; };
+		C2166062287DFCEA0035EA42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = travelApp/Info.plist; sourceTree = "<group>"; };
+		C2166064287DFCEA0035EA42 /* CitySearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchVC.swift; sourceTree = "<group>"; };
+		C2166065287DFCEA0035EA42 /* CreateNewTripVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewTripVC.swift; sourceTree = "<group>"; };
+		C2166066287DFCEA0035EA42 /* CitySuggestionsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySuggestionsTableVC.swift; sourceTree = "<group>"; };
+		C2166067287DFCEA0035EA42 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		C2166068287DFCEA0035EA42 /* OnboardingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		C2166069287DFCEA0035EA42 /* TripCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionView.swift; sourceTree = "<group>"; };
+		C216606A287DFCEA0035EA42 /* MainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		C216606B287DFCEA0035EA42 /* DatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
+		C216606C287DFCEA0035EA42 /* ItemEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditVC.swift; sourceTree = "<group>"; };
+		C216606D287DFCEA0035EA42 /* TripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
+		C216606F287DFCEA0035EA42 /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
+		C2166070287DFCEA0035EA42 /* TripModel — old without Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TripModel — old without Realm.swift"; sourceTree = "<group>"; };
+		C2166071287DFCEA0035EA42 /* CodableResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableResponse.swift; sourceTree = "<group>"; };
+		C2166072287DFCEA0035EA42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = travelApp/AppDelegate.swift; sourceTree = "<group>"; };
+		C2166074287DFCEA0035EA42 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		C2166075287DFCEA0035EA42 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		C2166076287DFCEA0035EA42 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		C2166077287DFCEA0035EA42 /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		C2166078287DFCEA0035EA42 /* PackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingManager.swift; sourceTree = "<group>"; };
+		C2166079287DFCEA0035EA42 /* GeocodingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodingManager.swift; sourceTree = "<group>"; };
+		C216607A287DFCEA0035EA42 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		C216607B287DFCEA0035EA42 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		C216607D287DFCEA0035EA42 /* PacklistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PacklistCell.xib; sourceTree = "<group>"; };
+		C216607E287DFCEA0035EA42 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		C216607F287DFCEA0035EA42 /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
+		C2166081287DFCEA0035EA42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2166083287DFCEA0035EA42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2166084287DFCEA0035EA42 /* PacklistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacklistCell.swift; sourceTree = "<group>"; };
+		C2166085287DFCEA0035EA42 /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		C2166086287DFCEA0035EA42 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2166087287DFCEA0035EA42 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = travelApp/Localizable.strings; sourceTree = "<group>"; };
+		C2166088287DFCEA0035EA42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = travelApp/Assets.xcassets; sourceTree = "<group>"; };
+		C248B0502812DC0E00544A5F /* travelAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C248B04D2812DC0E00544A5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2755C78287C42CF00F94833 /* IQKeyboardManagerSwift in Frameworks */,
+				C23B722D284B201400DA60D2 /* Nuke in Frameworks */,
+				C23B7233284CB1E100DA60D2 /* FSCalendar in Frameworks */,
+				C2818B9B2853116500E8D6DE /* Realm in Frameworks */,
+				C2818B9D2853116500E8D6DE /* RealmSwift in Frameworks */,
+				C23B7230284B224900DA60D2 /* Nuke in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2166063287DFCEA0035EA42 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				C2166064287DFCEA0035EA42 /* CitySearchVC.swift */,
+				C2166065287DFCEA0035EA42 /* CreateNewTripVC.swift */,
+				C2166066287DFCEA0035EA42 /* CitySuggestionsTableVC.swift */,
+				C2166067287DFCEA0035EA42 /* SettingsVC.swift */,
+				C2166068287DFCEA0035EA42 /* OnboardingVC.swift */,
+				C2166069287DFCEA0035EA42 /* TripCollectionView.swift */,
+				C216606A287DFCEA0035EA42 /* MainScreen.swift */,
+				C216606B287DFCEA0035EA42 /* DatePickerVC.swift */,
+				C216606C287DFCEA0035EA42 /* ItemEditVC.swift */,
+				C216606D287DFCEA0035EA42 /* TripView.swift */,
+			);
+			name = C;
+			path = travelApp/C;
+			sourceTree = "<group>";
+		};
+		C216606E287DFCEA0035EA42 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C216606F287DFCEA0035EA42 /* TripModel.swift */,
+				C2166070287DFCEA0035EA42 /* TripModel — old without Realm.swift */,
+				C2166071287DFCEA0035EA42 /* CodableResponse.swift */,
+			);
+			name = Models;
+			path = travelApp/Models;
+			sourceTree = "<group>";
+		};
+		C2166073287DFCEA0035EA42 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C2166074287DFCEA0035EA42 /* Extentions.swift */,
+				C2166075287DFCEA0035EA42 /* RealmManager.swift */,
+				C2166076287DFCEA0035EA42 /* Config.swift */,
+				C2166077287DFCEA0035EA42 /* WeatherManager.swift */,
+				C2166078287DFCEA0035EA42 /* PackingManager.swift */,
+				C2166079287DFCEA0035EA42 /* GeocodingManager.swift */,
+				C216607A287DFCEA0035EA42 /* DownloadManager.swift */,
+				C216607B287DFCEA0035EA42 /* PhotoManager.swift */,
+			);
+			name = Utilities;
+			path = travelApp/Utilities;
+			sourceTree = "<group>";
+		};
+		C216607C287DFCEA0035EA42 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C216607D287DFCEA0035EA42 /* PacklistCell.xib */,
+				C216607E287DFCEA0035EA42 /* WeatherCell.swift */,
+				C216607F287DFCEA0035EA42 /* WeatherCell.xib */,
+				C2166080287DFCEA0035EA42 /* LaunchScreen.storyboard */,
+				C2166082287DFCEA0035EA42 /* Main.storyboard */,
+				C2166084287DFCEA0035EA42 /* PacklistCell.swift */,
+				C2166085287DFCEA0035EA42 /* OnboardingCell.swift */,
+				C2166086287DFCEA0035EA42 /* TripCollectionViewCell.swift */,
+			);
+			name = V;
+			path = travelApp/V;
+			sourceTree = "<group>";
+		};
+		C248B0472812DC0E00544A5F = {
+			isa = PBXGroup;
+			children = (
+				C2166072287DFCEA0035EA42 /* AppDelegate.swift */,
+				C2166088287DFCEA0035EA42 /* Assets.xcassets */,
+				C2166063287DFCEA0035EA42 /* C */,
+				C2166062287DFCEA0035EA42 /* Info.plist */,
+				C2166087287DFCEA0035EA42 /* Localizable.strings */,
+				C216606E287DFCEA0035EA42 /* Models */,
+				C2166061287DFCEA0035EA42 /* SceneDelegate.swift */,
+				C2166073287DFCEA0035EA42 /* Utilities */,
+				C216607C287DFCEA0035EA42 /* V */,
+				C248B0512812DC0E00544A5F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C248B0512812DC0E00544A5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C248B0502812DC0E00544A5F /* travelAppiOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C248B04F2812DC0E00544A5F /* travelAppiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C248B0672812DC0F00544A5F /* Build configuration list for PBXNativeTarget "travelAppiOS" */;
+			buildPhases = (
+				C248B04C2812DC0E00544A5F /* Sources */,
+				C248B04D2812DC0E00544A5F /* Frameworks */,
+				C248B04E2812DC0E00544A5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = travelAppiOS;
+			packageProductDependencies = (
+				C23B722C284B201400DA60D2 /* Nuke */,
+				C23B722F284B224900DA60D2 /* Nuke */,
+				C23B7232284CB1E100DA60D2 /* FSCalendar */,
+				C2818B9A2853116500E8D6DE /* Realm */,
+				C2818B9C2853116500E8D6DE /* RealmSwift */,
+				C2755C77287C42CF00F94833 /* IQKeyboardManagerSwift */,
+			);
+			productName = travelAppiOS;
+			productReference = C248B0502812DC0E00544A5F /* travelAppiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C248B0482812DC0E00544A5F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					C248B04F2812DC0E00544A5F = {
+						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1340;
+					};
+				};
+			};
+			buildConfigurationList = C248B04B2812DC0E00544A5F /* Build configuration list for PBXProject "travelAppGit" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C248B0472812DC0E00544A5F;
+			packageReferences = (
+				C23B722B284B201400DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */,
+				C23B722E284B224900DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */,
+				C23B7231284CB1E100DA60D2 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				C2818B992853116500E8D6DE /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C2755C76287C42CF00F94833 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
+			productRefGroup = C248B0512812DC0E00544A5F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C248B04F2812DC0E00544A5F /* travelAppiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C248B04E2812DC0E00544A5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C21660A1287DFCEA0035EA42 /* PacklistCell.xib in Resources */,
+				C21660A9287DFCEA0035EA42 /* Localizable.strings in Resources */,
+				C21660A5287DFCEA0035EA42 /* Main.storyboard in Resources */,
+				C21660A4287DFCEA0035EA42 /* LaunchScreen.storyboard in Resources */,
+				C21660AA287DFCEA0035EA42 /* Assets.xcassets in Resources */,
+				C216608A287DFCEA0035EA42 /* Info.plist in Resources */,
+				C21660A3287DFCEA0035EA42 /* WeatherCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C248B04C2812DC0E00544A5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2166091287DFCEA0035EA42 /* MainScreen.swift in Sources */,
+				C216609F287DFCEA0035EA42 /* DownloadManager.swift in Sources */,
+				C216608D287DFCEA0035EA42 /* CitySuggestionsTableVC.swift in Sources */,
+				C2166095287DFCEA0035EA42 /* TripModel.swift in Sources */,
+				C216609D287DFCEA0035EA42 /* PackingManager.swift in Sources */,
+				C2166098287DFCEA0035EA42 /* AppDelegate.swift in Sources */,
+				C216608F287DFCEA0035EA42 /* OnboardingVC.swift in Sources */,
+				C2166090287DFCEA0035EA42 /* TripCollectionView.swift in Sources */,
+				C21660A7287DFCEA0035EA42 /* OnboardingCell.swift in Sources */,
+				C216609A287DFCEA0035EA42 /* RealmManager.swift in Sources */,
+				C216608C287DFCEA0035EA42 /* CreateNewTripVC.swift in Sources */,
+				C2166093287DFCEA0035EA42 /* ItemEditVC.swift in Sources */,
+				C2166096287DFCEA0035EA42 /* TripModel — old without Realm.swift in Sources */,
+				C216609E287DFCEA0035EA42 /* GeocodingManager.swift in Sources */,
+				C2166089287DFCEA0035EA42 /* SceneDelegate.swift in Sources */,
+				C21660A6287DFCEA0035EA42 /* PacklistCell.swift in Sources */,
+				C216609B287DFCEA0035EA42 /* Config.swift in Sources */,
+				C2166094287DFCEA0035EA42 /* TripView.swift in Sources */,
+				C216608B287DFCEA0035EA42 /* CitySearchVC.swift in Sources */,
+				C2166099287DFCEA0035EA42 /* Extentions.swift in Sources */,
+				C216609C287DFCEA0035EA42 /* WeatherManager.swift in Sources */,
+				C2166092287DFCEA0035EA42 /* DatePickerVC.swift in Sources */,
+				C21660A2287DFCEA0035EA42 /* WeatherCell.swift in Sources */,
+				C21660A0287DFCEA0035EA42 /* PhotoManager.swift in Sources */,
+				C216608E287DFCEA0035EA42 /* SettingsVC.swift in Sources */,
+				C2166097287DFCEA0035EA42 /* CodableResponse.swift in Sources */,
+				C21660A8287DFCEA0035EA42 /* TripCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C2166080287DFCEA0035EA42 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2166081287DFCEA0035EA42 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C2166082287DFCEA0035EA42 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2166083287DFCEA0035EA42 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C248B0652812DC0F00544A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C248B0662812DC0F00544A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C248B0682812DC0F00544A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T3TVB8DB36;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = travelAppiOS/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreystepanov.travelAppiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C248B0692812DC0F00544A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T3TVB8DB36;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = travelAppiOS/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreystepanov.travelAppiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C248B04B2812DC0E00544A5F /* Build configuration list for PBXProject "travelAppGit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C248B0652812DC0F00544A5F /* Debug */,
+				C248B0662812DC0F00544A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C248B0672812DC0F00544A5F /* Build configuration list for PBXNativeTarget "travelAppiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C248B0682812DC0F00544A5F /* Debug */,
+				C248B0692812DC0F00544A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C23B722B284B201400DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		C23B722E284B224900DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C23B7231284CB1E100DA60D2 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C2755C76287C42CF00F94833 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C2818B992853116500E8D6DE /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C23B722C284B201400DA60D2 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C23B722B284B201400DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		C23B722F284B224900DA60D2 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C23B722E284B224900DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		C23B7232284CB1E100DA60D2 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C23B7231284CB1E100DA60D2 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		C2755C77287C42CF00F94833 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2755C76287C42CF00F94833 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		C2818B9A2853116500E8D6DE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2818B992853116500E8D6DE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C2818B9C2853116500E8D6DE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2818B992853116500E8D6DE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C248B0482812DC0E00544A5F /* Project object */;
+}
