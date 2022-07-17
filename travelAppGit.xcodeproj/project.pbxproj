@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C2166089287DFCEA0035EA42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166061287DFCEA0035EA42 /* SceneDelegate.swift */; };
-		C216608A287DFCEA0035EA42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2166062287DFCEA0035EA42 /* Info.plist */; };
 		C216608B287DFCEA0035EA42 /* CitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166064287DFCEA0035EA42 /* CitySearchVC.swift */; };
 		C216608C287DFCEA0035EA42 /* CreateNewTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166065287DFCEA0035EA42 /* CreateNewTripVC.swift */; };
 		C216608D287DFCEA0035EA42 /* CitySuggestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166066287DFCEA0035EA42 /* CitySuggestionsTableVC.swift */; };
@@ -20,7 +19,6 @@
 		C2166093287DFCEA0035EA42 /* ItemEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606C287DFCEA0035EA42 /* ItemEditVC.swift */; };
 		C2166094287DFCEA0035EA42 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606D287DFCEA0035EA42 /* TripView.swift */; };
 		C2166095287DFCEA0035EA42 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606F287DFCEA0035EA42 /* TripModel.swift */; };
-		C2166096287DFCEA0035EA42 /* TripModel — old without Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166070287DFCEA0035EA42 /* TripModel — old without Realm.swift */; };
 		C2166097287DFCEA0035EA42 /* CodableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166071287DFCEA0035EA42 /* CodableResponse.swift */; };
 		C2166098287DFCEA0035EA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166072287DFCEA0035EA42 /* AppDelegate.swift */; };
 		C2166099287DFCEA0035EA42 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166074287DFCEA0035EA42 /* Extentions.swift */; };
@@ -41,12 +39,14 @@
 		C21660A8287DFCEA0035EA42 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166086287DFCEA0035EA42 /* TripCollectionViewCell.swift */; };
 		C21660A9287DFCEA0035EA42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2166087287DFCEA0035EA42 /* Localizable.strings */; };
 		C21660AA287DFCEA0035EA42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2166088287DFCEA0035EA42 /* Assets.xcassets */; };
-		C23B722D284B201400DA60D2 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C23B722C284B201400DA60D2 /* Nuke */; };
-		C23B7230284B224900DA60D2 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C23B722F284B224900DA60D2 /* Nuke */; };
+		C218309A2884A5CF0064E649 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C21830992884A5CF0064E649 /* Nuke */; };
+		C218309C2884A5CF0064E649 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = C218309B2884A5CF0064E649 /* NukeExtensions */; };
+		C218309E2884A5CF0064E649 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C218309D2884A5CF0064E649 /* NukeUI */; };
 		C23B7233284CB1E100DA60D2 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C23B7232284CB1E100DA60D2 /* FSCalendar */; };
 		C2755C78287C42CF00F94833 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2755C77287C42CF00F94833 /* IQKeyboardManagerSwift */; };
 		C2818B9B2853116500E8D6DE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9A2853116500E8D6DE /* Realm */; };
 		C2818B9D2853116500E8D6DE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9C2853116500E8D6DE /* RealmSwift */; };
+		C285FA7B28849DA40084E03E /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285FA7A28849DA40084E03E /* keys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +63,6 @@
 		C216606C287DFCEA0035EA42 /* ItemEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditVC.swift; sourceTree = "<group>"; };
 		C216606D287DFCEA0035EA42 /* TripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		C216606F287DFCEA0035EA42 /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
-		C2166070287DFCEA0035EA42 /* TripModel — old without Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TripModel — old without Realm.swift"; sourceTree = "<group>"; };
 		C2166071287DFCEA0035EA42 /* CodableResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableResponse.swift; sourceTree = "<group>"; };
 		C2166072287DFCEA0035EA42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = travelApp/AppDelegate.swift; sourceTree = "<group>"; };
 		C2166074287DFCEA0035EA42 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		C2166087287DFCEA0035EA42 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = travelApp/Localizable.strings; sourceTree = "<group>"; };
 		C2166088287DFCEA0035EA42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = travelApp/Assets.xcassets; sourceTree = "<group>"; };
 		C248B0502812DC0E00544A5F /* travelAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C285FA7A28849DA40084E03E /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,18 +93,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2755C78287C42CF00F94833 /* IQKeyboardManagerSwift in Frameworks */,
-				C23B722D284B201400DA60D2 /* Nuke in Frameworks */,
+				C218309E2884A5CF0064E649 /* NukeUI in Frameworks */,
 				C23B7233284CB1E100DA60D2 /* FSCalendar in Frameworks */,
 				C2818B9B2853116500E8D6DE /* Realm in Frameworks */,
 				C2818B9D2853116500E8D6DE /* RealmSwift in Frameworks */,
-				C23B7230284B224900DA60D2 /* Nuke in Frameworks */,
+				C218309A2884A5CF0064E649 /* Nuke in Frameworks */,
+				C218309C2884A5CF0064E649 /* NukeExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C2166063287DFCEA0035EA42 /* C */ = {
+		C2166063287DFCEA0035EA42 /* VC */ = {
 			isa = PBXGroup;
 			children = (
 				C2166064287DFCEA0035EA42 /* CitySearchVC.swift */,
@@ -118,15 +119,14 @@
 				C216606C287DFCEA0035EA42 /* ItemEditVC.swift */,
 				C216606D287DFCEA0035EA42 /* TripView.swift */,
 			);
-			name = C;
-			path = travelApp/C;
+			name = VC;
+			path = travelApp/VC;
 			sourceTree = "<group>";
 		};
 		C216606E287DFCEA0035EA42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C216606F287DFCEA0035EA42 /* TripModel.swift */,
-				C2166070287DFCEA0035EA42 /* TripModel — old without Realm.swift */,
 				C2166071287DFCEA0035EA42 /* CodableResponse.swift */,
 			);
 			name = Models;
@@ -149,7 +149,7 @@
 			path = travelApp/Utilities;
 			sourceTree = "<group>";
 		};
-		C216607C287DFCEA0035EA42 /* V */ = {
+		C216607C287DFCEA0035EA42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				C216607D287DFCEA0035EA42 /* PacklistCell.xib */,
@@ -161,22 +161,23 @@
 				C2166085287DFCEA0035EA42 /* OnboardingCell.swift */,
 				C2166086287DFCEA0035EA42 /* TripCollectionViewCell.swift */,
 			);
-			name = V;
-			path = travelApp/V;
+			name = Views;
+			path = travelApp/Views;
 			sourceTree = "<group>";
 		};
 		C248B0472812DC0E00544A5F = {
 			isa = PBXGroup;
 			children = (
+				C2166073287DFCEA0035EA42 /* Utilities */,
+				C216606E287DFCEA0035EA42 /* Models */,
+				C2166063287DFCEA0035EA42 /* VC */,
+				C216607C287DFCEA0035EA42 /* Views */,
 				C2166072287DFCEA0035EA42 /* AppDelegate.swift */,
 				C2166088287DFCEA0035EA42 /* Assets.xcassets */,
-				C2166063287DFCEA0035EA42 /* C */,
 				C2166062287DFCEA0035EA42 /* Info.plist */,
+				C285FA7A28849DA40084E03E /* keys.swift */,
 				C2166087287DFCEA0035EA42 /* Localizable.strings */,
-				C216606E287DFCEA0035EA42 /* Models */,
 				C2166061287DFCEA0035EA42 /* SceneDelegate.swift */,
-				C2166073287DFCEA0035EA42 /* Utilities */,
-				C216607C287DFCEA0035EA42 /* V */,
 				C248B0512812DC0E00544A5F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,12 +207,13 @@
 			);
 			name = travelAppiOS;
 			packageProductDependencies = (
-				C23B722C284B201400DA60D2 /* Nuke */,
-				C23B722F284B224900DA60D2 /* Nuke */,
 				C23B7232284CB1E100DA60D2 /* FSCalendar */,
 				C2818B9A2853116500E8D6DE /* Realm */,
 				C2818B9C2853116500E8D6DE /* RealmSwift */,
 				C2755C77287C42CF00F94833 /* IQKeyboardManagerSwift */,
+				C21830992884A5CF0064E649 /* Nuke */,
+				C218309B2884A5CF0064E649 /* NukeExtensions */,
+				C218309D2884A5CF0064E649 /* NukeUI */,
 			);
 			productName = travelAppiOS;
 			productReference = C248B0502812DC0E00544A5F /* travelAppiOS.app */;
@@ -243,11 +245,10 @@
 			);
 			mainGroup = C248B0472812DC0E00544A5F;
 			packageReferences = (
-				C23B722B284B201400DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */,
-				C23B722E284B224900DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */,
 				C23B7231284CB1E100DA60D2 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				C2818B992853116500E8D6DE /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C2755C76287C42CF00F94833 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				C21830982884A5CF0064E649 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = C248B0512812DC0E00544A5F /* Products */;
 			projectDirPath = "";
@@ -268,7 +269,6 @@
 				C21660A5287DFCEA0035EA42 /* Main.storyboard in Resources */,
 				C21660A4287DFCEA0035EA42 /* LaunchScreen.storyboard in Resources */,
 				C21660AA287DFCEA0035EA42 /* Assets.xcassets in Resources */,
-				C216608A287DFCEA0035EA42 /* Info.plist in Resources */,
 				C21660A3287DFCEA0035EA42 /* WeatherCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +292,6 @@
 				C216609A287DFCEA0035EA42 /* RealmManager.swift in Sources */,
 				C216608C287DFCEA0035EA42 /* CreateNewTripVC.swift in Sources */,
 				C2166093287DFCEA0035EA42 /* ItemEditVC.swift in Sources */,
-				C2166096287DFCEA0035EA42 /* TripModel — old without Realm.swift in Sources */,
 				C216609E287DFCEA0035EA42 /* GeocodingManager.swift in Sources */,
 				C2166089287DFCEA0035EA42 /* SceneDelegate.swift in Sources */,
 				C21660A6287DFCEA0035EA42 /* PacklistCell.swift in Sources */,
@@ -301,6 +300,7 @@
 				C216608B287DFCEA0035EA42 /* CitySearchVC.swift in Sources */,
 				C2166099287DFCEA0035EA42 /* Extentions.swift in Sources */,
 				C216609C287DFCEA0035EA42 /* WeatherManager.swift in Sources */,
+				C285FA7B28849DA40084E03E /* keys.swift in Sources */,
 				C2166092287DFCEA0035EA42 /* DatePickerVC.swift in Sources */,
 				C21660A2287DFCEA0035EA42 /* WeatherCell.swift in Sources */,
 				C21660A0287DFCEA0035EA42 /* PhotoManager.swift in Sources */,
@@ -456,7 +456,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3TVB8DB36;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = travelAppiOS/Info.plist;
+				INFOPLIST_FILE = travelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -487,7 +487,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3TVB8DB36;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = travelAppiOS/Info.plist;
+				INFOPLIST_FILE = travelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -531,15 +531,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C23B722B284B201400DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		C23B722E284B224900DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+		C21830982884A5CF0064E649 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
@@ -574,15 +566,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C23B722C284B201400DA60D2 /* Nuke */ = {
+		C21830992884A5CF0064E649 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C23B722B284B201400DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = C21830982884A5CF0064E649 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
 		};
-		C23B722F284B224900DA60D2 /* Nuke */ = {
+		C218309B2884A5CF0064E649 /* NukeExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C23B722E284B224900DA60D2 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
+			package = C21830982884A5CF0064E649 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		C218309D2884A5CF0064E649 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C21830982884A5CF0064E649 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 		C23B7232284CB1E100DA60D2 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;

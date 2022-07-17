@@ -9,6 +9,8 @@ import UIKit
 import Nuke
 import CoreMedia
 import RealmSwift
+import NukeUI
+import NukeExtensions
 
 class TripCollectionView: UICollectionView  {
 
@@ -77,9 +79,8 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
             let request = ImageRequest(
                 url: URL(string: image),
                 processors: processors
-            )
-
-            Nuke.loadImage(with: request, options: options, into: cell.mainImageView)
+                )
+            loadImage(with: request, options: options, into: cell.mainImageView)
             
         } else {
             cell.mainImageView.image = UIImage(named: "tripPlaceholder")

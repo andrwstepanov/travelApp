@@ -12,7 +12,7 @@ import RealmSwift
 struct WeatherManager {
 
     private let crossingURL = Config.APIkeys.weatherApiURL
-    private let apiKey = Config.APIkeys.weatherApiKey
+    private let apiKey = HiddenKeys.weatherApiKey
 
     var delegate: WeatherManagerDelegate?
     var session = URLSession.shared
@@ -85,7 +85,6 @@ struct WeatherManager {
     }
     
     private func writeWeather(trip: TripModel, weather: Weather) async {
-        
         let realm = try! await Realm(configuration: RealmManager.realmConfig)
         await realm.writeAsync {
             trip.weather = weather

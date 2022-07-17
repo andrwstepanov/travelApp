@@ -110,8 +110,9 @@ class CreateNewTripVC: UIViewController {
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
             Task {
-                await weatherManager.loadAndSaveWeather(trip: tempTrip)
                 try await photoManager.getAndWriteCityUrl(trip: tempTrip)
+                await weatherManager.loadAndSaveWeather(trip: tempTrip)
+
             }
             Config.popToMainScreen(navController: navigationController!)
         }

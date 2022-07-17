@@ -8,6 +8,8 @@
 import UIKit
 import Nuke
 import RealmSwift
+import NukeUI
+import NukeExtensions
 
 class TripView: UIViewController, UIGestureRecognizerDelegate {
 
@@ -95,7 +97,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         headerTripDates.text = "\(dateFormatter.string(from: tripModel!.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
-
+        
         if let image = tripModel?.cityImage {
             var options = ImageLoadingOptions (
                 failureImage: UIImage(named: "tripPlaceholder")
@@ -107,9 +109,10 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             let request = ImageRequest(
                 url: URL(string: image),
                 processors: processors
-            )
+                )
 
-            Nuke.loadImage(with: request, options: options, into: headerImageView)
+            loadImage(with: request, options: options, into: headerImageView)
+     //       Nuke.loadImage(with: request, options: options, into: headerImageView)
             
         } else {
             headerImageView.image = UIImage(named: "tripPlaceholder")

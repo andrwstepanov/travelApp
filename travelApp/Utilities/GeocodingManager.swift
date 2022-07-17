@@ -13,7 +13,7 @@ struct GeocodingManager {
 
     
     private let apiURL = Config.APIkeys.geocodingApiURL
-    private let apiKey = Config.APIkeys.grocodingApiKey
+    private let apiKey = HiddenKeys.geocodingApiKey
     
     func asyncGeocoding(lat: Double, lon: Double) async throws -> GeocodingResponse? {
         let stringLat = String(lat)

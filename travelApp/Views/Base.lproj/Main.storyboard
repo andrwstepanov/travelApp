@@ -585,7 +585,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="7j3-vd-aXQ">
                                 <rect key="frame" x="20" y="434.33333333333331" width="335" height="97.666666666666686"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-Qy-kMX">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-Qy-kMX">
                                         <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="97.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
