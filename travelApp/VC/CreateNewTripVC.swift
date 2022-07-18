@@ -39,7 +39,6 @@ class CreateNewTripVC: UIViewController {
         setupToggleButtons()
         applyRadius()
     }
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openDatePicker" {
@@ -69,10 +68,9 @@ class CreateNewTripVC: UIViewController {
     
     private func addBorderstoButton(to button: UIButton) {
         button.setTitle("", for: .normal)
-        let frame = CGRect(x: 0, y: button.frame.size.height, width: button.frame.size.width, height: 1)
-        let borderBottom = UIView(frame: frame)
-        borderBottom.backgroundColor = UIColor.lightGray
-        button.addSubview(borderBottom)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemGray4.cgColor
+        button.layer.cornerRadius = Config.UIConstants.squareButtonRadius
     }
     
     private func toggleButton(button: UIButton) {
@@ -99,8 +97,6 @@ class CreateNewTripVC: UIViewController {
     @IBAction func sportToggleTapped(_ sender: UIButton) {
         toggleButton(button: sender)
     }
-    
-    
     
     @IBAction func createTripTapped(_ sender: UIButton) {
         if let safeStartDate = tempStartDate, let safeFinishDate = tempFinishDate{
@@ -151,8 +147,6 @@ extension CreateNewTripVC: CitySearchDelegate {
             nextButton.isEnabled = true
         }
     }
-    
-    
 }
 
 
