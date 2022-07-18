@@ -19,12 +19,13 @@ struct WeatherManager {
     static let sharedInstance = WeatherManager()
 
     
-    func loadAndSaveWeather(trip: TripModel) async {
+    func loadAndSaveWeather(trip: TripModel) async -> Weather? {
         let weatherResponse = try? await asyncFetchWeather(trip: trip)
-        if let weatherRespons = weatherResponse {
-            let weather = calculateAvg(weather: weatherRespons)
-            await writeWeather(trip: trip, weather: weather)
+        if let weatherResponse = weatherResponse {
+            let weather = calculateAvg(weather: weatherResponse)
+            return weather
         }
+        return nil
     }
     
     func returnWeatherInUserUnits(trip: TripModel) -> String? {
@@ -84,13 +85,6 @@ struct WeatherManager {
         
     }
     
-    private func writeWeather(trip: TripModel, weather: Weather) async {
-        let realm = try! await Realm(configuration: RealmManager.realmConfig)
-        await realm.writeAsync {
-            trip.weather = weather
-        }
-    }
-
     private func asyncFetchWeather(trip: TripModel) async throws -> WeatherResponse? {
         
         let dateFormatter = DateFormatter()

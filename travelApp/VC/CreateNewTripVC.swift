@@ -110,9 +110,14 @@ class CreateNewTripVC: UIViewController {
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
             Task {
-                try await photoManager.getAndWriteCityUrl(trip: tempTrip)
-                await weatherManager.loadAndSaveWeather(trip: tempTrip)
-
+                let photoURL = try await photoManager.getAndWriteCityUrl(trip: tempTrip)
+                let weather = await weatherManager.loadAndSaveWeather(trip: tempTrip)
+                if let safeWeather = weather {
+                    RealmManager.sharedDelegate().writeWeather(trip: tempTrip, weather: safeWeather)
+                }
+                if let safePhotoURL = photoURL {
+                    RealmManager.sharedDelegate().writeImage(trip: tempTrip, imageURL: safePhotoURL)
+                }
             }
             Config.popToMainScreen(navController: navigationController!)
         }

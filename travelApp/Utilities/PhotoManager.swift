@@ -14,13 +14,9 @@ struct PhotoManager {
     let photoRequestURL = Config.APIkeys.photoRequestURL
 
 
-    func getAndWriteCityUrl(trip: TripModel) async throws {
+    func getAndWriteCityUrl(trip: TripModel) async throws -> String? {
         let imageURL = try await geocodeCityAndGetImage(trip: trip)
-        
-        let realm = try! await Realm(configuration: RealmManager.realmConfig)
-        await realm.writeAsync {
-            trip.cityImage = imageURL
-        }
+        return imageURL
     }
     
     private func geocodeCityAndGetImage(trip: TripModel) async throws -> String? {
