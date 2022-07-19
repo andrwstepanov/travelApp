@@ -80,8 +80,7 @@ class ItemEditVC: UIViewController {
     func setupUI() {
             itemDescription.text = tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].title
         quantityLabel.text = "\(tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].quantity)"
-        popUpMenuSelectionIndex = indexPath.section - 1
-        print(popUpMenuSelectionIndex)
+        popUpMenuSelectionIndex = indexPath.section
         
         stepper.maximumValue = 10
         stepper.minimumValue = 1
@@ -96,15 +95,14 @@ class ItemEditVC: UIViewController {
         
         if editMode {
             let itemReference = tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row]
-            if popUpMenuSelectionIndex == indexPath.row { checklistSectionReference = nil }
-
-            RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty!, newCat: checklistSectionReference as? ChecklistSection)
+            if popUpMenuSelectionIndex == indexPath.section { checklistSectionReference = nil }
+            
+                RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty!, newCat: checklistSectionReference as? ChecklistSection)
         } else {
             RealmManager.sharedDelegate().addItemToCategory(name: newName, qty: newQty!, cat: checklistSectionReference as! ChecklistSection)
         }
         self.dismiss(animated: true)
     }
-    
     
     @IBAction func quantityChanged(_ sender: UIStepper) {
         quantityLabel.text = Int(sender.value).description

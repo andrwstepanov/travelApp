@@ -28,7 +28,6 @@ class RealmManager {
         }
     }
     
-    
     func writeImage(trip: TripModel, imageURL: String) {
         let realm = getRealm()
         realm.writeAsync {
@@ -36,10 +35,6 @@ class RealmManager {
         }
         
     }
-
-
-    
-    
     
     func addTrip(trip: TripModel) {
         self.addObject(object: trip, update: false)
@@ -55,8 +50,6 @@ class RealmManager {
             print("Realm error: Cannot write: \(trip)")
         }
     }
-    
-
     
     func updateChecklistItem(trip: TripModel, indexPath: IndexPath, checklistItem: ChecklistElement, newName: String, newQty: Int, newCat: ChecklistSection?) {
         let realm = getRealm()
@@ -75,8 +68,6 @@ class RealmManager {
                 print("Error deleting objects")
             }
         }
-
-            
     
     func deleteTrip(trip: TripModel) {
             self.deleteObject(object: trip)
