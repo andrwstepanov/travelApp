@@ -73,7 +73,6 @@ class MainScreen: UIViewController {
     private func loadSettings() {
 
         let userDefaults = UserDefaults.standard
-        
         if Config.resetApp { userDefaults.set(false, forKey: Config.UserDefaultsNames.launchedBefore) }
         if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) {
         self.performSegue(withIdentifier: "openOnboarding", sender: self)
@@ -85,9 +84,7 @@ class MainScreen: UIViewController {
             RealmManager.sharedDelegate().addTrip(trip: TripModel.intro())
         }
         tripCollectionView.set(cells: trips)
-        
         notificationToken = trips.observe {(changes: RealmCollectionChange) in
-           
             switch changes {
             case .initial(let _): break
             case .update(let _, let deletions, let insertions, let modifications):

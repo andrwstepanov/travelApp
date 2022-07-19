@@ -21,7 +21,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerRoundedCornersView: UIView!
     @IBOutlet weak var headerTripDates: UILabel!
     @IBOutlet weak var headerDotsButton: UIButton!
-    
     var mainMenu = UIMenu()
     var tripModel: TripModel?
     var notificationToken: NotificationToken? = nil
@@ -47,7 +46,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         watchChanges()
-        
         setupUI()
 
     }
@@ -72,7 +70,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
     private func setupUI() {
 
         headerLocationLabel.text = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
@@ -89,8 +86,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         tableView.bounds = view.bounds
         headerRoundedCornersView.backgroundColor = .white
         headerRoundedCornersView.roundCorners(corners: [.topLeft, .topRight], radius: 15)
-        
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         headerTripDates.text = "\(dateFormatter.string(from: tripModel!.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
@@ -107,14 +102,10 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
                 url: URL(string: image),
                 processors: processors
                 )
-
             loadImage(with: request, options: options, into: headerImageView)
-     //       Nuke.loadImage(with: request, options: options, into: headerImageView)
-            
         } else {
             headerImageView.image = UIImage(named: "tripPlaceholder")
         }
-        
          mainMenu = UIMenu(title: "", children: [
             UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in
                 self.deleteTrip()
@@ -123,13 +114,10 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         ])
         headerDotsButton.menu = mainMenu
         headerDotsButton.showsMenuAsPrimaryAction = true
-        
-        
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 20
         }
     }
-    
     private func navBarCustomBackButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "chevron-padding-png"),
@@ -142,66 +130,50 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         navigationItem.leftBarButtonItem?.setBackButtonBackgroundVerticalPositionAdjustment(CGFloat(100), for: .default)
 
     }
-    
     @objc private func popToPrevious() {
         navigationController?.popViewController(animated: true)
     }
-    
     private func stickHeaderImageToTop() {
         tableView.contentInsetAdjustmentBehavior = .never
         headerImageView.translatesAutoresizingMaskIntoConstraints = false
         headerImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         headerImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true    }
-    
     private func registerCells() {
         let packlistCell = UINib(nibName: "PacklistCell", bundle: nil)
         tableView.register(packlistCell, forCellReuseIdentifier: "packlistCell")
-        
         let weatherCell = UINib(nibName: "WeatherCell", bundle: nil)
         tableView.register(weatherCell, forCellReuseIdentifier: "weatherCell")
     }
-    
-
-    
     private func addFloatingButton() {
         tableView.addSubview(floatingButton)
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
-        
         floatingButton.setImage(UIImage(systemName: "plus"), for: .normal)
         floatingButton.tintColor = .white
-        
         floatingButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         floatingButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -75).isActive = true
         floatingButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         floatingButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
         floatingButton.addTarget(self, action: #selector(addChecklistItem(_ :)), for: .touchUpInside)
     }
-    
     @objc func addChecklistItem(_ sender: UIButton) {
         self.performSegue(withIdentifier: "editItem", sender: nil)
          }
-    
     private func tryToFetchAgain() {
-        Task {
-            await weatherManager.loadAndSaveWeather(trip: tripModel!)
-            try await photoManager.getAndWriteCityUrl(trip: tripModel!)
-            tableView.reloadData()
-        }
+//        Task {
+//            await weatherManager.loadAndSaveWeather(trip: tripModel!)
+//            try await photoManager.getAndWriteCityUrl(trip: tripModel!)
+//            tableView.reloadData()
+//        }
     }
-    
-    
     private func navBarCompact() {
         if navigationItem.title == "" {
             navigationItem.title = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
-    
 //            if #available(iOS 13.0, *) {
 //                let navBarAppearance = UINavigationBarAppearance()
 //                navBarAppearance.backgroundColor = .white
 //                navigationController?.navigationBar.standardAppearance = navBarAppearance
 //                navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 //            }
-            
             if #available(iOS 15, *) {
                 guard let navigationBar = navigationController?.navigationBar else { return }
 
@@ -216,18 +188,13 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             }
             self.navigationController?.navigationBar.tintColor = .black
             self.navigationController?.navigationBar.barStyle = .default
-        
             self.navigationItem.rightBarButtonItem = .init(systemItem: .edit)
             navigationItem.rightBarButtonItem?.menu = mainMenu
-
-
         }
     }
-    
     private func navBarInitial() {
         if navigationItem.title != " " {
             navigationItem.title = " "
-            
             self.navigationController?.navigationBar.barStyle = .black
             self.navigationController?.navigationBar.tintColor = .white
 //            if #available(iOS 13.0, *) {
@@ -317,18 +284,15 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
             } else {
                 tryToFetchAgain()
             }
-            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "packlistCell", for: indexPath) as! PacklistCell
             cell.dotsButton.menu = UIMenu(title: "", children: [
-  
                     UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {_ in
                         self.performSegue(withIdentifier: "editItem", sender: indexPath)
                     },
                     UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in
                         self.deleteItem(indexPath: indexPath)
-            
                     }
 
                 ])
@@ -355,7 +319,6 @@ extension TripView {
             self.popToPrevious()
 
         })
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
         }
 
@@ -363,22 +326,18 @@ extension TripView {
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
-    
     private func deleteItem(indexPath: IndexPath) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             RealmManager.sharedDelegate().deleteItem(trip: self.tripModel!, indexPath: indexPath)
         })
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
         }
-        
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
-    
     private func asyncDeleteTrip(trip: TripModel) {
         do {
             let realm = try Realm(configuration: RealmManager.realmConfig)

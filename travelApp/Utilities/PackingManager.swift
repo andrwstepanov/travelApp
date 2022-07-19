@@ -25,7 +25,6 @@ class PackingManager {
             ChecklistElement(title: "Shoes", quantity: 1),
             ChecklistElement(title: "Slippers", quantity: 1),
             ChecklistElement(title: "Cap", quantity: 1)
-
         ])
         
         clothesChecklist.sectionHeader = "Clothes"
@@ -37,7 +36,7 @@ class PackingManager {
         var electronicsChecklistElements = List<ChecklistElement>()
         electronicsChecklistElements.append(objectsIn: [
             ChecklistElement(title: "Charger", quantity: 1),
-            ChecklistElement(title: "Mobile Phone", quantity: 1),
+            ChecklistElement(title: "Mobile Phone", quantity: 1)
         ])
         electronicsChecklist.sectionHeader = "Electronics"
         electronicsChecklist.sectionChecklist = electronicsChecklistElements

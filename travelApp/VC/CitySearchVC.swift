@@ -22,7 +22,6 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
           self.searchController.searchBar.becomeFirstResponder()
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchController
@@ -35,14 +34,12 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
         searchController = UISearchController(searchResultsController: suggestionController)
         searchController.searchResultsUpdater = suggestionController
     }
-    
     private func search(for suggestedCompletion: MKLocalSearchCompletion) {
         let searchRequest = MKLocalSearch.Request(completion: suggestedCompletion)
         search(using: searchRequest)
     }
 
     private func search(using searchRequest: MKLocalSearch.Request) {
-        
         searchRequest.resultTypes = .address
         localSearch = MKLocalSearch(request: searchRequest)
         localSearch?.start { (response, error) in

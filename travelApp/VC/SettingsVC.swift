@@ -25,7 +25,6 @@ class SettingsVC: UIViewController {
 // MARK: IBActions
 
 extension SettingsVC {
-    
     @IBAction func saveTapped(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) {
@@ -41,7 +40,6 @@ extension SettingsVC {
         default: break
         }
     }
-    
    @IBAction func genderChanged(_ sender: UISegmentedControl) {
        switch sender.selectedSegmentIndex {
        case 0: toggleSetting(settingKey: Config.UserDefaultsNames.userGenderIsMale, newSetting: true)

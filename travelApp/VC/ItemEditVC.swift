@@ -15,12 +15,10 @@ class ItemEditVC: UIViewController {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var popUpCategory: UIButton!
-    
     var indexPath: IndexPath!
     var tripModel: TripModel!
     var popUpMenuSelectionIndex: Int!
     var editMode = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setEditMode()
@@ -32,7 +30,6 @@ class ItemEditVC: UIViewController {
         popUpCategory.layer.borderColor = UIColor.systemGray6.cgColor
         popUpCategory.layer.cornerRadius = 5
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -48,7 +45,6 @@ class ItemEditVC: UIViewController {
             editMode = true
         } else { editMode = false }
     }
-    
     func setPopupButton() {
         popUpCategory.showsMenuAsPrimaryAction = true
         popUpCategory.changesSelectionAsPrimaryAction = true
@@ -65,7 +61,6 @@ class ItemEditVC: UIViewController {
         }
         if editMode { catMenuArray[indexPath.section].state = .on }
         catMenuArray.remove(at: 0)
-        
         popUpCategory.menu = UIMenu(children: catMenuArray)
         }
 

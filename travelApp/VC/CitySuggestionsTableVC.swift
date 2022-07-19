@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 
 class CitySuggestionsTableVC: UITableViewController {
-    
     private var searchCompleter: MKLocalSearchCompleter?
     private var searchRegion: MKCoordinateRegion = MKCoordinateRegion(MKMapRect.world)
     private var currentPlacemark: CLPlacemark?
@@ -24,12 +23,10 @@ class CitySuggestionsTableVC: UITableViewController {
         super.viewWillAppear(animated)
         startProvidingCompletions()
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopProvidingCompletions()
     }
-    
     private func startProvidingCompletions() {
         searchCompleter = MKLocalSearchCompleter()
         searchCompleter?.delegate = self
@@ -39,7 +36,6 @@ class CitySuggestionsTableVC: UITableViewController {
     private func stopProvidingCompletions() {
         searchCompleter = nil
     }
-    
     func updatePlacemark(_ placemark: CLPlacemark?) {
         currentPlacemark = placemark
     }
@@ -92,11 +88,9 @@ extension CitySuggestionsTableVC: UISearchResultsUpdating {
 
 private class SuggestedCompletionTableViewCell: UITableViewCell {
     static let reuseID = "SuggestedCompletionTableViewCellReuseID"
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

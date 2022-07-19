@@ -19,7 +19,6 @@ class CreateNewTripVC: UIViewController {
     @IBOutlet weak var workToggleButton: UIButton!
     @IBOutlet weak var beachToggleButton: UIButton!
     @IBOutlet weak var sportToggleButton: UIButton!
-    
     var tempTrip: TripModel!
     var tempCity: String!
     var tempCountry: String!
@@ -27,7 +26,6 @@ class CreateNewTripVC: UIViewController {
     var tempLon: Double!
     var tempStartDate: Date?
     var tempFinishDate: Date?
-    
     var weatherManager = WeatherManager()
     var photoManager = PhotoManager(geocodingManager: GeocodingManager())
 
@@ -50,7 +48,6 @@ class CreateNewTripVC: UIViewController {
             openCitySearch?.citySearchDelegate = self
         }
     }
-    
     private func applyRadius() {
         nextButton.layer.cornerRadius = Config.UIConstants.buttonCornerRadius
         workToggleButton.layer.cornerRadius = Config.UIConstants.squareButtonRadius
@@ -58,13 +55,11 @@ class CreateNewTripVC: UIViewController {
         sportToggleButton.layer.cornerRadius = Config.UIConstants.squareButtonRadius
 
     }
-    
     private func setupToggleButtons() {
         workToggleButton.alignImageAndTitleVertically(padding: 10)
         beachToggleButton.alignImageAndTitleVertically(padding: 10)
         sportToggleButton.alignImageAndTitleVertically(padding: 10)
     }
-    
     private func addBorderstoButton(to button: UIButton) {
         button.setTitle("", for: .normal)
         button.layer.borderWidth = 1

@@ -12,7 +12,6 @@ class OnboardingVC: UIViewController {
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextButton: UIButton!
-    
     let titleArray = Config.OnboardingText.onboardingTitles
     let subtitleArray = Config.OnboardingText.onboardingSubtitles
     let imageArray = Config.OnboardingImages.imageArray
@@ -34,11 +33,9 @@ extension OnboardingVC {
             showItem(at: nextPage)
         }
     }
-    
     @IBAction func skipTapped(_ sender: UIButton) {
         showItem(at: 2)
     }
-    
     @IBAction func pageChanged(_ sender: UIPageControl) {
         showItem(at: pageControl.currentPage)
     }
@@ -57,7 +54,6 @@ extension OnboardingVC {
 
         onboardingCollectionView.collectionViewLayout = layout
     }
-    
     private func hideSkip(_ bool: Bool) {
         UIView.animate(withDuration: 0.3) {
             self.skipButton.isHidden = bool
