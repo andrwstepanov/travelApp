@@ -66,7 +66,6 @@ class ItemEditVC: UIViewController {
         if editMode { catMenuArray[indexPath.section].state = .on }
         catMenuArray.remove(at: 0)
         
-
         popUpCategory.menu = UIMenu(children: catMenuArray)
         }
 
@@ -76,7 +75,6 @@ class ItemEditVC: UIViewController {
         borderBottom.backgroundColor = UIColor.lightGray
         return borderBottom
     }
-    
     func setupUI() {
             itemDescription.text = tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].title
         quantityLabel.text = "\(tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].quantity)"
@@ -90,20 +88,19 @@ class ItemEditVC: UIViewController {
     
     @IBAction func saveTapped(_ sender: UIButton) {
         let newName = itemDescription.text!
-        let newQty = Int(quantityLabel.text ?? "1")
+        let newQty = Int(quantityLabel.text ?? "1") ?? 1
         var checklistSectionReference: Object? = tripModel.checklist[popUpMenuSelectionIndex]
-        
         if editMode {
             let itemReference = tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row]
             if popUpMenuSelectionIndex == indexPath.section { checklistSectionReference = nil }
+            let newCat = checklistSectionReference as? ChecklistSection
             
-                RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty!, newCat: checklistSectionReference as? ChecklistSection)
+            RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty, newCat: newCat)
         } else {
-            RealmManager.sharedDelegate().addItemToCategory(name: newName, qty: newQty!, cat: checklistSectionReference as! ChecklistSection)
+            RealmManager.sharedDelegate().addItemToCategory(name: newName, qty: newQty, cat: checklistSectionReference as! ChecklistSection)
         }
         self.dismiss(animated: true)
     }
-    
     @IBAction func quantityChanged(_ sender: UIStepper) {
         quantityLabel.text = Int(sender.value).description
     }

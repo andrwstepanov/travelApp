@@ -18,7 +18,6 @@ struct WeatherManager {
     var session = URLSession.shared
     static let sharedInstance = WeatherManager()
 
-    
     func loadAndSaveWeather(trip: TripModel) async -> Weather? {
         let weatherResponse = try? await asyncFetchWeather(trip: trip)
         if let weatherResponse = weatherResponse {
@@ -45,7 +44,6 @@ struct WeatherManager {
     func returnAvgTemp(trip: TripModel) -> String? {
         let userDefaults = UserDefaults.standard
         let userUnitsIsCelsius: Bool = userDefaults.bool(forKey: Config.UserDefaultsNames.userUnitsIsCelsius)
-        
         if let avgTemp = trip.weather?.avgTemp {
             let userUnitsString = userUnitsIsCelsius ? "°C" : "°F"
             let userUnitsCase: UnitTemperature = userUnitsIsCelsius ? .celsius : .fahrenheit
@@ -57,14 +55,12 @@ struct WeatherManager {
         }
         return nil
     }
-    
-    
+
     private func convertTemperature(temp: Double, from inputTempType: UnitTemperature, to outputTempType: UnitTemperature) -> Double {
         let input = Measurement(value: temp, unit: inputTempType)
         let output = input.converted(to: outputTempType)
         return output.value
     }
-    
     private func calculateAvg(weather: WeatherResponse) -> Weather {
         var tempSum = 0.0
         let tempCount = weather.days.count
@@ -82,16 +78,13 @@ struct WeatherManager {
         }
         let avgTemp = tempSum/Double(tempCount)
         return Weather(maxTemp: tempMax, minTemp: tempMin, avgTemp: avgTemp)
-        
     }
     
     private func asyncFetchWeather(trip: TripModel) async throws -> WeatherResponse? {
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-d"
         let tripStart = dateFormatter.string(from: trip.startDate)
         let tripFinish = dateFormatter.string(from: trip.finishDate)
-        
         if let lat = trip.location?.latitude, let lon = trip.location?.longitude {
             let urlString = "\(crossingURL)/\(lat),\(lon)/\(tripStart)/\(tripFinish)?key=\(apiKey)"
             let url = URL(string: urlString)

@@ -19,7 +19,6 @@ class MainScreen: UIViewController {
     @IBOutlet weak var upcomingTripsButton: UIButton!
     @IBOutlet weak var upcomingTripsStack: UIStackView!
     @IBOutlet weak var selectorHorizontalStack: UIStackView!
-    
     var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
     var notificationToken: NotificationToken? = nil
@@ -31,7 +30,6 @@ class MainScreen: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tripCollectionView.reloadData()
@@ -41,10 +39,8 @@ class MainScreen: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.addCollectionView()
         trips = RealmManager.sharedInstance.getTrips()
         self.checkDataSourceAndAddIntro()
@@ -55,7 +51,6 @@ class MainScreen: UIViewController {
         upcomingTripsButton.addSubview(borderPill)
 
     }
-    
 
     private func addBorderstoButton(to button: UIButton) -> UIView {
         let frame = CGRect(x: button.frame.size.width / 2 - (34 / 3), y: button.frame.size.height, width: 34, height: 3)
@@ -74,8 +69,6 @@ class MainScreen: UIViewController {
         tripCollectionView.bottomAnchor.constraint(equalTo: addTripButton.topAnchor, constant: -30).isActive = true
         tripCollectionView.collectionDelegate = self
     }
-    
-    
     
     private func loadSettings() {
 
@@ -105,13 +98,11 @@ class MainScreen: UIViewController {
             }
         }
     }
-    
     // MARK: IBActions
 
     @IBAction func addNewTrip(_ sender: UIButton) {
         self.performSegue(withIdentifier: "addNew", sender: self)
     }
-    
     @IBAction func tapOnUpcomingTrips(_ sender: UIButton) {
 
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
@@ -120,31 +111,25 @@ class MainScreen: UIViewController {
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
             sender.addSubview(self.borderPill)
         }, completion: nil)
-        
         tripHistoryButton.isSelected = false
         upcomingTripsButton.isSelected = true
         self.trips = RealmManager.sharedInstance.getTrips().filter("upcoming == true")
         tripCollectionView.set(cells: trips)
         tripCollectionView.reloadData()
     }
-    
     @IBAction func tapOnTripHistory(_ sender: UIButton) {
-                    
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
             self.borderPill.removeFromSuperview()
         }, completion: nil)
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
             sender.addSubview(self.borderPill)
         }, completion: nil)
-        
-            
         tripHistoryButton.isSelected = true
         upcomingTripsButton.isSelected = false
         self.trips = RealmManager.sharedInstance.getTrips().filter("upcoming == false")
         tripCollectionView.set(cells: trips)
         tripCollectionView.reloadData()
     }
-    
 
 }
 
@@ -158,8 +143,8 @@ extension MainScreen {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openTripCard" {
             if let trip = sender as? TripModel {
-                if let vc = segue.destination as? TripView {
-                    vc.tripModel = trip
+                if let targetVC = segue.destination as? TripView {
+                    targetVC.tripModel = trip
                 }
             }
         }

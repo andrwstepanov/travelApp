@@ -16,11 +16,10 @@ class TripModel: Object {
     @Persisted var finishDate: Date
     @Persisted(primaryKey: true) var id: ObjectId
 
-    //uploaded as 2nd stage
+    // uploaded as 2nd stage
     @Persisted var weather: Weather?
     @Persisted var checklist: List<ChecklistSection>
     @Persisted var cityImage: String?
-    
 
     convenience init(city: String, country: String, latitude: Double, longitude: Double, startDate: Date, finishDate: Date) {
         self.init()
@@ -35,7 +34,11 @@ class TripModel: Object {
     }
 
     static func intro() -> TripModel {
-        let introItem = TripModel(city: "Hello", country: "add your first trip", latitude: 0.0, longitude: 0.0,  startDate: Calendar.current.date(from: DateComponents(year: 2022, month: 05, day: 15))!, finishDate: Calendar.current.date(from: DateComponents(year: 2022, month: 05, day: 15))!)
+        let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 05, day: 15))!
+        let finishDate = Calendar.current.date(from: DateComponents(year: 2022, month: 05, day: 15))!
+        let city = "Hello"
+        let country = "add your first trip"
+        let introItem = TripModel(city: city, country: country, latitude: 0.0, longitude: 0.0,  startDate: startDate, finishDate: finishDate)
         introItem.weather = Weather(maxTemp: 315.1, minTemp: 290.7, avgTemp: 293.2)
         introItem.checklist.append(PackingManager.sharedInstance.testChecklist)
         return introItem
@@ -44,7 +47,6 @@ class TripModel: Object {
     static func testEmptyData() -> [TripModel]? {
         return nil
     }
-    
 }
 
 class Location: Object {

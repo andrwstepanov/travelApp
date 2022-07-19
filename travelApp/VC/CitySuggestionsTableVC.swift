@@ -16,12 +16,10 @@ class CitySuggestionsTableVC: UITableViewController {
 
     var completerResults: [MKLocalSearchCompletion]?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SuggestedCompletionTableViewCell.self, forCellReuseIdentifier: SuggestedCompletionTableViewCell.reuseID)
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startProvidingCompletions()
@@ -47,13 +45,11 @@ class CitySuggestionsTableVC: UITableViewController {
     }
 }
 
-
 extension CitySuggestionsTableVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completerResults?.count ?? 0
     }
-    
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SuggestedCompletionTableViewCell.reuseID, for: indexPath)
         if let suggestion = completerResults?[indexPath.row] {

@@ -54,12 +54,10 @@ class TripCollectionViewCell: UICollectionViewCell {
         mainImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         mainImageView.layer.cornerRadius = 19.0
         mainImageView.clipsToBounds = true
-
    
         addSubview(temperatureLabel)
         temperatureLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Config.UIConstants.leftDistanceToView).isActive = true
         temperatureLabel.topAnchor.constraint(equalTo: mainImageView.topAnchor, constant: 18).isActive = true
-
         
         addSubview(dateLabel)
         dateLabel.bottomAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: -10).isActive = true
@@ -73,6 +71,4 @@ class TripCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
-

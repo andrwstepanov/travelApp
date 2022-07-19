@@ -8,7 +8,6 @@
 import UIKit
 
 class OnboardingCell: UICollectionViewCell {
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var onboardingImage: UIImageView!
     @IBOutlet weak var subtitleLabel: UILabel!

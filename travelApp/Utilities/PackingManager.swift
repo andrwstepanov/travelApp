@@ -8,11 +8,8 @@
 import Foundation
 import RealmSwift
 
-
 class PackingManager {
-    
     static let sharedInstance = PackingManager()
-    
     let testChecklist: ChecklistSection = {
         var clothesChecklist: ChecklistSection = ChecklistSection()
         var clothesChecklistElements = List<ChecklistElement>()
@@ -35,7 +32,6 @@ class PackingManager {
         clothesChecklist.sectionChecklist = clothesChecklistElements
         return clothesChecklist
     }()
-    
     let electronicsChecklist: ChecklistSection = {
         var electronicsChecklist: ChecklistSection = ChecklistSection()
         var electronicsChecklistElements = List<ChecklistElement>()
@@ -43,11 +39,8 @@ class PackingManager {
             ChecklistElement(title: "Charger", quantity: 1),
             ChecklistElement(title: "Mobile Phone", quantity: 1),
         ])
-        
         electronicsChecklist.sectionHeader = "Electronics"
         electronicsChecklist.sectionChecklist = electronicsChecklistElements
         return electronicsChecklist
     }()
 }
-
-

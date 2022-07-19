@@ -9,7 +9,6 @@ import Foundation
 
 struct WeatherResponse: Codable {
     let days: [Days]
-    
     struct Days: Codable {
         let tempmax: Double
         let tempmin: Double
@@ -20,17 +19,14 @@ struct WeatherResponse: Codable {
 
 struct CityImageResponse: Codable {
     let photos: [Photos]
-    
     struct Photos: Codable {
         let attribution: Attribution
         let image: WebImage
-        
-        
+
         struct Attribution: Codable {
             let license: String
             let photographer: String
         }
-        
         struct WebImage: Codable {
             let mobile: String
             let web: String
@@ -41,5 +37,4 @@ struct CityImageResponse: Codable {
 struct GeocodingResponse: Codable {
     let name: String
     let state: String
-    
 }

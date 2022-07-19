@@ -12,8 +12,7 @@ import Combine
 import FSCalendar
 
 class CreateNewTripVC: UIViewController {
-    
-    
+
     @IBOutlet weak var citySearchButton: UIButton!
     @IBOutlet weak var tripDatesButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -72,7 +71,6 @@ class CreateNewTripVC: UIViewController {
         button.layer.borderColor = UIColor.systemGray4.cgColor
         button.layer.cornerRadius = Config.UIConstants.squareButtonRadius
     }
-    
     private func toggleButton(button: UIButton) {
         button.isSelected.toggle()
         if button.isSelected {
@@ -85,23 +83,18 @@ class CreateNewTripVC: UIViewController {
             button.setTitleColor(Config.Colors.textDarkGray, for: .normal)
         }
     }
-    
     @IBAction func workToggleTapped(_ sender: UIButton) {
         toggleButton(button: sender)
     }
-    
     @IBAction func beachToggleTapped(_ sender: UIButton) {
         toggleButton(button: sender)
     }
-    
     @IBAction func sportToggleTapped(_ sender: UIButton) {
         toggleButton(button: sender)
     }
-    
     @IBAction func createTripTapped(_ sender: UIButton) {
         if let safeStartDate = tempStartDate, let safeFinishDate = tempFinishDate{
             tempTrip = TripModel(city: tempCity, country: tempCountry, latitude: tempLat, longitude: tempLon, startDate: safeStartDate, finishDate: safeFinishDate)
-            
             RealmManager.sharedDelegate().addTrip(trip: tempTrip)
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
@@ -134,19 +127,15 @@ extension CreateNewTripVC: DatePickerControllerDelegate {
     }
 }
 
-
 extension CreateNewTripVC: CitySearchDelegate {
     func citySelected(locationResponse: MKMapItem) {
         tempCity = locationResponse.name ?? ""
         tempCountry = locationResponse.placemark.country
         tempLat = locationResponse.placemark.coordinate.latitude
         tempLon = locationResponse.placemark.coordinate.longitude
-        
         citySearchButton.setTitle(tempCity, for: .normal)
         if tempStartDate != nil && tempFinishDate != nil && tempCity != nil {
             nextButton.isEnabled = true
         }
     }
 }
-
-

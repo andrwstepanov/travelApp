@@ -51,7 +51,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         setupUI()
 
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editItem" {
             let taskEdit = segue.destination as! ItemEditVC
@@ -77,8 +76,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     private func setupUI() {
 
         headerLocationLabel.text = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
-
-
         registerCells()
         addFloatingButton()
 
@@ -331,7 +328,7 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
                     },
                     UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in
                         self.deleteItem(indexPath: indexPath)
-                        
+            
                     }
 
                 ])

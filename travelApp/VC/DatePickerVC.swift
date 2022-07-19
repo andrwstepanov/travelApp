@@ -21,7 +21,6 @@ class DatePickerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fsCalendarView.delegate = self
         fsCalendarView.dataSource = self
         fsCalendarView.today = nil
@@ -42,11 +41,9 @@ class DatePickerVC: UIViewController {
         
     }
     
-    
     func minimumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
-    
 
     func maximumDate(for calendar: FSCalendar) -> Date {
         if let safeFirstDate = firstDate {
@@ -82,8 +79,8 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
             let range = datesRangeFunc(from: firstDate!, to: date)
             lastDate = range.last
 
-            for d in range {
-                calendar.select(d)
+            for dateSelection in range {
+                calendar.select(dateSelection)
             }
 
             datesRange = range
@@ -106,8 +103,8 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
         }
 
         if firstDate != nil && lastDate != nil {
-            for d in calendar.selectedDates {
-                calendar.deselect(d)
+            for dateSelection in calendar.selectedDates {
+                calendar.deselect(dateSelection)
             }
             lastDate = nil
             firstDate = nil
@@ -118,8 +115,8 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if firstDate != nil && lastDate != nil {
-            for d in calendar.selectedDates {
-                calendar.deselect(d)
+            for dateSelection in calendar.selectedDates {
+                calendar.deselect(dateSelection)
             }
             lastDate = nil
             firstDate = nil
@@ -128,7 +125,6 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
         }
     }
 }
-
 
 protocol DatePickerControllerDelegate {
     func tripDatesConfirmed(starting: Date?, finishing: Date?)

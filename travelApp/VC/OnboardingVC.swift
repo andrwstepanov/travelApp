@@ -8,7 +8,6 @@
 import UIKit
 
 class OnboardingVC: UIViewController {
-    
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -17,7 +16,6 @@ class OnboardingVC: UIViewController {
     let titleArray = Config.OnboardingText.onboardingTitles
     let subtitleArray = Config.OnboardingText.onboardingSubtitles
     let imageArray = Config.OnboardingImages.imageArray
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         onboardingCollectionView.delegate = self
@@ -71,7 +69,6 @@ extension OnboardingVC {
                 self.nextButton.setTitle("Next", for: .normal)                }
         }
     }
-    
     private func showItem(at index: Int) {
         pageControl.page = index
         self.onboardingCollectionView.isPagingEnabled = false
@@ -79,9 +76,7 @@ extension OnboardingVC {
         onboardingCollectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally, .centeredVertically], animated: true)
         self.onboardingCollectionView.isPagingEnabled = true
         hideSkip(index == 2)
-
     }
-    
     private func normalize(input: CGFloat) -> CGFloat {
         let scale = UIScreen.main.bounds.width / 375.0
         return input * scale
@@ -94,7 +89,6 @@ extension OnboardingVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titleArray.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = onboardingCollectionView.dequeueReusableCell(withReuseIdentifier: "onboardingCell", for: indexPath) as! OnboardingCell
         cell.onboardingImageWidth.constant = normalize(input: 250)
@@ -104,18 +98,13 @@ extension OnboardingVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
 
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: onboardingCollectionView.frame.width, height: onboardingCollectionView.frame.height)
     }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = scrollView.frame.size.width
         let page = Int(scrollView.contentOffset.x / pageWidth)
         pageControl.page = page
-        
         hideSkip(page == 2)
     }
-    
 }
-

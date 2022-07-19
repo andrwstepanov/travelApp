@@ -14,7 +14,6 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
     private var searchController: UISearchController!
     private var localSearch: MKLocalSearch?
     var citySearchDelegate: CitySearchDelegate?
-    
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -23,23 +22,18 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
           self.searchController.searchBar.becomeFirstResponder()
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-
     }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         suggestionController = CitySuggestionsTableVC(style: .grouped)
         suggestionController.tableView.delegate = self
-        
         searchController = UISearchController(searchResultsController: suggestionController)
         searchController.searchResultsUpdater = suggestionController
-        
     }
     
     private func search(for suggestedCompletion: MKLocalSearchCompletion) {
@@ -80,11 +74,9 @@ extension CitySearchVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
-    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
     }
@@ -93,4 +85,3 @@ extension CitySearchVC: UISearchBarDelegate {
 protocol CitySearchDelegate {
     func citySelected(locationResponse: MKMapItem)
 }
-

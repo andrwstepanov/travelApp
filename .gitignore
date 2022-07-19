@@ -3,6 +3,7 @@
 
 # API KEYS
 keys.swift
+.swiftlint.yml
 
 ### Swift ###
 # Xcode

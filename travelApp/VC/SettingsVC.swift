@@ -51,7 +51,6 @@ extension SettingsVC {
    }
 }
 
-
 // MARK: Private functions
 
 extension SettingsVC {
@@ -59,7 +58,6 @@ extension SettingsVC {
         let userDefaults = UserDefaults.standard
         let userGenderIsMale = userDefaults.bool(forKey: Config.UserDefaultsNames.userGenderIsMale)
         let userUnitsIsCelsius = userDefaults.bool(forKey: Config.UserDefaultsNames.userUnitsIsCelsius)
-        
         switch userGenderIsMale {
         case true: genderChangerSwitch.selectedSegmentIndex = 0
         case false: genderChangerSwitch.selectedSegmentIndex = 1

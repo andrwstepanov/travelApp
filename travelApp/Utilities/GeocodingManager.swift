@@ -11,7 +11,6 @@ struct GeocodingManager {
     var delegate: GeocodingManagerDelegate?
     var session = URLSession.shared
 
-    
     private let apiURL = Config.APIkeys.geocodingApiURL
     private let apiKey = HiddenKeys.geocodingApiKey
     
@@ -33,7 +32,7 @@ struct GeocodingManager {
             } catch let DecodingError.valueNotFound(value, context) {
                 print("Value '\(value)' not found:", context.debugDescription)
                 print("codingPath:", context.codingPath)
-            } catch let DecodingError.typeMismatch(type, context)  {
+            } catch let DecodingError.typeMismatch(type, context) {
                 print("Type '\(type)' mismatch:", context.debugDescription)
                 print("codingPath:", context.codingPath)
             } catch {
@@ -49,6 +48,6 @@ struct GeocodingManager {
 }
 
 protocol GeocodingManagerDelegate {
-    func didUpdateGeocoding(GeocodingManager: GeocodingManager, location: GeocodingResponse)
+    func didUpdateGeocoding(geocodingManager: GeocodingManager, location: GeocodingResponse)
     func didEndWithError(error: Error)
 }
