@@ -15,6 +15,7 @@ import NukeExtensions
 class TripCollectionView: UICollectionView  {
 
     var collectionDelegate: TripCollectionViewDelegate?
+    var notificationToken: NotificationToken? = nil
 
     var cells: Results<TripModel>!
     init() {

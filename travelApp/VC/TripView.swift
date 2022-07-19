@@ -289,7 +289,11 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        tripModel?.checklist.count ?? 0
+        if let safeTripModel = tripModel {
+            if !safeTripModel.isInvalidated {
+               return safeTripModel.checklist.count
+            } else { return 0 }
+        } else { return 0 }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
