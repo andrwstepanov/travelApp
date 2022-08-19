@@ -342,7 +342,6 @@ extension TripView {
         do {
             let realm = try Realm(configuration: RealmManager.realmConfig)
             Task {
-                try await Task.sleep(nanoseconds: 300_000_000)
                 await realm.writeAsync {
                     realm.delete(trip)
                 }

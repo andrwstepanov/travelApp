@@ -10,6 +10,7 @@ import CoreLocation
 import MapKit
 import Combine
 import FSCalendar
+import RealmSwift
 
 class CreateNewTripVC: UIViewController {
 
@@ -26,8 +27,10 @@ class CreateNewTripVC: UIViewController {
     var tempLon: Double!
     var tempStartDate: Date?
     var tempFinishDate: Date?
-    var weatherManager = WeatherManager()
-    var photoManager = PhotoManager(geocodingManager: GeocodingManager())
+//    var weatherManager = WeatherManager()
+//    var photoManager = PhotoManager(geocodingManager: GeocodingManager())
+    let backgroundRealm = BackgroundRealm()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,21 +91,14 @@ class CreateNewTripVC: UIViewController {
         toggleButton(button: sender)
     }
     @IBAction func createTripTapped(_ sender: UIButton) {
-        if let safeStartDate = tempStartDate, let safeFinishDate = tempFinishDate{
+        if let safeStartDate = tempStartDate, let safeFinishDate = tempFinishDate {
             tempTrip = TripModel(city: tempCity, country: tempCountry, latitude: tempLat, longitude: tempLon, startDate: safeStartDate, finishDate: safeFinishDate)
             RealmManager.sharedDelegate().addTrip(trip: tempTrip)
+
+            // adding test data
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
-            Task {
-                let photoURL = try await photoManager.getAndWriteCityUrl(trip: tempTrip)
-                let weather = await weatherManager.loadAndSaveWeather(trip: tempTrip)
-                if let safeWeather = weather {
-                    RealmManager.sharedDelegate().writeWeather(trip: tempTrip, weather: safeWeather)
-                }
-                if let safePhotoURL = photoURL {
-                    RealmManager.sharedDelegate().writeImage(trip: tempTrip, imageURL: safePhotoURL)
-                }
-            }
+            backgroundRealm.requestTripDataAndWrite(for: tempTrip)
             Config.popToMainScreen(navController: navigationController!)
         }
     }

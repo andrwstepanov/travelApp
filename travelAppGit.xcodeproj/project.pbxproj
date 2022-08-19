@@ -46,6 +46,7 @@
 		C2818B9B2853116500E8D6DE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9A2853116500E8D6DE /* Realm */; };
 		C2818B9D2853116500E8D6DE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9C2853116500E8D6DE /* RealmSwift */; };
 		C285FA7B28849DA40084E03E /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285FA7A28849DA40084E03E /* keys.swift */; };
+		C2B4A92E28AED2EE00F6F39A /* BackgroundRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		C2166088287DFCEA0035EA42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = travelApp/Assets.xcassets; sourceTree = "<group>"; };
 		C248B0502812DC0E00544A5F /* travelAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C285FA7A28849DA40084E03E /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
+		C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,12 +137,13 @@
 			isa = PBXGroup;
 			children = (
 				C2166074287DFCEA0035EA42 /* Extentions.swift */,
-				C2166075287DFCEA0035EA42 /* RealmManager.swift */,
 				C2166076287DFCEA0035EA42 /* Config.swift */,
 				C2166077287DFCEA0035EA42 /* WeatherManager.swift */,
 				C2166078287DFCEA0035EA42 /* PackingManager.swift */,
 				C2166079287DFCEA0035EA42 /* GeocodingManager.swift */,
 				C216607B287DFCEA0035EA42 /* PhotoManager.swift */,
+				C2166075287DFCEA0035EA42 /* RealmManager.swift */,
+				C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */,
 			);
 			name = Utilities;
 			path = travelApp/Utilities;
@@ -304,6 +307,7 @@
 				C216609D287DFCEA0035EA42 /* PackingManager.swift in Sources */,
 				C2166098287DFCEA0035EA42 /* AppDelegate.swift in Sources */,
 				C216608F287DFCEA0035EA42 /* OnboardingVC.swift in Sources */,
+				C2B4A92E28AED2EE00F6F39A /* BackgroundRealm.swift in Sources */,
 				C2166090287DFCEA0035EA42 /* TripCollectionView.swift in Sources */,
 				C21660A7287DFCEA0035EA42 /* OnboardingCell.swift in Sources */,
 				C216609A287DFCEA0035EA42 /* RealmManager.swift in Sources */,

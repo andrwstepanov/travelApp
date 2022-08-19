@@ -6,7 +6,7 @@
       "location" : "https://github.com/WenchaoD/FSCalendar.git",
       "state" : {
         "branch" : "master",
-        "revision" : "80f397fe2b7ba2a3fa00f61f59b9a4b3c29f2444"
+        "revision" : "16cbee1fc37b8ff21d6a1b38ae2030441055493b"
       }
     },
     {
@@ -15,7 +15,7 @@
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
       "state" : {
         "branch" : "master",
-        "revision" : "f0fad1d51f9710cbd0ac6d49121d8b7fddd5c7f6"
+        "revision" : "c0b5dbc3da5b0920b965b502c0b9be9e55156c71"
       }
     },
     {
@@ -24,7 +24,7 @@
       "location" : "https://github.com/kean/Nuke.git",
       "state" : {
         "branch" : "master",
-        "revision" : "cb7be6d9ba8579b245cac71d7a863384502ecd89"
+        "revision" : "fbaf18311cf0544954034ec8fc51e014793c3c38"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core",
       "state" : {
-        "revision" : "55a48c287b5e3a8ca129c257ec7e3b92bcb2a05f",
-        "version" : "12.3.0"
+        "revision" : "2b8def17bb8e0cddbcc754db6b6466b8487feebf",
+        "version" : "12.5.0"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/realm/realm-swift.git",
       "state" : {
         "branch" : "master",
-        "revision" : "2e5aa3151d40daf0a4e2620a9c0e270632df065d"
+        "revision" : "d949715c09767dbe1b9924a2d187624811fc5cd9"
       }
     }
   ],

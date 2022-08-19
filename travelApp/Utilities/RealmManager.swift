@@ -11,6 +11,7 @@ import RealmSwift
 class RealmManager {
     static let sharedInstance = RealmManager()
     static var realmConfig = Realm.Configuration()
+
     init() {
         RealmManager.realmConfig.deleteRealmIfMigrationNeeded = true
         if Config.resetApp { deleteAll() }
@@ -18,18 +19,7 @@ class RealmManager {
     static func sharedDelegate() -> RealmManager {
         return self.sharedInstance
     }
-    func writeWeather(trip: TripModel, weather: Weather) {
-        let realm = getRealm()
-         realm.writeAsync {
-            trip.weather = weather
-        }
-    }
-    func writeImage(trip: TripModel, imageURL: String) {
-        let realm = getRealm()
-        realm.writeAsync {
-            trip.cityImage = imageURL
-        }
-    }
+    
     func addTrip(trip: TripModel) {
         self.addObject(object: trip, update: false)
     }

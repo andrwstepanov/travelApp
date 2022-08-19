@@ -13,17 +13,15 @@ struct PhotoManager {
     var session = URLSession.shared
     let photoRequestURL = Config.APIkeys.photoRequestURL
 
-    func getAndWriteCityUrl(trip: TripModel) async throws -> String? {
+    func searchForCityImageURL(trip: TripModel) async throws -> String? {
         let imageURL = try await geocodeCityAndGetImage(trip: trip)
         return imageURL
     }
-    
     private func geocodeCityAndGetImage(trip: TripModel) async throws -> String? {
 
         if let lat = trip.location?.latitude, let lon = trip.location?.longitude {
             let geocodingResponse = try await geocodingManager.asyncGeocoding(lat: lat, lon: lon)
             let cityName = geocodingResponse?.name ?? ""
-            
             let imageResponse = try await getCityPhoto(city: cityName)
             let cityImage = imageResponse?.photos[0].image.mobile
             return cityImage

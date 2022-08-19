@@ -7,7 +7,6 @@
 
 import Foundation
 import Nuke
-import RealmSwift
 
 struct WeatherManager {
 
@@ -18,7 +17,7 @@ struct WeatherManager {
     var session = URLSession.shared
     static let sharedInstance = WeatherManager()
 
-    func loadAndSaveWeather(trip: TripModel) async -> Weather? {
+    func loadAndReturnWeather(trip: TripModel) async -> Weather? {
         let weatherResponse = try? await asyncFetchWeather(trip: trip)
         if let weatherResponse = weatherResponse {
             let weather = calculateAvg(weather: weatherResponse)
