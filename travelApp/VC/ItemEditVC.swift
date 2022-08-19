@@ -6,9 +6,7 @@
 //
 
 import UIKit
-import SwiftUI
 import RealmSwift
-import IQKeyboardManagerSwift
 
 class ItemEditVC: UIViewController {
     @IBOutlet weak var itemDescription: UITextField!
@@ -24,7 +22,6 @@ class ItemEditVC: UIViewController {
         setEditMode()
         if editMode { setupUI() }
         setPopupButton()
-        
         itemDescription.borderStyle = .roundedRect
         popUpCategory.layer.borderWidth = 1
         popUpCategory.layer.borderColor = UIColor.systemGray6.cgColor
