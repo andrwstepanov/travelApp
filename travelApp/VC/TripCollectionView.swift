@@ -14,7 +14,7 @@ import NukeExtensions
 
 class TripCollectionView: UICollectionView  {
 
-    var collectionDelegate: TripCollectionViewDelegate?
+    weak var collectionDelegate: TripCollectionViewDelegate?
     var notificationToken: NotificationToken? = nil
 
     var cells: Results<TripModel>!
@@ -58,7 +58,7 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
             cell.temperatureLabel.text = "Weather: \(temperatureString)"
         }
         if let image = cells[indexPath.row].cityImage {
-            var options = ImageLoadingOptions (
+            var options = ImageLoadingOptions(
                 placeholder: UIImage(named: "tripPlaceholder"),
                 failureImage: UIImage(named: "tripPlaceholder"),
                 tintColors: .none
@@ -81,6 +81,6 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-protocol TripCollectionViewDelegate {
+protocol TripCollectionViewDelegate: AnyObject {
     func didTapCell(data: TripModel)
 }

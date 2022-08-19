@@ -109,7 +109,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
          mainMenu = UIMenu(title: "", children: [
             UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in
                 self.deleteTrip()
-            
             },
         ])
         headerDotsButton.menu = mainMenu
@@ -315,7 +314,7 @@ extension TripView {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            self.asyncDeleteTrip(trip: self.tripModel!)
+            self.deleteMyTrip(trip: self.tripModel!)
             self.popToPrevious()
 
         })
@@ -338,7 +337,7 @@ extension TripView {
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
-    private func asyncDeleteTrip(trip: TripModel) {
+    private func deleteMyTrip(trip: TripModel) {
         do {
             let realm = try Realm(configuration: RealmManager.realmConfig)
             Task {

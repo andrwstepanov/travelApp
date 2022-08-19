@@ -17,7 +17,7 @@ class DatePickerVC: UIViewController {
     private var firstDate: Date?
     private var lastDate: Date?
     private var datesRange: [Date]?
-    var datePickerControllerDelegate: DatePickerControllerDelegate?
+    weak var datePickerControllerDelegate: DatePickerControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +126,6 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
     }
 }
 
-protocol DatePickerControllerDelegate {
+protocol DatePickerControllerDelegate: AnyObject {
     func tripDatesConfirmed(starting: Date?, finishing: Date?)
 }

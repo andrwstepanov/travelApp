@@ -17,6 +17,7 @@ class ItemEditVC: UIViewController {
     var tripModel: TripModel!
     var popUpMenuSelectionIndex: Int!
     var editMode = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setEditMode()
@@ -47,9 +48,9 @@ class ItemEditVC: UIViewController {
         popUpCategory.changesSelectionAsPrimaryAction = true
         var catMenuArray: [UIAction] = []
 
-        let optionClosure = {(action : UIAction) in
+        let optionClosure = {[weak self] (action : UIAction) in
             let selectedTitle = action.title
-            self.popUpMenuSelectionIndex = catMenuArray.firstIndex(where: { $0.title == selectedTitle})! + 1
+            self?.popUpMenuSelectionIndex = catMenuArray.firstIndex(where: { $0.title == selectedTitle})! + 1
         }
         
         for category in tripModel.checklist {

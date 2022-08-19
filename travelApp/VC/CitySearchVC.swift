@@ -13,7 +13,7 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
     private var suggestionController: CitySuggestionsTableVC!
     private var searchController: UISearchController!
     private var localSearch: MKLocalSearch?
-    var citySearchDelegate: CitySearchDelegate?
+    weak var citySearchDelegate: CitySearchDelegate?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -79,6 +79,6 @@ extension CitySearchVC: UISearchBarDelegate {
     }
 }
 
-protocol CitySearchDelegate {
+protocol CitySearchDelegate: AnyObject {
     func citySelected(locationResponse: MKMapItem)
 }
