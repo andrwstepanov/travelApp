@@ -21,7 +21,7 @@ class MainScreen: UIViewController {
     @IBOutlet weak var selectorHorizontalStack: UIStackView!
     var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
-    var notificationToken: NotificationToken? = nil
+    var notificationToken: NotificationToken?
     var stringOne = "My trips \n& packing \nlists"
     let stringTwo = "packing"
     var borderPill: UIView!

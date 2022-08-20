@@ -27,9 +27,7 @@ class PacklistCell: UITableViewCell {
         UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {_ in },
         UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in }
     ])
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

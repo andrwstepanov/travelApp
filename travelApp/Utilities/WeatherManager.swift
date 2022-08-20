@@ -46,7 +46,6 @@ struct WeatherManager {
         }
         return nil
     }
-    
     private func convertTemperature(temp: Double, from inputTempType: UnitTemperature, to outputTempType: UnitTemperature) -> Double {
         let input = Measurement(value: temp, unit: inputTempType)
         let output = input.converted(to: outputTempType)

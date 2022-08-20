@@ -12,11 +12,9 @@ import RealmSwift
 import NukeUI
 import NukeExtensions
 
-class TripCollectionView: UICollectionView  {
-    
+class TripCollectionView: UICollectionView {
     weak var collectionDelegate: TripCollectionViewDelegate?
-    var notificationToken: NotificationToken? = nil
-    
+    var notificationToken: NotificationToken?
     var cells: Results<TripModel>!
     init() {
         let layout = UICollectionViewFlowLayout()

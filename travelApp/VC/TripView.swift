@@ -60,9 +60,9 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     private func watchChanges() {
         notificationToken = tripModel?.checklist.observe {[unowned self] changes in
             switch changes {
-            case .initial(let _):
+            case .initial( _):
                 break
-            case .update(let _, let deletions, let insertions, let modifications):
+            case .update( _, _, _, _):
                 self.tableView.reloadData()
             case .error(let error):
                 fatalError("\(error)")

@@ -33,7 +33,6 @@ class DatePickerVC: UIViewController {
         doneButton.layer.cornerRadius = 22.5
 
     }
-    
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         datePickerControllerDelegate?.tripDatesConfirmed(starting: firstDate, finishing: lastDate)
         self.dismiss(animated: true)

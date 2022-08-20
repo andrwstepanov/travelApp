@@ -12,7 +12,6 @@ struct PhotoManager {
     let geocodingManager: GeocodingManager
     var session = URLSession.shared
     let photoRequestURL = Config.APIkeys.photoRequestURL
-    
     func searchForCityImageURL(trip: TripModel) async throws -> String? {
         let imageURL = try await geocodeCityAndGetImage(trip: trip)
         return imageURL

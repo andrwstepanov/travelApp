@@ -38,7 +38,6 @@ struct Config {
         static let slide3 = UIImage(named: "slide3")
         static let pageSelected = UIImage(named: "pageSelected")
         static let page = UIImage(named: "pageSelected")
-        
         static let imageArray = [
             Config.OnboardingImages.slide1,
             Config.OnboardingImages.slide2,
