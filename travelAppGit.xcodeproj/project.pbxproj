@@ -113,10 +113,10 @@
 				C2166066287DFCEA0035EA42 /* CitySuggestionsTableVC.swift */,
 				C2166067287DFCEA0035EA42 /* SettingsVC.swift */,
 				C2166068287DFCEA0035EA42 /* OnboardingVC.swift */,
-				C2166069287DFCEA0035EA42 /* TripCollectionView.swift */,
-				C216606A287DFCEA0035EA42 /* MainScreen.swift */,
 				C216606B287DFCEA0035EA42 /* DatePickerVC.swift */,
 				C216606C287DFCEA0035EA42 /* ItemEditVC.swift */,
+				C2166069287DFCEA0035EA42 /* TripCollectionView.swift */,
+				C216606A287DFCEA0035EA42 /* MainScreen.swift */,
 				C216606D287DFCEA0035EA42 /* TripView.swift */,
 			);
 			name = VC;

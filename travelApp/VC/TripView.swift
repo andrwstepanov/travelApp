@@ -34,7 +34,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         button.backgroundColor = Config.Colors.darkGreen
         return button
     }()
-    
+
     func viewDidDisappear() {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.barStyle = .default
@@ -59,7 +59,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func watchChanges() {
-        notificationToken = tripModel?.checklist.observe { changes in
+        notificationToken = tripModel?.checklist.observe {[unowned self] changes in
             switch changes {
             case .initial(let _):
                 break
@@ -107,7 +107,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             headerImageView.image = UIImage(named: "tripPlaceholder")
         }
          mainMenu = UIMenu(title: "", children: [
-            UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in
+            UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
                 self.deleteTrip()
             },
         ])
@@ -287,10 +287,10 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "packlistCell", for: indexPath) as! PacklistCell
             cell.dotsButton.menu = UIMenu(title: "", children: [
-                    UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {_ in
+                    UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {[unowned self] _ in
                         self.performSegue(withIdentifier: "editItem", sender: indexPath)
                     },
-                    UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {_ in
+                    UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
                         self.deleteItem(indexPath: indexPath)
                     }
 
@@ -313,12 +313,12 @@ extension TripView {
     private func deleteTrip() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] (action) -> Void in
             self.deleteMyTrip(trip: self.tripModel!)
             self.popToPrevious()
 
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {[unowned self] (action) -> Void in
         }
 
         dialogMessage.addAction(ok)

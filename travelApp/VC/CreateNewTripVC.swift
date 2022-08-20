@@ -27,10 +27,7 @@ class CreateNewTripVC: UIViewController {
     var tempLon: Double!
     var tempStartDate: Date?
     var tempFinishDate: Date?
-//    var weatherManager = WeatherManager()
-//    var photoManager = PhotoManager(geocodingManager: GeocodingManager())
     let backgroundRealm = BackgroundRealm()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +95,7 @@ class CreateNewTripVC: UIViewController {
             // adding test data
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
             RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
+
             backgroundRealm.requestTripDataAndWrite(for: tempTrip)
             Config.popToMainScreen(navController: navigationController!)
         }

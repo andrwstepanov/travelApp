@@ -97,5 +97,4 @@ class ItemEditVC: UIViewController {
     @IBAction func quantityChanged(_ sender: UIStepper) {
         quantityLabel.text = Int(sender.value).description
     }
-
 }

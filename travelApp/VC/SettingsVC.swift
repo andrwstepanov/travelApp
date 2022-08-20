@@ -71,4 +71,5 @@ extension SettingsVC {
         let userDefaults = UserDefaults.standard
         userDefaults.set(newSetting, forKey: settingKey)
     }
+    
 }

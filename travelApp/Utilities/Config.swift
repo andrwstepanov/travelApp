@@ -10,7 +10,7 @@ import UIKit
 
 struct Config {
 
-    static let resetApp = false
+    static let resetApp = true
     struct APIkeys {
         static let geocodingApiURL = "https://api.openweathermap.org/geo/1.0/reverse"
         static let weatherApiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
