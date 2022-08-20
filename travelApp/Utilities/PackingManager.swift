@@ -26,7 +26,6 @@ class PackingManager {
             ChecklistElement(title: "Slippers", quantity: 1),
             ChecklistElement(title: "Cap", quantity: 1)
         ])
-        
         clothesChecklist.sectionHeader = "Clothes"
         clothesChecklist.sectionChecklist = clothesChecklistElements
         return clothesChecklist

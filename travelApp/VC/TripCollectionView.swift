@@ -13,10 +13,10 @@ import NukeUI
 import NukeExtensions
 
 class TripCollectionView: UICollectionView  {
-
+    
     weak var collectionDelegate: TripCollectionViewDelegate?
     var notificationToken: NotificationToken? = nil
-
+    
     var cells: Results<TripModel>!
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -48,12 +48,12 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: TripCollectionViewCell.reuseID, for: indexPath) as! TripCollectionViewCell
-
+        
         cell.countryLabel.text = "\(cells[indexPath.row].location?.cityName ?? "")"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         cell.dateLabel.text = "\(dateFormatter.string(from: cells[indexPath.row].startDate)) - \(dateFormatter.string(from: cells[indexPath.row].finishDate))"
-
+        
         if let temperatureString = WeatherManager.sharedInstance.returnWeatherInUserUnits(trip: cells[indexPath.row]) {
             cell.temperatureLabel.text = "Weather: \(temperatureString)"
         }
@@ -69,7 +69,7 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
             let request = ImageRequest(
                 url: URL(string: image),
                 processors: processors
-                )
+            )
             loadImage(with: request, options: options, into: cell.mainImageView)
         } else {
             cell.mainImageView.image = UIImage(named: "tripPlaceholder")

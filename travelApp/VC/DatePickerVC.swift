@@ -36,11 +36,8 @@ class DatePickerVC: UIViewController {
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         datePickerControllerDelegate?.tripDatesConfirmed(starting: firstDate, finishing: lastDate)
-
         self.dismiss(animated: true)
-        
     }
-    
     func minimumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }

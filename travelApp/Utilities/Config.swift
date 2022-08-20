@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Config {
-
+    
     static let resetApp = true
     struct APIkeys {
         static let geocodingApiURL = "https://api.openweathermap.org/geo/1.0/reverse"
@@ -39,7 +39,7 @@ struct Config {
         static let slide3 = UIImage(named: "slide3")
         static let pageSelected = UIImage(named: "pageSelected")
         static let page = UIImage(named: "pageSelected")
-
+        
         static let imageArray = [
             Config.OnboardingImages.slide1,
             Config.OnboardingImages.slide2,

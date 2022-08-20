@@ -11,7 +11,6 @@ import RealmSwift
 class TripModel: Object {
     @Persisted var location: Location? = nil
     @Persisted var upcoming: Bool
-    
     @Persisted var startDate: Date
     @Persisted var finishDate: Date
     @Persisted(primaryKey: true) var id: ObjectId
@@ -54,7 +53,6 @@ class Location: Object {
     @Persisted var countryName: String
     @Persisted var latitude: Double
     @Persisted var longitude: Double
-    
     convenience init(cityName: String, countryName: String, latitude: Double, longitude: Double) {
         self.init()
         self.cityName = cityName
@@ -63,38 +61,33 @@ class Location: Object {
         self.longitude = longitude
     }
 }
-    
 class Weather: Object {
-        @Persisted var maxTemp: Double
-        @Persisted var minTemp: Double
-        @Persisted var avgTemp: Double
+    @Persisted var maxTemp: Double
+    @Persisted var minTemp: Double
+    @Persisted var avgTemp: Double
     
     convenience init(maxTemp: Double, minTemp: Double, avgTemp: Double) {
         self.init()
         self.maxTemp = maxTemp
         self.minTemp = minTemp
         self.avgTemp = avgTemp
-        }
     }
-    
+}
 class ChecklistSection: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var sectionHeader: String
     @Persisted var sectionChecklist: List<ChecklistElement>
-    
     convenience init(sectionHeader: String, sectionChecklist: [ChecklistElement]) {
         self.init()
         self.sectionHeader = sectionHeader
         self.sectionChecklist.append(objectsIn: sectionChecklist)
     }
 }
-    
 class ChecklistElement: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title: String
     @Persisted var quantity: Int
     @Persisted var isDone: Bool
-    
     convenience init(title: String, quantity: Int) {
         self.init()
         self.title = title

@@ -12,13 +12,13 @@ struct PhotoManager {
     let geocodingManager: GeocodingManager
     var session = URLSession.shared
     let photoRequestURL = Config.APIkeys.photoRequestURL
-
+    
     func searchForCityImageURL(trip: TripModel) async throws -> String? {
         let imageURL = try await geocodeCityAndGetImage(trip: trip)
         return imageURL
     }
     private func geocodeCityAndGetImage(trip: TripModel) async throws -> String? {
-
+        
         if let lat = trip.location?.latitude, let lon = trip.location?.longitude {
             let geocodingResponse = try await geocodingManager.asyncGeocoding(lat: lat, lon: lon)
             let cityName = geocodingResponse?.name ?? ""
@@ -27,7 +27,7 @@ struct PhotoManager {
             return cityImage
         } else { return nil }
     }
-
+    
     private func getCityPhoto(city: String) async throws -> CityImageResponse? {
         let lowercaseCity = city.lowercased().replacingOccurrences(of: " ", with: "-")
         let urlString = "\(photoRequestURL)slug:\(lowercaseCity)/images/"
@@ -39,5 +39,5 @@ struct PhotoManager {
         } catch {
             return nil
         }
-  }
+    }
 }

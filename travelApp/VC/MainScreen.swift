@@ -69,13 +69,12 @@ class MainScreen: UIViewController {
         tripCollectionView.bottomAnchor.constraint(equalTo: addTripButton.topAnchor, constant: -30).isActive = true
         tripCollectionView.collectionDelegate = self
     }
-    
     private func loadSettings() {
 
         let userDefaults = UserDefaults.standard
         if Config.resetApp { userDefaults.set(false, forKey: Config.UserDefaultsNames.launchedBefore) }
         if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) {
-        self.performSegue(withIdentifier: "openOnboarding", sender: self)
+            self.performSegue(withIdentifier: "openOnboarding", sender: self)
         }
     }
     

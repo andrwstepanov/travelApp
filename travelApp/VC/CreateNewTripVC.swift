@@ -108,7 +108,6 @@ extension CreateNewTripVC: DatePickerControllerDelegate {
         tempFinishDate = finishing
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
-    
         tripDatesButton.setTitle("\(dateFormatter.string(from: starting!)) - \(dateFormatter.string(from: finishing!))", for: UIControl.State.normal)
         if tempStartDate != nil && tempFinishDate != nil && tempCity != nil {
             nextButton.isEnabled = true

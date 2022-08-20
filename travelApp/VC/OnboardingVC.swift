@@ -51,7 +51,7 @@ extension OnboardingVC {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
-
+        
         onboardingCollectionView.collectionViewLayout = layout
     }
     private func hideSkip(_ bool: Bool) {
@@ -91,7 +91,6 @@ extension OnboardingVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         cell.onboardingImage.image = imageArray[indexPath.row]
         cell.titleLabel.text = titleArray[indexPath.row]
         cell.subtitleLabel.text = subtitleArray[indexPath.row]
-
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

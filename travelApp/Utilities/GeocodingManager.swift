@@ -10,14 +10,12 @@ import Foundation
 struct GeocodingManager {
     var delegate: GeocodingManagerDelegate?
     var session = URLSession.shared
-
+    
     private let apiURL = Config.APIkeys.geocodingApiURL
     private let apiKey = HiddenKeys.geocodingApiKey
-    
     func asyncGeocoding(lat: Double, lon: Double) async throws -> GeocodingResponse? {
         let stringLat = String(lat)
         let stringLon = String(lon)
-        
         let urlString = "\(apiURL)?lat=\(stringLat)&lon=\(stringLon)&limit=1&appid=\(apiKey)"
         if let geocodingUrl = URL(string: urlString) {
             let (data, _) = try await session.data(from: geocodingUrl)
@@ -42,7 +40,6 @@ struct GeocodingManager {
         } else {
             print("no geocoding response sent")
             return nil
-            
         }
     }
 }

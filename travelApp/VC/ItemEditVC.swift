@@ -30,10 +30,9 @@ class ItemEditVC: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         if let firstVC = presentingViewController as? TripView {
-                    DispatchQueue.main.async {
-                        firstVC.tableView.reloadData()
+            DispatchQueue.main.async {
+                firstVC.tableView.reloadData()
             }
         }
     }
@@ -60,7 +59,7 @@ class ItemEditVC: UIViewController {
         if editMode { catMenuArray[indexPath.section].state = .on }
         catMenuArray.remove(at: 0)
         popUpCategory.menu = UIMenu(children: catMenuArray)
-        }
+    }
 
     private func addBorder(to myView: UIView) -> UIView {
         let frame = CGRect(x: 0, y: myView.frame.size.height, width: myView.frame.size.width, height: 1)
@@ -69,7 +68,7 @@ class ItemEditVC: UIViewController {
         return borderBottom
     }
     func setupUI() {
-            itemDescription.text = tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].title
+        itemDescription.text = tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].title
         quantityLabel.text = "\(tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].quantity)"
         popUpMenuSelectionIndex = indexPath.section
         

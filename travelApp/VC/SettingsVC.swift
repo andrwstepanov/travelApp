@@ -8,15 +8,14 @@
 import UIKit
 
 class SettingsVC: UIViewController {
-
+    
     @IBOutlet weak var unitsChangerSwitch: UISegmentedControl!
     @IBOutlet weak var genderChangerSwitch: UISegmentedControl!
     @IBOutlet weak var saveButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCurrentData()
-
+        
         saveButton.layer.cornerRadius = Config.UIConstants.buttonCornerRadius
         navigationItem.hidesBackButton = true
     }
@@ -40,13 +39,13 @@ extension SettingsVC {
         default: break
         }
     }
-   @IBAction func genderChanged(_ sender: UISegmentedControl) {
-       switch sender.selectedSegmentIndex {
-       case 0: toggleSetting(settingKey: Config.UserDefaultsNames.userGenderIsMale, newSetting: true)
-       case 1: toggleSetting(settingKey: Config.UserDefaultsNames.userGenderIsMale, newSetting: false)
-       default: break
-       }
-   }
+    @IBAction func genderChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: toggleSetting(settingKey: Config.UserDefaultsNames.userGenderIsMale, newSetting: true)
+        case 1: toggleSetting(settingKey: Config.UserDefaultsNames.userGenderIsMale, newSetting: false)
+        default: break
+        }
+    }
 }
 
 // MARK: Private functions
@@ -60,16 +59,13 @@ extension SettingsVC {
         case true: genderChangerSwitch.selectedSegmentIndex = 0
         case false: genderChangerSwitch.selectedSegmentIndex = 1
         }
-        
         switch userUnitsIsCelsius {
         case true: unitsChangerSwitch.selectedSegmentIndex = 0
         case false: unitsChangerSwitch.selectedSegmentIndex = 1
         }
     }
-    
     private func toggleSetting(settingKey: String, newSetting: Bool) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(newSetting, forKey: settingKey)
     }
-    
 }

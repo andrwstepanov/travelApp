@@ -12,9 +12,9 @@ class CitySuggestionsTableVC: UITableViewController {
     private var searchCompleter: MKLocalSearchCompleter?
     private var searchRegion: MKCoordinateRegion = MKCoordinateRegion(MKMapRect.world)
     private var currentPlacemark: CLPlacemark?
-
+    
     var completerResults: [MKLocalSearchCompletion]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SuggestedCompletionTableViewCell.self, forCellReuseIdentifier: SuggestedCompletionTableViewCell.reuseID)
@@ -45,7 +45,7 @@ extension CitySuggestionsTableVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completerResults?.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SuggestedCompletionTableViewCell.reuseID, for: indexPath)
         if let suggestion = completerResults?[indexPath.row] {
@@ -58,8 +58,7 @@ extension CitySuggestionsTableVC {
     private func createHighlightedString(text: String, rangeValues: [NSValue]) -> NSAttributedString {
         let attributes = [NSAttributedString.Key.backgroundColor: UIColor(named: "suggestionHighlight")]
         let highlightedString = NSMutableAttributedString(string: text)
-        
-        let ranges = rangeValues.map{ $0.rangeValue }
+        let ranges = rangeValues.map { $0.rangeValue }
         ranges.forEach { (range) in
             highlightedString.addAttributes(attributes as [NSAttributedString.Key : Any], range: range)
         }
@@ -72,7 +71,6 @@ extension CitySuggestionsTableVC: MKLocalSearchCompleterDelegate {
         completerResults = completer.results
         tableView.reloadData()
     }
-    
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         if let error = error as NSError? {
             print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription). The query fragment is: \(completer.queryFragment)")

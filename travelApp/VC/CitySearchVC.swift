@@ -14,12 +14,12 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
     private var searchController: UISearchController!
     private var localSearch: MKLocalSearch?
     weak var citySearchDelegate: CitySearchDelegate?
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         DispatchQueue.main.async {
-          self.searchController.searchBar.becomeFirstResponder()
+            self.searchController.searchBar.becomeFirstResponder()
         }
     }
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
         let searchRequest = MKLocalSearch.Request(completion: suggestedCompletion)
         search(using: searchRequest)
     }
-
+    
     private func search(using searchRequest: MKLocalSearch.Request) {
         searchRequest.resultTypes = .address
         localSearch = MKLocalSearch(request: searchRequest)
@@ -58,7 +58,7 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
 extension CitySearchVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         if tableView == suggestionController.tableView, let suggestion = suggestionController.completerResults?[indexPath.row] {
             searchController.isActive = false
             searchController.searchBar.text = suggestion.title

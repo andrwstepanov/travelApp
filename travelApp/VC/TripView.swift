@@ -39,7 +39,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.barStyle = .default
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,7 +88,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         headerTripDates.text = "\(dateFormatter.string(from: tripModel!.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
-        
         if let image = tripModel?.cityImage {
             var options = ImageLoadingOptions (
                 failureImage: UIImage(named: "tripPlaceholder")
@@ -97,7 +95,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             let pipeline = ImagePipeline(configuration: .withDataCache)
             options.pipeline = pipeline
             let processors = [ImageProcessors.CoreImageFilter(name: "CIExposureAdjust", parameters: [kCIInputEVKey: -0.3], identifier: "nuke-filter-ev")]
-            
             let request = ImageRequest(
                 url: URL(string: image),
                 processors: processors
@@ -223,7 +220,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
 
 }
 
-
 // MARK: Data Source
 
 extension TripView: UITableViewDelegate, UITableViewDataSource {
@@ -231,7 +227,6 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         RealmManager.sharedDelegate().toggleChecklistItem(trip: tripModel!, index: indexPath)
     }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         if tableView.contentOffset.y < 70 {
@@ -239,18 +234,15 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
         } else {
             headerImageView.layer.opacity = 0.0
         }
-        
         if tableView.contentOffset.y > 70 {
             navBarCompact()
         } else if tableView.contentOffset.y < 50 {
             navBarInitial()
         }
     }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         tripModel?.checklist[section].sectionHeader
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         if let safeTripModel = tripModel {
             if !safeTripModel.isInvalidated {
@@ -258,11 +250,9 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
             } else { return 0 }
         } else { return 0 }
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tripModel?.checklist[section].sectionChecklist.count ?? 0
     }
-    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
         header.textLabel?.textColor = Config.Colors.textDarkGray
@@ -270,7 +260,6 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.text =  header.textLabel?.text?.capitalized
     }
 
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath) as! WeatherCell
