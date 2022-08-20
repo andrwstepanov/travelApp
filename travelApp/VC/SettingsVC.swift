@@ -8,14 +8,12 @@
 import UIKit
 
 class SettingsVC: UIViewController {
-    
     @IBOutlet weak var unitsChangerSwitch: UISegmentedControl!
     @IBOutlet weak var genderChangerSwitch: UISegmentedControl!
     @IBOutlet weak var saveButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCurrentData()
-        
         saveButton.layer.cornerRadius = Config.UIConstants.buttonCornerRadius
         navigationItem.hidesBackButton = true
     }

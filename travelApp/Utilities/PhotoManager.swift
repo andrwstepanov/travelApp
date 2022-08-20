@@ -18,7 +18,6 @@ struct PhotoManager {
         return imageURL
     }
     private func geocodeCityAndGetImage(trip: TripModel) async throws -> String? {
-        
         if let lat = trip.location?.latitude, let lon = trip.location?.longitude {
             let geocodingResponse = try await geocodingManager.asyncGeocoding(lat: lat, lon: lon)
             let cityName = geocodingResponse?.name ?? ""
@@ -27,7 +26,6 @@ struct PhotoManager {
             return cityImage
         } else { return nil }
     }
-    
     private func getCityPhoto(city: String) async throws -> CityImageResponse? {
         let lowercaseCity = city.lowercased().replacingOccurrences(of: " ", with: "-")
         let urlString = "\(photoRequestURL)slug:\(lowercaseCity)/images/"

@@ -9,14 +9,11 @@ import Foundation
 import Nuke
 
 struct WeatherManager {
-    
     private let crossingURL = Config.APIkeys.weatherApiURL
     private let apiKey = HiddenKeys.weatherApiKey
-    
     var delegate: WeatherManagerDelegate?
     var session = URLSession.shared
     static let sharedInstance = WeatherManager()
-    
     func loadAndReturnWeather(trip: TripModel) async -> Weather? {
         let weatherResponse = try? await asyncFetchWeather(trip: trip)
         if let weatherResponse = weatherResponse {
@@ -29,10 +26,8 @@ struct WeatherManager {
         let userDefaults = UserDefaults.standard
         let userUnitsIsCelsius: Bool = userDefaults.bool(forKey: Config.UserDefaultsNames.userUnitsIsCelsius)
         if let minTemp = trip.weather?.minTemp, let maxTemp = trip.weather?.maxTemp {
-            
             let userUnitsString = userUnitsIsCelsius ? "°C" : "°F"
             let userUnitsCase: UnitTemperature = userUnitsIsCelsius ? .celsius : .fahrenheit
-            
             let minTempUserUnits = String(format: "%.0f", convertTemperature(temp: minTemp, from: .kelvin, to: userUnitsCase))
             let maxTempUserUnits = String(format: "%.0f", convertTemperature(temp: maxTemp, from: .kelvin, to: userUnitsCase))
             return "\(minTempUserUnits)...\(maxTempUserUnits)\(userUnitsString)"

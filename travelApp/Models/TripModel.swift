@@ -65,7 +65,6 @@ class Weather: Object {
     @Persisted var maxTemp: Double
     @Persisted var minTemp: Double
     @Persisted var avgTemp: Double
-    
     convenience init(maxTemp: Double, minTemp: Double, avgTemp: Double) {
         self.init()
         self.maxTemp = maxTemp

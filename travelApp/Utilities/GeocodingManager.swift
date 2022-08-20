@@ -10,7 +10,6 @@ import Foundation
 struct GeocodingManager {
     var delegate: GeocodingManagerDelegate?
     var session = URLSession.shared
-    
     private let apiURL = Config.APIkeys.geocodingApiURL
     private let apiKey = HiddenKeys.geocodingApiKey
     func asyncGeocoding(lat: Double, lon: Double) async throws -> GeocodingResponse? {

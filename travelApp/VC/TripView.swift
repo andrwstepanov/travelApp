@@ -23,7 +23,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerDotsButton: UIButton!
     var mainMenu = UIMenu()
     var tripModel: TripModel?
-    var notificationToken: NotificationToken? = nil
+    var notificationToken: NotificationToken?
     var weatherManager = WeatherManager()
     var photoManager = PhotoManager(geocodingManager: GeocodingManager())
 
@@ -74,10 +74,8 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         headerLocationLabel.text = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
         registerCells()
         addFloatingButton()
-
         tableView.tableHeaderView = headerUIView
         navigationItem.title = ""
-        
         stickHeaderImageToTop()
         navBarCustomBackButton()
         navBarInitial()
@@ -89,7 +87,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         dateFormatter.dateFormat = "MMM d"
         headerTripDates.text = "\(dateFormatter.string(from: tripModel!.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
         if let image = tripModel?.cityImage {
-            var options = ImageLoadingOptions (
+            var options = ImageLoadingOptions(
                 failureImage: UIImage(named: "tripPlaceholder")
             )
             let pipeline = ImagePipeline(configuration: .withDataCache)
@@ -106,7 +104,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
          mainMenu = UIMenu(title: "", children: [
             UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
                 self.deleteTrip()
-            },
+            }
         ])
         headerDotsButton.menu = mainMenu
         headerDotsButton.showsMenuAsPrimaryAction = true
@@ -174,7 +172,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
                 guard let navigationBar = navigationController?.navigationBar else { return }
 
                 let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground() // use `configureWithTransparentBackground` for transparent background
+                appearance.configureWithOpaqueBackground()
                 appearance.backgroundColor = .white
                 appearance.shadowColor = .clear
                 appearance.shadowImage = UIImage()
@@ -214,10 +212,8 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             }
                 self.setNeedsStatusBarAppearanceUpdate()
             navigationItem.rightBarButtonItem = nil
-
         }
     }
-
 }
 
 // MARK: Data Source
@@ -301,24 +297,24 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
 extension TripView {
     private func deleteTrip() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] (action) -> Void in
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
             self.deleteMyTrip(trip: self.tripModel!)
             self.popToPrevious()
 
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {[unowned self] _ -> Void in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
         }
 
-        dialogMessage.addAction(ok)
+        dialogMessage.addAction(okButton)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
     private func deleteItem(indexPath: IndexPath) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self]  (action) -> Void in
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
             RealmManager.sharedDelegate().deleteItem(trip: self.tripModel!, indexPath: indexPath)
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {[unowned self]  (action) -> Void in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
         }
         dialogMessage.addAction(okButton)
         dialogMessage.addAction(cancel)

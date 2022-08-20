@@ -45,7 +45,6 @@ extension CitySuggestionsTableVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completerResults?.count ?? 0
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SuggestedCompletionTableViewCell.reuseID, for: indexPath)
         if let suggestion = completerResults?[indexPath.row] {
@@ -54,7 +53,6 @@ extension CitySuggestionsTableVC {
         }
         return cell
     }
-    
     private func createHighlightedString(text: String, rangeValues: [NSValue]) -> NSAttributedString {
         let attributes = [NSAttributedString.Key.backgroundColor: UIColor(named: "suggestionHighlight")]
         let highlightedString = NSMutableAttributedString(string: text)

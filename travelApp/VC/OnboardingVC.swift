@@ -47,7 +47,6 @@ extension OnboardingVC {
     private func setupUI() {
         nextButton.layer.cornerRadius = Config.UIConstants.buttonCornerRadius
         self.navigationItem.hidesBackButton = true
-        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
