@@ -108,6 +108,8 @@
 		C2166063287DFCEA0035EA42 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				C216606A287DFCEA0035EA42 /* MainScreen.swift */,
+				C216606D287DFCEA0035EA42 /* TripView.swift */,
 				C2166064287DFCEA0035EA42 /* CitySearchVC.swift */,
 				C2166065287DFCEA0035EA42 /* CreateNewTripVC.swift */,
 				C2166066287DFCEA0035EA42 /* CitySuggestionsTableVC.swift */,
@@ -116,8 +118,6 @@
 				C216606B287DFCEA0035EA42 /* DatePickerVC.swift */,
 				C216606C287DFCEA0035EA42 /* ItemEditVC.swift */,
 				C2166069287DFCEA0035EA42 /* TripCollectionView.swift */,
-				C216606A287DFCEA0035EA42 /* MainScreen.swift */,
-				C216606D287DFCEA0035EA42 /* TripView.swift */,
 			);
 			name = VC;
 			path = travelApp/VC;

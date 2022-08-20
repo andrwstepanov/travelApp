@@ -5,7 +5,6 @@
 //  Created by Андрей Степанов on 01.07.2022.
 //
 
-import Foundation
 import UIKit
 
 struct Config {

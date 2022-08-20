@@ -24,8 +24,8 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     var mainMenu = UIMenu()
     var tripModel: TripModel?
     var notificationToken: NotificationToken?
-    var weatherManager = WeatherManager()
-    var photoManager = PhotoManager(geocodingManager: GeocodingManager())
+    let backgroundRealm = BackgroundRealm()
+
 
     private let floatingButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
@@ -70,8 +70,9 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     private func setupUI() {
-
-        headerLocationLabel.text = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
+        guard let safeTripModel = tripModel else { return }
+        guard let safeLocation = safeTripModel.location else { return }
+        headerLocationLabel.text = "\(safeLocation.cityName), \(safeLocation.countryName)"
         registerCells()
         addFloatingButton()
         tableView.tableHeaderView = headerUIView
@@ -85,8 +86,8 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         headerRoundedCornersView.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
-        headerTripDates.text = "\(dateFormatter.string(from: tripModel!.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
-        if let image = tripModel?.cityImage {
+        headerTripDates.text = "\(dateFormatter.string(from: safeTripModel.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
+        if let image = safeTripModel.cityImage {
             var options = ImageLoadingOptions(
                 failureImage: UIImage(named: "tripPlaceholder")
             )
@@ -152,13 +153,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     @objc func addChecklistItem(_ sender: UIButton) {
         self.performSegue(withIdentifier: "editItem", sender: nil)
          }
-    private func tryToFetchAgain() {
-//        Task {
-//            await weatherManager.loadAndSaveWeather(trip: tripModel!)
-//            try await photoManager.getAndWriteCityUrl(trip: tripModel!)
-//            tableView.reloadData()
-//        }
-    }
+
     private func navBarCompact() {
         if navigationItem.title == "" {
             navigationItem.title = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
@@ -266,7 +261,7 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
                 cell.weatherTemperatureLabel.text = temperatureString
                 cell.weatherConditionLabel.text = avgTempString
             } else {
-                tryToFetchAgain()
+                backgroundRealm.requestTripDataAndWrite(for: tripModel!)
             }
             return cell
         } else {

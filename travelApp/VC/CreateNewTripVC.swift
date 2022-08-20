@@ -8,9 +8,7 @@
 import UIKit
 import CoreLocation
 import MapKit
-import Combine
 import FSCalendar
-import RealmSwift
 
 class CreateNewTripVC: UIViewController {
 
