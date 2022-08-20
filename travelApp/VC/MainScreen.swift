@@ -70,14 +70,12 @@ class MainScreen: UIViewController {
         tripCollectionView.collectionDelegate = self
     }
     private func loadSettings() {
-
         let userDefaults = UserDefaults.standard
         if Config.resetApp { userDefaults.set(false, forKey: Config.UserDefaultsNames.launchedBefore) }
         if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) {
             self.performSegue(withIdentifier: "openOnboarding", sender: self)
         }
     }
-    
     private func checkDataSourceAndAddIntro() {
         if trips.count == 0 {
             RealmManager.sharedDelegate().addTrip(trip: TripModel.intro())

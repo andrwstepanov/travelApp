@@ -301,13 +301,12 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
 extension TripView {
     private func deleteTrip() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
-        
         let ok = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] (action) -> Void in
             self.deleteMyTrip(trip: self.tripModel!)
             self.popToPrevious()
 
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {[unowned self] (action) -> Void in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {[unowned self] _ -> Void in
         }
 
         dialogMessage.addAction(ok)
@@ -316,13 +315,12 @@ extension TripView {
     }
     private func deleteItem(indexPath: IndexPath) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
-        
-        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self]  (action) -> Void in
             RealmManager.sharedDelegate().deleteItem(trip: self.tripModel!, indexPath: indexPath)
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) {[unowned self]  (action) -> Void in
         }
-        dialogMessage.addAction(ok)
+        dialogMessage.addAction(okButton)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
