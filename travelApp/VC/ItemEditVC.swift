@@ -13,36 +13,24 @@ class ItemEditVC: UIViewController {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var popUpCategory: UIButton!
-    var indexPath: IndexPath!
     var tripModel: TripModel!
-    var popUpMenuSelectionIndex: Int!
+    var popUpMenuSelectionIndex = 1
+    var optionalIndexPath: IndexPath?
     var editMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setEditMode()
-        if editMode { setupUI() }
-        setPopupButton()
+        if let safeIndexPath = optionalIndexPath {
+            initForEditing(indexPath: safeIndexPath)
+            setDropdownCategories(indexPath: safeIndexPath)
+        } else { setDropdownCategories(indexPath: IndexPath(row: 0, section: 0)) }
         itemDescription.borderStyle = .roundedRect
         popUpCategory.layer.borderWidth = 1
         popUpCategory.layer.borderColor = UIColor.systemGray6.cgColor
         popUpCategory.layer.cornerRadius = 5
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let firstVC = presentingViewController as? TripView {
-            DispatchQueue.main.async {
-                firstVC.tableView.reloadData()
-            }
-        }
-    }
 
-    func setEditMode() {
-        if indexPath != nil {
-            editMode = true
-        } else { editMode = false }
-    }
-    func setPopupButton() {
+    func setDropdownCategories(indexPath: IndexPath) {
         popUpCategory.showsMenuAsPrimaryAction = true
         popUpCategory.changesSelectionAsPrimaryAction = true
         var catMenuArray: [UIAction] = []
@@ -51,7 +39,6 @@ class ItemEditVC: UIViewController {
             let selectedTitle = action.title
             self?.popUpMenuSelectionIndex = catMenuArray.firstIndex(where: { $0.title == selectedTitle})! + 1
         }
-        
         for category in tripModel.checklist {
             let catLabel = category.sectionHeader
             catMenuArray.append(UIAction(title: catLabel, handler: optionClosure))
@@ -67,9 +54,10 @@ class ItemEditVC: UIViewController {
         borderBottom.backgroundColor = UIColor.lightGray
         return borderBottom
     }
-    func setupUI() {
-        itemDescription.text = tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].title
-        quantityLabel.text = "\(tripModel.checklist[indexPath!.section].sectionChecklist[indexPath!.row].quantity)"
+    func initForEditing(indexPath: IndexPath) {
+        editMode = true
+        itemDescription.text = tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row].title
+        quantityLabel.text = "\(tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row].quantity)"
         popUpMenuSelectionIndex = indexPath.section
         stepper.maximumValue = 10
         stepper.minimumValue = 1
@@ -79,14 +67,12 @@ class ItemEditVC: UIViewController {
     @IBAction func saveTapped(_ sender: UIButton) {
         let newName = itemDescription.text!
         let newQty = Int(quantityLabel.text ?? "1") ?? 1
-        var checklistSectionReference: Object? = tripModel.checklist[popUpMenuSelectionIndex]
-        if editMode {
+        let sectionReference: ChecklistSection = tripModel.checklist[popUpMenuSelectionIndex]
+        if let indexPath = optionalIndexPath {
             let itemReference = tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row]
-            if popUpMenuSelectionIndex == indexPath.section { checklistSectionReference = nil }
-            let newCat = checklistSectionReference as? ChecklistSection
-            RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty, newCat: newCat)
+            RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty, newCat: sectionReference)
         } else {
-            RealmManager.sharedDelegate().addItemToCategory(name: newName, qty: newQty, cat: checklistSectionReference as! ChecklistSection)
+            RealmManager.sharedDelegate().addItemToCategory(name: newName, qty: newQty, cat: sectionReference)
         }
         self.dismiss(animated: true)
     }

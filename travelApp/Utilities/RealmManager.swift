@@ -30,19 +30,18 @@ class RealmManager {
             print("Realm error: Cannot write: \(trip)")
         }
     }
-    func updateChecklistItem(trip: TripModel, indexPath: IndexPath, checklistItem: ChecklistElement, newName: String, newQty: Int, newCat: ChecklistSection?) {
+    func updateChecklistItem(trip: TripModel, indexPath: IndexPath, checklistItem: ChecklistElement, newName: String, newQty: Int, newCat: ChecklistSection) {
         let realm = getRealm()
         do {
             try realm.write {
                 checklistItem.title = newName
                 checklistItem.quantity = newQty
-                if let safeNewCat = newCat {
-                    trip.checklist[indexPath.section].sectionChecklist.remove(at: indexPath.row)
-                    safeNewCat.sectionChecklist.append(checklistItem)
-                }
+                if newCat.sectionChecklist.contains(checklistItem) { return }
+                trip.checklist[indexPath.section].sectionChecklist.remove(at: indexPath.row)
+                newCat.sectionChecklist.append(checklistItem)
             }
         } catch {
-            print("Error deleting objects")
+            print("Error updating checklist objects \(checklistItem)")
         }
     }
     func deleteTrip(trip: TripModel) {

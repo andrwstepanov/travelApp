@@ -41,7 +41,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.dataSource = self
         tableView.delegate = self
         watchChanges()
@@ -51,7 +50,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editItem" {
             let taskEdit = segue.destination as! ItemEditVC
-            taskEdit.indexPath = sender as? IndexPath
+            taskEdit.optionalIndexPath = sender as? IndexPath
             taskEdit.tripModel = tripModel
             taskEdit.modalPresentationStyle = .formSheet
         }
