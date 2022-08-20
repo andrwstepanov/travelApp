@@ -13,7 +13,6 @@ class DatePickerVC: UIViewController {
     @IBOutlet weak var suggestionLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var fsCalendarView: FSCalendar!
-    
     private var firstDate: Date?
     private var lastDate: Date?
     private var datesRange: [Date]?
@@ -83,7 +82,6 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
             suggestionLabel.text = "Click Done once ready"
             return
         }
-        
         func datesRangeFunc(from: Date, to: Date) -> [Date] {
 
             if from > to { return [Date]() }

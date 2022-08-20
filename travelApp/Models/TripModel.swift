@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class TripModel: Object {
-    @Persisted var location: Location? = nil
+    @Persisted var location: Location?
     @Persisted var upcoming: Bool
     @Persisted var startDate: Date
     @Persisted var finishDate: Date

@@ -29,7 +29,6 @@ extension SettingsVC {
             Config.popToMainScreen(navController: navigationController!)
         } else { self.dismiss(animated: true) }
     }
-    
     @IBAction func unitsChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0: toggleSetting(settingKey: Config.UserDefaultsNames.userUnitsIsCelsius, newSetting: true)

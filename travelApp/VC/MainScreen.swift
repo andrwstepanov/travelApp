@@ -83,8 +83,8 @@ class MainScreen: UIViewController {
         tripCollectionView.set(cells: trips)
         notificationToken = trips.observe {(changes: RealmCollectionChange) in
             switch changes {
-            case .initial(let _): break
-            case .update(let _, let deletions, let insertions, let modifications):
+            case .initial(_): break
+            case .update(_, _, _, _):
                 self.tripCollectionView.reloadData()
 
             case .error(let error):

@@ -11,7 +11,6 @@ import RealmSwift
 class RealmManager {
     static let sharedInstance = RealmManager()
     static var realmConfig = Realm.Configuration()
-    
     init() {
         RealmManager.realmConfig.deleteRealmIfMigrationNeeded = true
         if Config.resetApp { deleteAll() }

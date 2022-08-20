@@ -14,7 +14,6 @@ class CitySuggestionsTableVC: UITableViewController {
     private var currentPlacemark: CLPlacemark?
     
     var completerResults: [MKLocalSearchCompletion]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SuggestedCompletionTableViewCell.self, forCellReuseIdentifier: SuggestedCompletionTableViewCell.reuseID)
@@ -32,7 +31,6 @@ class CitySuggestionsTableVC: UITableViewController {
         searchCompleter?.delegate = self
         searchCompleter?.resultTypes = .address
     }
-    
     private func stopProvidingCompletions() {
         searchCompleter = nil
     }

@@ -12,7 +12,6 @@ struct BackgroundRealm {
     let photoManager = PhotoManager(geocodingManager: GeocodingManager())
     let weatherManager = WeatherManager()
     let lock = NSLock()
-    
     enum WritePath {
         case weather(weatherData: Weather)
         case image(url: String)

@@ -50,14 +50,12 @@ extension OnboardingVC {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
-        
         onboardingCollectionView.collectionViewLayout = layout
     }
     private func hideSkip(_ bool: Bool) {
         UIView.animate(withDuration: 0.3) {
             self.skipButton.isHidden = bool
             self.skipButton.alpha = bool ? 0 : 1
-            
             if bool {
                 self.nextButton.setTitle("Let's get started!", for: .normal)
             } else {

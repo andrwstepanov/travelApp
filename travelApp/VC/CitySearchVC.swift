@@ -36,7 +36,6 @@ class CitySearchVC: UIViewController, UITableViewDelegate {
         let searchRequest = MKLocalSearch.Request(completion: suggestedCompletion)
         search(using: searchRequest)
     }
-    
     private func search(using searchRequest: MKLocalSearch.Request) {
         searchRequest.resultTypes = .address
         localSearch = MKLocalSearch(request: searchRequest)

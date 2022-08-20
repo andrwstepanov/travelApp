@@ -60,9 +60,9 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     private func watchChanges() {
         notificationToken = tripModel?.checklist.observe {[unowned self] changes in
             switch changes {
-            case .initial( _):
+            case .initial(_):
                 break
-            case .update( _, _, _, _):
+            case .update(_, _, _, _):
                 self.tableView.reloadData()
             case .error(let error):
                 fatalError("\(error)")
@@ -298,9 +298,8 @@ extension TripView {
     private func deleteTrip() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
-            self.deleteMyTrip(trip: self.tripModel!)
+            RealmManager.sharedInstance.deleteTrip(trip: tripModel!)
             self.popToPrevious()
-
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
         }
@@ -319,15 +318,5 @@ extension TripView {
         dialogMessage.addAction(okButton)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
-    }
-    private func deleteMyTrip(trip: TripModel) {
-        do {
-            let realm = try Realm(configuration: RealmManager.realmConfig)
-            Task {
-                await realm.writeAsync {
-                    realm.delete(trip)
-                }
-            }
-        } catch { print("error") }
     }
 }

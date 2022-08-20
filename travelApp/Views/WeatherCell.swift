@@ -12,7 +12,6 @@ class WeatherCell: UITableViewCell {
     @IBOutlet weak var weatherTemperatureLabel: UILabel!
     @IBOutlet weak var weatherConditionLabel: UILabel!
     @IBOutlet weak var weatherConditionIcon: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         weatherBackground.layer.cornerRadius = 15
