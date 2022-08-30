@@ -7,6 +7,16 @@
 
 import UIKit
 
+extension Double {
+    func convertWeatherToUserUnits(celsius: Bool) -> String {
+        let input = Measurement(value: self, unit: UnitTemperature.kelvin)
+        let userUnitsCase: UnitTemperature = celsius ? .celsius : .fahrenheit
+        let output = input.converted(to: userUnitsCase).value
+        let outputString = String(format: "%.0f", output)
+        return outputString
+    }
+}
+
 extension UIImageView {
     func setImageColor(color: UIColor) {
         let templateImage = self.image?.withRenderingMode(.alwaysTemplate)

@@ -21,7 +21,7 @@ class RealmManager {
     func addTrip(trip: TripModel) {
         self.addObject(object: trip, update: false)
     }
-    func changeTripChecklist(trip: TripModel, checklist: ChecklistSection) {
+    func addChecklistToTrip(trip: TripModel, checklist: ChecklistSection) {
         do {
             try self.getRealm().write {
                 trip.checklist.append(objectsIn: [checklist])

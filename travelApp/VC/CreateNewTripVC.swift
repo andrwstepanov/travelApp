@@ -91,8 +91,8 @@ class CreateNewTripVC: UIViewController {
             RealmManager.sharedDelegate().addTrip(trip: tempTrip)
 
             // adding test data
-            RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
-            RealmManager.sharedDelegate().changeTripChecklist(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
+            RealmManager.sharedDelegate().addChecklistToTrip(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
+            RealmManager.sharedDelegate().addChecklistToTrip(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
 
             backgroundRealm.requestTripDataAndWrite(for: tempTrip)
             Config.popToMainScreen(navController: navigationController!)

@@ -24,7 +24,7 @@ class DatePickerVC: UIViewController {
         fsCalendarView.dataSource = self
         fsCalendarView.today = nil
         fsCalendarView.swipeToChooseGesture.isEnabled = true
-        let scopeGesture = UIPanGestureRecognizer(target: fsCalendarView, action: #selector(fsCalendarView.handleScopeGesture(_:)));
+        let scopeGesture = UIPanGestureRecognizer(target: fsCalendarView, action: #selector(fsCalendarView.handleScopeGesture(_:)))
         fsCalendarView.addGestureRecognizer(scopeGesture)
         fsCalendarView.appearance.eventSelectionColor = UIColor.blue
         self.title = "Calendar picker"

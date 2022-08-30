@@ -8,9 +8,10 @@
 import Foundation
 import RealmSwift
 
-struct BackgroundRealm {
-    let photoManager = PhotoManager(geocodingManager: GeocodingManager())
-    let weatherManager = WeatherManager()
+class BackgroundRealm {
+    let photoManager = PhotoManager(networkManager: NetworkManager())
+    let weatherManager = WeatherManager(networkManager: NetworkManager())
+
     let lock = NSLock()
     enum WritePath {
         case weather(weatherData: Weather)
@@ -19,17 +20,13 @@ struct BackgroundRealm {
     func requestTripDataAndWrite(for trip: TripModel?) {
         let frozenTrip = trip?.freeze()
         Task {
-            print(1)
             let photoURL = try await photoManager.searchForCityImageURL(trip: frozenTrip!)
-            print(2)
             if let safePhotoURL = photoURL {
                 asyncWrite(trip: frozenTrip!, data: .image(url: safePhotoURL))
             }
         }
         Task {
-            print(3)
             let weather = await weatherManager.loadAndReturnWeather(trip: frozenTrip!)
-            print(4)
             if let safeWeather = weather {
                 asyncWrite(trip: frozenTrip!, data: .weather(weatherData: safeWeather))
             }

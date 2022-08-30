@@ -19,14 +19,13 @@
 		C2166093287DFCEA0035EA42 /* ItemEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606C287DFCEA0035EA42 /* ItemEditVC.swift */; };
 		C2166094287DFCEA0035EA42 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606D287DFCEA0035EA42 /* TripView.swift */; };
 		C2166095287DFCEA0035EA42 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216606F287DFCEA0035EA42 /* TripModel.swift */; };
-		C2166097287DFCEA0035EA42 /* CodableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166071287DFCEA0035EA42 /* CodableResponse.swift */; };
+		C2166097287DFCEA0035EA42 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166071287DFCEA0035EA42 /* NetworkModel.swift */; };
 		C2166098287DFCEA0035EA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166072287DFCEA0035EA42 /* AppDelegate.swift */; };
 		C2166099287DFCEA0035EA42 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166074287DFCEA0035EA42 /* Extentions.swift */; };
 		C216609A287DFCEA0035EA42 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166075287DFCEA0035EA42 /* RealmManager.swift */; };
 		C216609B287DFCEA0035EA42 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166076287DFCEA0035EA42 /* Config.swift */; };
 		C216609C287DFCEA0035EA42 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166077287DFCEA0035EA42 /* WeatherManager.swift */; };
 		C216609D287DFCEA0035EA42 /* PackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166078287DFCEA0035EA42 /* PackingManager.swift */; };
-		C216609E287DFCEA0035EA42 /* GeocodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2166079287DFCEA0035EA42 /* GeocodingManager.swift */; };
 		C21660A0287DFCEA0035EA42 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216607B287DFCEA0035EA42 /* PhotoManager.swift */; };
 		C21660A1287DFCEA0035EA42 /* PacklistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C216607D287DFCEA0035EA42 /* PacklistCell.xib */; };
 		C21660A2287DFCEA0035EA42 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216607E287DFCEA0035EA42 /* WeatherCell.swift */; };
@@ -47,6 +46,7 @@
 		C2818B9D2853116500E8D6DE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2818B9C2853116500E8D6DE /* RealmSwift */; };
 		C285FA7B28849DA40084E03E /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285FA7A28849DA40084E03E /* keys.swift */; };
 		C2B4A92E28AED2EE00F6F39A /* BackgroundRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */; };
+		C2C94C3528BDFAE000DF3615 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C94C3428BDFAE000DF3615 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,14 +63,13 @@
 		C216606C287DFCEA0035EA42 /* ItemEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditVC.swift; sourceTree = "<group>"; };
 		C216606D287DFCEA0035EA42 /* TripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		C216606F287DFCEA0035EA42 /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
-		C2166071287DFCEA0035EA42 /* CodableResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableResponse.swift; sourceTree = "<group>"; };
+		C2166071287DFCEA0035EA42 /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		C2166072287DFCEA0035EA42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = travelApp/AppDelegate.swift; sourceTree = "<group>"; };
 		C2166074287DFCEA0035EA42 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		C2166075287DFCEA0035EA42 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C2166076287DFCEA0035EA42 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C2166077287DFCEA0035EA42 /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		C2166078287DFCEA0035EA42 /* PackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingManager.swift; sourceTree = "<group>"; };
-		C2166079287DFCEA0035EA42 /* GeocodingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodingManager.swift; sourceTree = "<group>"; };
 		C216607B287DFCEA0035EA42 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		C216607D287DFCEA0035EA42 /* PacklistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PacklistCell.xib; sourceTree = "<group>"; };
 		C216607E287DFCEA0035EA42 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		C248B0502812DC0E00544A5F /* travelAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C285FA7A28849DA40084E03E /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRealm.swift; sourceTree = "<group>"; };
+		C2C94C3428BDFAE000DF3615 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				C216606F287DFCEA0035EA42 /* TripModel.swift */,
-				C2166071287DFCEA0035EA42 /* CodableResponse.swift */,
+				C2166071287DFCEA0035EA42 /* NetworkModel.swift */,
 			);
 			name = Models;
 			path = travelApp/Models;
@@ -140,10 +140,10 @@
 				C2166076287DFCEA0035EA42 /* Config.swift */,
 				C2166077287DFCEA0035EA42 /* WeatherManager.swift */,
 				C2166078287DFCEA0035EA42 /* PackingManager.swift */,
-				C2166079287DFCEA0035EA42 /* GeocodingManager.swift */,
 				C216607B287DFCEA0035EA42 /* PhotoManager.swift */,
 				C2166075287DFCEA0035EA42 /* RealmManager.swift */,
 				C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */,
+				C2C94C3428BDFAE000DF3615 /* NetworkManager.swift */,
 			);
 			name = Utilities;
 			path = travelApp/Utilities;
@@ -313,7 +313,6 @@
 				C216609A287DFCEA0035EA42 /* RealmManager.swift in Sources */,
 				C216608C287DFCEA0035EA42 /* CreateNewTripVC.swift in Sources */,
 				C2166093287DFCEA0035EA42 /* ItemEditVC.swift in Sources */,
-				C216609E287DFCEA0035EA42 /* GeocodingManager.swift in Sources */,
 				C2166089287DFCEA0035EA42 /* SceneDelegate.swift in Sources */,
 				C21660A6287DFCEA0035EA42 /* PacklistCell.swift in Sources */,
 				C216609B287DFCEA0035EA42 /* Config.swift in Sources */,
@@ -325,8 +324,9 @@
 				C2166092287DFCEA0035EA42 /* DatePickerVC.swift in Sources */,
 				C21660A2287DFCEA0035EA42 /* WeatherCell.swift in Sources */,
 				C21660A0287DFCEA0035EA42 /* PhotoManager.swift in Sources */,
+				C2C94C3528BDFAE000DF3615 /* NetworkManager.swift in Sources */,
 				C216608E287DFCEA0035EA42 /* SettingsVC.swift in Sources */,
-				C2166097287DFCEA0035EA42 /* CodableResponse.swift in Sources */,
+				C2166097287DFCEA0035EA42 /* NetworkModel.swift in Sources */,
 				C21660A8287DFCEA0035EA42 /* TripCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

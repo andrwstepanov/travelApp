@@ -18,6 +18,7 @@ class MainScreen: UIViewController {
     @IBOutlet weak var upcomingTripsButton: UIButton!
     @IBOutlet weak var upcomingTripsStack: UIStackView!
     @IBOutlet weak var selectorHorizontalStack: UIStackView!
+
     var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
     var notificationToken: NotificationToken?
@@ -130,9 +131,7 @@ extension MainScreen: TripCollectionViewDelegate {
     func didTapCell(data: TripModel) {
         self.performSegue(withIdentifier: "openTripCard", sender: data)
     }
-}
 
-extension MainScreen {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openTripCard" {
             if let trip = sender as? TripModel {
@@ -143,3 +142,4 @@ extension MainScreen {
         }
     }
 }
+

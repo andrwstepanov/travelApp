@@ -36,5 +36,4 @@ struct CityImageResponse: Codable {
 
 struct GeocodingResponse: Codable {
     let name: String
-    let state: String
 }

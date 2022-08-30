@@ -50,8 +50,15 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         cell.dateLabel.text = "\(dateFormatter.string(from: cells[indexPath.row].startDate)) - \(dateFormatter.string(from: cells[indexPath.row].finishDate))"
-        if let temperatureString = WeatherManager.sharedInstance.returnWeatherInUserUnits(trip: cells[indexPath.row]) {
-            cell.temperatureLabel.text = "Weather: \(temperatureString)"
+        if let temperature = cells[indexPath.row].weather {
+            let userDefaults = UserDefaults.standard
+            let isCelsius: Bool = userDefaults.bool(forKey: Config.UserDefaultsNames.userUnitsIsCelsius)
+            let userUnitsString = isCelsius ? "°C" : "°F"
+
+            let minTemp = temperature.minTemp.convertWeatherToUserUnits(celsius: isCelsius)
+            let maxTemp = temperature.maxTemp.convertWeatherToUserUnits(celsius: isCelsius)
+
+            cell.temperatureLabel.text = "Weather: \(minTemp)...\(maxTemp)\(userUnitsString)"
         }
         if let image = cells[indexPath.row].cityImage {
             var options = ImageLoadingOptions(

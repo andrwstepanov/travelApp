@@ -21,6 +21,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerRoundedCornersView: UIView!
     @IBOutlet weak var headerTripDates: UILabel!
     @IBOutlet weak var headerDotsButton: UIButton!
+
     var mainMenu = UIMenu()
     var tripModel: TripModel?
     var notificationToken: NotificationToken?
@@ -256,9 +257,18 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
 
             cell.selectionStyle = .none
 
-            if let temperatureString = WeatherManager.sharedInstance.returnWeatherInUserUnits(trip: tripModel!), let avgTempString = WeatherManager.sharedInstance.returnAvgTemp(trip: tripModel!) {
-                cell.weatherTemperatureLabel.text = temperatureString
-                cell.weatherConditionLabel.text = avgTempString
+            if let temperature = tripModel?.weather {
+                let userDefaults = UserDefaults.standard
+                let isCelsius: Bool = userDefaults.bool(forKey: Config.UserDefaultsNames.userUnitsIsCelsius)
+                let userUnitsString = isCelsius ? "°C" : "°F"
+                let onAverageString = "on average"
+
+                let minTemp = temperature.minTemp.convertWeatherToUserUnits(celsius: isCelsius)
+                let avgTemp = temperature.avgTemp.convertWeatherToUserUnits(celsius: isCelsius)
+                let maxTemp = temperature.maxTemp.convertWeatherToUserUnits(celsius: isCelsius)
+
+                cell.weatherTemperatureLabel.text = "\(minTemp)...\(maxTemp)\(userUnitsString)"
+                cell.weatherConditionLabel.text = "\(avgTemp)\(userUnitsString) \(onAverageString)"
             } else {
                 backgroundRealm.requestTripDataAndWrite(for: tripModel!)
             }
