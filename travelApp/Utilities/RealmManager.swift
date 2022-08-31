@@ -95,7 +95,7 @@ class RealmManager {
                 realm.deleteAll()
             }
         } catch {
-            print("Error deleting objects")
+            print("Error deleting all objects")
         }
     }
     private func addObject(object: Object, update: Bool) {

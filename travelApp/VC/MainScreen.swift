@@ -22,9 +22,8 @@ class MainScreen: UIViewController {
     private var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
     private var notificationToken: NotificationToken?
-    private let stringOne = "My trips \n& packing \nlists"
-    private let stringTwo = "packing"
-    private var borderPill: UIView!
+    private var selectorIndicator: UIView!
+    private var tripHistorySelected = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,14 +44,18 @@ class MainScreen: UIViewController {
         trips = RealmManager.sharedInstance.getTrips()
         self.checkDataSourceAndAddIntro()
         checkIfOnboarded()
+
+        let stringOne = "My trips \n& packing \nlists"
+        let stringTwo = "packing"
         myTripsAndPackingLabel.colorString(text: stringOne, coloredText: stringTwo, color: Config.Colors.darkGreen)
         myTripsAndPackingLabel.font = .systemFont(ofSize: 36, weight: .bold)
-        borderPill = addBorderstoButton(to: upcomingTripsButton)
-        upcomingTripsButton.addSubview(borderPill)
+
+        selectorIndicator = addActiveIndication(to: upcomingTripsButton)
+        upcomingTripsButton.addSubview(selectorIndicator)
 
     }
 
-    private func addBorderstoButton(to button: UIButton) -> UIView {
+    private func addActiveIndication(to button: UIButton) -> UIView {
         let frame = CGRect(x: button.frame.size.width / 2 - (34 / 3), y: button.frame.size.height, width: 34, height: 3)
         let borderBottom = UIView(frame: frame)
         borderBottom.backgroundColor = Config.Colors.darkGreen
@@ -102,33 +105,27 @@ class MainScreen: UIViewController {
         self.performSegue(withIdentifier: "addNew", sender: self)
     }
     @IBAction func tapOnUpcomingTrips(_ sender: UIButton) {
-
-        UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-            self.borderPill.removeFromSuperview()
-        }, completion: nil)
-        UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-            sender.addSubview(self.borderPill)
-        }, completion: nil)
-        tripHistoryButton.isSelected = false
-        upcomingTripsButton.isSelected = true
-        self.trips = RealmManager.sharedInstance.getTrips().filter("upcoming == true")
-        tripCollectionView.set(cells: trips)
-        tripCollectionView.reloadData()
+        if tripHistorySelected { toggleTripSelection(sender: sender) }
     }
     @IBAction func tapOnTripHistory(_ sender: UIButton) {
+        if !tripHistorySelected { toggleTripSelection(sender: sender) }
+    }
+
+    private func toggleTripSelection(sender: UIButton) {
+        tripHistorySelected.toggle()
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-            self.borderPill.removeFromSuperview()
-        }, completion: nil)
+            self.selectorIndicator.removeFromSuperview()
+        })
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-            sender.addSubview(self.borderPill)
-        }, completion: nil)
-        tripHistoryButton.isSelected = true
-        upcomingTripsButton.isSelected = false
-        self.trips = RealmManager.sharedInstance.getTrips().filter("upcoming == false")
+            sender.addSubview(self.selectorIndicator)
+        })
+        tripHistoryButton.isSelected.toggle()
+        upcomingTripsButton.isSelected.toggle()
+        let upcoming = tripHistorySelected ? false : true
+        self.trips = RealmManager.sharedInstance.getTrips().filter("upcoming == \(upcoming)")
         tripCollectionView.set(cells: trips)
         tripCollectionView.reloadData()
     }
-
 }
 
 extension MainScreen: TripCollectionViewDelegate {
