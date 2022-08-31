@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+// test data for trip checklist
 class PackingManager {
     static let sharedInstance = PackingManager()
     let testChecklist: ChecklistSection = {

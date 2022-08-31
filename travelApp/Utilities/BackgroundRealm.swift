@@ -19,16 +19,17 @@ class BackgroundRealm {
     }
     func requestTripDataAndWrite(for trip: TripModel?) {
         let frozenTrip = trip?.freeze()
+        guard let safeTrip = frozenTrip else { return }
         Task {
-            let photoURL = try await photoManager.searchForCityImageURL(trip: frozenTrip!)
+            let photoURL = try await photoManager.searchForCityImageURL(trip: safeTrip)
             if let safePhotoURL = photoURL {
-                asyncWrite(trip: frozenTrip!, data: .image(url: safePhotoURL))
+                asyncWrite(trip: safeTrip, data: .image(url: safePhotoURL))
             }
         }
         Task {
-            let weather = await weatherManager.loadAndReturnWeather(trip: frozenTrip!)
+            let weather = await weatherManager.loadAndReturnWeather(trip: safeTrip)
             if let safeWeather = weather {
-                asyncWrite(trip: frozenTrip!, data: .weather(weatherData: safeWeather))
+                asyncWrite(trip: safeTrip, data: .weather(weatherData: safeWeather))
             }
         }
     }
