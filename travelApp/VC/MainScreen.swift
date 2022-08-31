@@ -46,7 +46,7 @@ class MainScreen: UIViewController {
         checkIfOnboarded()
 
         mainScreenCaption.colorString(text: Config.MainScreenText.stringOne,
-                                      coloredText: Config.MainScreenText.stringOne,
+                                      coloredText: Config.MainScreenText.stringTwo,
                                       color: Config.Colors.darkGreen)
         mainScreenCaption.font = Config.MainScreenText.captionFont
 
