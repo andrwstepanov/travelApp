@@ -22,8 +22,8 @@ class MainScreen: UIViewController {
     private var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
     private var notificationToken: NotificationToken?
-    private var selectorIndicator: UIView!
     private var tripHistorySelected = false
+    private var selectorIndicator: UIView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,7 +45,9 @@ class MainScreen: UIViewController {
         self.checkDataSourceAndAddIntro()
         checkIfOnboarded()
 
-        mainScreenCaption.colorString(text: Config.MainScreenText.stringOne, coloredText: Config.MainScreenText.stringOne, color: Config.Colors.darkGreen)
+        mainScreenCaption.colorString(text: Config.MainScreenText.stringOne,
+                                      coloredText: Config.MainScreenText.stringOne,
+                                      color: Config.Colors.darkGreen)
         mainScreenCaption.font = Config.MainScreenText.captionFont
 
         selectorIndicator = addActiveIndication(to: upcomingTripsButton)
@@ -53,11 +55,13 @@ class MainScreen: UIViewController {
     }
 
     private func addActiveIndication(to button: UIButton) -> UIView {
-        let frame = CGRect(x: button.frame.size.width / 2 - (34 / 3), y: button.frame.size.height, width: 34, height: 3)
+        let width: CGFloat = 40
+        let height: CGFloat = 3
+        let frame = CGRect(x: button.frame.size.width / 2 - (width / 3),
+                           y: button.frame.size.height, width: width, height: height)
         let borderBottom = UIView(frame: frame)
         borderBottom.backgroundColor = Config.Colors.darkGreen
         borderBottom.roundCorners(corners: .allCorners, radius: Config.UIConstants.buttonCornerRadius)
-
         return borderBottom
     }
 
@@ -140,4 +144,3 @@ extension MainScreen: TripCollectionViewDelegate {
         }
     }
 }
-
