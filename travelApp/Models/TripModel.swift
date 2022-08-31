@@ -13,7 +13,7 @@ class TripModel: Object {
     @Persisted var upcoming: Bool
     @Persisted var startDate: Date
     @Persisted var finishDate: Date
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id = UUID().uuidString
 
     // uploaded as 2nd stage
     @Persisted var weather: Weather?
@@ -33,8 +33,8 @@ class TripModel: Object {
     }
 
     static func intro() -> TripModel {
-        let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 05, day: 15))!
-        let finishDate = Calendar.current.date(from: DateComponents(year: 2022, month: 05, day: 15))!
+        let startDate = Calendar.current.date(from: DateComponents(year: 2023, month: 01, day: 15))!
+        let finishDate = Calendar.current.date(from: DateComponents(year: 2023, month: 01, day: 30))!
         let city = "Hello"
         let country = "add your first trip"
         let introItem = TripModel(city: city, country: country, latitude: 0.0, longitude: 0.0,  startDate: startDate, finishDate: finishDate)
@@ -73,7 +73,7 @@ class Weather: Object {
     }
 }
 class ChecklistSection: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id = UUID().uuidString
     @Persisted var sectionHeader: String
     @Persisted var sectionChecklist: List<ChecklistElement>
     convenience init(sectionHeader: String, sectionChecklist: [ChecklistElement]) {
@@ -83,7 +83,7 @@ class ChecklistSection: Object {
     }
 }
 class ChecklistElement: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id = UUID().uuidString
     @Persisted var title: String
     @Persisted var quantity: Int
     @Persisted var isDone: Bool

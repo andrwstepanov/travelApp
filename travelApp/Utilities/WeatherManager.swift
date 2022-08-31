@@ -9,8 +9,6 @@ import Foundation
 import Nuke
 
 struct WeatherManager {
-
-//    var delegate: WeatherManagerDelegate?
     let networkManager: NetworkManager
 
     func loadAndReturnWeather(trip: TripModel) async -> Weather? {

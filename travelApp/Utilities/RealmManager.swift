@@ -47,6 +47,16 @@ class RealmManager {
     func deleteTrip(trip: TripModel) {
         self.deleteObject(object: trip)
     }
+    func deleteTripByID(id: String) {
+        let realm = getRealm()
+        if let ref = realm.object(ofType: TripModel.self, forPrimaryKey: id) {
+            self.deleteObject(object: ref)
+        } else {
+            print("error deleting by reference")
+        }
+
+    }
+
     func deleteItem(trip: TripModel, indexPath: IndexPath) {
         let itemReference = trip.checklist[indexPath.section].sectionChecklist[indexPath.row]
         deleteObject(object: itemReference)

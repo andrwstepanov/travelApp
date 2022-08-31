@@ -19,12 +19,12 @@ class MainScreen: UIViewController {
     @IBOutlet weak var upcomingTripsStack: UIStackView!
     @IBOutlet weak var selectorHorizontalStack: UIStackView!
 
-    var trips: Results<TripModel>!
+    private var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
-    var notificationToken: NotificationToken?
-    var stringOne = "My trips \n& packing \nlists"
-    let stringTwo = "packing"
-    var borderPill: UIView!
+    private var notificationToken: NotificationToken?
+    private let stringOne = "My trips \n& packing \nlists"
+    private let stringTwo = "packing"
+    private var borderPill: UIView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,7 +44,7 @@ class MainScreen: UIViewController {
         self.addCollectionView()
         trips = RealmManager.sharedInstance.getTrips()
         self.checkDataSourceAndAddIntro()
-        loadSettings()
+        checkIfOnboarded()
         myTripsAndPackingLabel.colorString(text: stringOne, coloredText: stringTwo, color: Config.Colors.darkGreen)
         myTripsAndPackingLabel.font = .systemFont(ofSize: 36, weight: .bold)
         borderPill = addBorderstoButton(to: upcomingTripsButton)
@@ -69,7 +69,7 @@ class MainScreen: UIViewController {
         tripCollectionView.bottomAnchor.constraint(equalTo: addTripButton.topAnchor, constant: -30).isActive = true
         tripCollectionView.collectionDelegate = self
     }
-    private func loadSettings() {
+    private func checkIfOnboarded() {
         let userDefaults = UserDefaults.standard
         if Config.resetApp { userDefaults.set(false, forKey: Config.UserDefaultsNames.launchedBefore) }
         if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) {
@@ -78,7 +78,11 @@ class MainScreen: UIViewController {
     }
     private func checkDataSourceAndAddIntro() {
         if trips.count == 0 {
-            RealmManager.sharedDelegate().addTrip(trip: TripModel.intro())
+            let introTrip = TripModel.intro()
+            RealmManager.sharedDelegate().addTrip(trip: introTrip)
+            let userDefaults = UserDefaults.standard
+            let key = "\(introTrip.id)"
+            userDefaults.set(key, forKey: Config.UserDefaultsNames.introID)
         }
         tripCollectionView.set(cells: trips)
         notificationToken = trips.observe {(changes: RealmCollectionChange) in

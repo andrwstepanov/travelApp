@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoreLocation
+//import CoreLocation
 import MapKit
 import FSCalendar
 
@@ -90,7 +90,14 @@ class CreateNewTripVC: UIViewController {
             tempTrip = TripModel(city: tempCity, country: tempCountry, latitude: tempLat, longitude: tempLon, startDate: safeStartDate, finishDate: safeFinishDate)
             RealmManager.sharedDelegate().addTrip(trip: tempTrip)
 
-            // adding test data
+            //remove intro trip
+            let userDefaults = UserDefaults.standard
+            if let introID = userDefaults.string(forKey: Config.UserDefaultsNames.introID) {
+                RealmManager.sharedDelegate().deleteTripByID(id: introID)
+                userDefaults.removeObject(forKey: Config.UserDefaultsNames.introID)
+            }
+
+            // add test data
             RealmManager.sharedDelegate().addChecklistToTrip(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
             RealmManager.sharedDelegate().addChecklistToTrip(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
 

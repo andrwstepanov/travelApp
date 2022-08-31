@@ -8,7 +8,7 @@
 import UIKit
 
 struct Config {
-    static let resetApp = false
+    static let resetApp = true
     struct APIPath {
         static let geocodingApiURL = "https://api.openweathermap.org/geo/1.0/reverse"
         static let weatherApiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
@@ -30,6 +30,7 @@ struct Config {
         static let userGenderIsMale = "userGenderIsMale"
         static let userUnitsIsCelsius = "userUnitsIsCelsius"
         static let launchedBefore = "launchedBefore"
+        static let introID = "introID"
     }
     struct OnboardingImages {
         static let slide1 = UIImage(named: "slide1")
