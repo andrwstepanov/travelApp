@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 struct Config {
     static let resetApp = true
@@ -25,6 +26,13 @@ struct Config {
     struct Colors {
         static let darkGreen = UIColor(red: 0.349, green: 0.455, blue: 0.427, alpha: 1)
         static let textDarkGray = UIColor(red: 0.267, green: 0.243, blue: 0.243, alpha: 1)
+    }
+
+    struct MainScreenText {
+        static let stringOne = "My trips \n& packing \nlists"
+        static let stringTwo = "packing"
+        static let captionFont: UIFont = .systemFont(ofSize: 36, weight: .bold)
+
     }
     struct UserDefaultsNames {
         static let userGenderIsMale = "userGenderIsMale"

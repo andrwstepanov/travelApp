@@ -12,7 +12,7 @@ class MainScreen: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet weak var helloLabel: UILabel!
-    @IBOutlet weak var myTripsAndPackingLabel: UILabel!
+    @IBOutlet weak var mainScreenCaption: UILabel!
     @IBOutlet weak var addTripButton: UIButton!
     @IBOutlet weak var tripHistoryButton: UIButton!
     @IBOutlet weak var upcomingTripsButton: UIButton!
@@ -45,14 +45,11 @@ class MainScreen: UIViewController {
         self.checkDataSourceAndAddIntro()
         checkIfOnboarded()
 
-        let stringOne = "My trips \n& packing \nlists"
-        let stringTwo = "packing"
-        myTripsAndPackingLabel.colorString(text: stringOne, coloredText: stringTwo, color: Config.Colors.darkGreen)
-        myTripsAndPackingLabel.font = .systemFont(ofSize: 36, weight: .bold)
+        mainScreenCaption.colorString(text: Config.MainScreenText.stringOne, coloredText: Config.MainScreenText.stringOne, color: Config.Colors.darkGreen)
+        mainScreenCaption.font = Config.MainScreenText.captionFont
 
         selectorIndicator = addActiveIndication(to: upcomingTripsButton)
         upcomingTripsButton.addSubview(selectorIndicator)
-
     }
 
     private func addActiveIndication(to button: UIButton) -> UIView {
