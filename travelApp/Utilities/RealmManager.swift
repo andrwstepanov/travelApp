@@ -18,73 +18,68 @@ class RealmManager {
     static func sharedDelegate() -> RealmManager {
         return self.sharedInstance
     }
-    func addTrip(trip: TripModel) {
-        self.addObject(object: trip, update: false)
+    func getTrips() -> Results<TripModel> {
+        let results: Results<TripModel> = self.getRealm().objects(TripModel.self)
+        return results
     }
-    func addChecklistToTrip(trip: TripModel, checklist: ChecklistSection) {
-        do {
-            try self.getRealm().write {
-                trip.checklist.append(objectsIn: [checklist])
-            }
-        } catch {
-            print("Realm error: Cannot write: \(trip)")
+    func writeTrip(trip: TripModel, delete: Bool = false) {
+        if !delete {
+            addObject(object: trip, update: false)
+        } else {
+            deleteObject(object: trip)
         }
     }
-    func updateChecklistItem(trip: TripModel, indexPath: IndexPath, checklistItem: ChecklistElement, newName: String, newQty: Int, newCat: ChecklistSection) {
+    func writeSection(trip: TripModel, section: ChecklistSection, delete: Bool = false) {
+        if !delete {
+            addObject(object: section, update: false)
+            makeReference(from: trip.checklist, to: section)
+        } else {
+            deleteObject(object: section)
+        }
+    }
+    func writeItem(checklist: ChecklistSection, item: ChecklistElement, delete: Bool = false) {
+        if !delete {
+            addObject(object: item, update: false)
+            makeReference(from: checklist.sectionChecklist, to: item)
+        } else {
+            deleteObject(object: item)
+        }
+    }
+    func updateItem(checklistItem: ChecklistElement, newName: String, newQty: Int) {
         let realm = getRealm()
         do {
             try realm.write {
                 checklistItem.title = newName
                 checklistItem.quantity = newQty
-                if newCat.sectionChecklist.contains(checklistItem) { return }
-                trip.checklist[indexPath.section].sectionChecklist.remove(at: indexPath.row)
-                newCat.sectionChecklist.append(checklistItem)
             }
         } catch {
             print("Error updating checklist objects \(checklistItem)")
         }
     }
-    func deleteTrip(trip: TripModel) {
-        self.deleteObject(object: trip)
-    }
-    func deleteTripByID(id: String) {
+    func moveItemToCategoryIfNeeded(item: ChecklistElement, newCat: ChecklistSection, currentCat: ChecklistSection) {
         let realm = getRealm()
-        if let ref = realm.object(ofType: TripModel.self, forPrimaryKey: id) {
-            self.deleteObject(object: ref)
-        } else {
-            print("error deleting by reference")
-        }
-
-    }
-
-    func deleteItem(trip: TripModel, indexPath: IndexPath) {
-        let itemReference = trip.checklist[indexPath.section].sectionChecklist[indexPath.row]
-        deleteObject(object: itemReference)
-    }
-    func addItemToCategory(name: String, qty: Int, cat: ChecklistSection) {
-        let realm = getRealm()
+        if newCat.sectionChecklist.contains(item) { return }
+        guard let index = currentCat.sectionChecklist.firstIndex(of: item) else { return }
         do {
             try realm.write {
-                cat.sectionChecklist.append(ChecklistElement(title: name, quantity: qty))
+                currentCat.sectionChecklist.remove(at: index)
+                newCat.sectionChecklist.append(item)
             }
         } catch {
             print("Error updating objects")
         }
     }
-    func toggleChecklistItem(trip: TripModel, index: IndexPath) {
+    func toggleItem(trip: TripModel, index: IndexPath) {
         let realm = getRealm()
         do {
             try realm.write {
                 trip.checklist[index.section].sectionChecklist[index.row].isDone.toggle()
             }
         } catch {
-            print("Error deleting objects")
+            print("Error toggling item")
         }
     }
-    func getTrips() -> Results<TripModel> {
-        let results: Results<TripModel> = self.getRealm().objects(TripModel.self)
-        return results
-    }
+
     private func getRealm() -> Realm {
         return try! Realm(configuration: RealmManager.realmConfig)
     }
@@ -118,4 +113,24 @@ class RealmManager {
             print("Realm error: Cannot delete object: \(object)")
         }
     }
+    private func makeReference<T>(from parent: List<T>, to object: T) {
+        let realm = getRealm()
+        do {
+            try realm.write {
+                parent.append(object)
+            }
+        } catch {
+            print("Error updating objects")
+        }
+    }
 }
+
+
+//    func getReference<T: Object>(id: String) -> T {
+//        let realm = getRealm()
+//        if let ref = realm.object(ofType: T.self, forPrimaryKey: id) {
+//            self.deleteObject(object: ref)
+//        } else {
+//            print("error deleting by reference")
+//        }
+//    }

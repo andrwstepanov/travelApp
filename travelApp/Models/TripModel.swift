@@ -87,6 +87,7 @@ class ChecklistElement: Object {
     @Persisted var title: String
     @Persisted var quantity: Int
     @Persisted var isDone: Bool
+  //  let section = LinkingObjects(fromType: ChecklistSection.self, property: "sectionChecklist")
     convenience init(title: String, quantity: Int) {
         self.init()
         self.title = title

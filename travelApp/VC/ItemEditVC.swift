@@ -65,14 +65,18 @@ class ItemEditVC: UIViewController {
         stepper.value = Double(quantityLabel.text ?? "1") ?? 1.0
     }
     @IBAction func saveTapped(_ sender: UIButton) {
-        let newName = itemDescription.text!
+        guard let newName = itemDescription.text else { print("no text!"); return }
         let newQty = Int(quantityLabel.text ?? "1") ?? 1
-        let sectionReference: ChecklistSection = tripModel.checklist[popUpMenuSelectionIndex]
+        let newCategoryRef = tripModel.checklist[popUpMenuSelectionIndex]
+
         if let indexPath = optionalIndexPath {
-            let itemReference = tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row]
-            RealmManager.sharedDelegate().updateChecklistItem(trip: tripModel, indexPath: indexPath, checklistItem: itemReference, newName: newName, newQty: newQty, newCat: sectionReference)
+            let curCategoryRef = tripModel.checklist[indexPath.section]
+            let itemRef = curCategoryRef.sectionChecklist[indexPath.row]
+            RealmManager.sharedDelegate().updateItem(checklistItem: itemRef, newName: newName, newQty: newQty)
+            RealmManager.sharedDelegate().moveItemToCategoryIfNeeded(item: itemRef, newCat: newCategoryRef, currentCat: curCategoryRef)
         } else {
-            RealmManager.sharedDelegate().addItemToCategory(name: newName, qty: newQty, cat: sectionReference)
+            let item = ChecklistElement(title: newName, quantity: newQty)
+            RealmManager.sharedDelegate().writeItem(checklist: newCategoryRef, item: item)
         }
         self.dismiss(animated: true)
     }

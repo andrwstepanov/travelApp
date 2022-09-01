@@ -26,6 +26,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     var tripModel: TripModel?
     var notificationToken: NotificationToken?
     let backgroundRealm = BackgroundRealm()
+ //   var config: Config!
 
 
     private let floatingButton: UIButton = {
@@ -97,12 +98,12 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             let request = ImageRequest(
                 url: URL(string: image),
                 processors: processors
-                )
+            )
             loadImage(with: request, options: options, into: headerImageView)
         } else {
             headerImageView.image = UIImage(named: "tripPlaceholder")
         }
-         mainMenu = UIMenu(title: "", children: [
+        mainMenu = UIMenu(title: "", children: [
             UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
                 self.deleteTrip()
             }
@@ -152,17 +153,17 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     }
     @objc func addChecklistItem(_ sender: UIButton) {
         self.performSegue(withIdentifier: "editItem", sender: nil)
-         }
+    }
 
     private func navBarCompact() {
         if navigationItem.title == "" {
             navigationItem.title = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
-//            if #available(iOS 13.0, *) {
-//                let navBarAppearance = UINavigationBarAppearance()
-//                navBarAppearance.backgroundColor = .white
-//                navigationController?.navigationBar.standardAppearance = navBarAppearance
-//                navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-//            }
+            //            if #available(iOS 13.0, *) {
+            //                let navBarAppearance = UINavigationBarAppearance()
+            //                navBarAppearance.backgroundColor = .white
+            //                navigationController?.navigationBar.standardAppearance = navBarAppearance
+            //                navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+            //            }
             if #available(iOS 15, *) {
                 guard let navigationBar = navigationController?.navigationBar else { return }
 
@@ -173,7 +174,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
                 appearance.shadowImage = UIImage()
 
                 navigationBar.standardAppearance = appearance
-              //  navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+                //  navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
             }
             self.navigationController?.navigationBar.tintColor = .black
             self.navigationController?.navigationBar.barStyle = .default
@@ -186,14 +187,14 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             navigationItem.title = " "
             self.navigationController?.navigationBar.barStyle = .black
             self.navigationController?.navigationBar.tintColor = .white
-//            if #available(iOS 13.0, *) {
-//                let navBarAppearance = UINavigationBarAppearance()
-//                navBarAppearance.configureWithOpaqueBackground()
-//                navBarAppearance.backgroundColor = .clear
-//
-//                navigationController?.navigationBar.standardAppearance = navBarAppearance
-//                navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-//            }
+            //            if #available(iOS 13.0, *) {
+            //                let navBarAppearance = UINavigationBarAppearance()
+            //                navBarAppearance.configureWithOpaqueBackground()
+            //                navBarAppearance.backgroundColor = .clear
+            //
+            //                navigationController?.navigationBar.standardAppearance = navBarAppearance
+            //                navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+            //            }
             if #available(iOS 15, *) {
                 guard let navigationBar = navigationController?.navigationBar else { return }
 
@@ -205,7 +206,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
                 navigationBar.standardAppearance = appearance
                 navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
             }
-                self.setNeedsStatusBarAppearanceUpdate()
+            self.setNeedsStatusBarAppearanceUpdate()
             navigationItem.rightBarButtonItem = nil
         }
     }
@@ -216,7 +217,8 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
 extension TripView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        RealmManager.sharedDelegate().toggleChecklistItem(trip: tripModel!, index: indexPath)
+        guard let safeTripModel = tripModel else { return }
+        RealmManager.sharedDelegate().toggleItem(trip: safeTripModel, index: indexPath)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
@@ -237,7 +239,7 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if let safeTripModel = tripModel {
             if !safeTripModel.isInvalidated {
-               return safeTripModel.checklist.count
+                return safeTripModel.checklist.count
             } else { return 0 }
         } else { return 0 }
     }
@@ -276,14 +278,14 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "packlistCell", for: indexPath) as! PacklistCell
             cell.dotsButton.menu = UIMenu(title: "", children: [
-                    UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {[unowned self] _ in
-                        self.performSegue(withIdentifier: "editItem", sender: indexPath)
-                    },
-                    UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
-                        self.deleteItem(indexPath: indexPath)
-                    }
+                UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {[unowned self] _ in
+                    self.performSegue(withIdentifier: "editItem", sender: indexPath)
+                },
+                UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
+                    self.deleteItem(indexPath: indexPath)
+                }
 
-                ])
+            ])
             if let checklist = tripModel?.checklist[indexPath.section].sectionChecklist[indexPath.row] {
                 cell.cellLabel.text = checklist.title
                 cell.quantityLabel.text = "\(checklist.quantity)"
@@ -291,7 +293,7 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
                 cell.checkButton.isUserInteractionEnabled = false
             }
             cell.selectionStyle = .none
-                return cell
+            return cell
         }
     }
 }
@@ -302,7 +304,8 @@ extension TripView {
     private func deleteTrip() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
-            RealmManager.sharedInstance.deleteTrip(trip: tripModel!)
+            guard let safeTrip = tripModel else { return }
+            RealmManager.sharedInstance.writeTrip(trip: safeTrip, delete: true)
             self.popToPrevious()
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
@@ -315,7 +318,8 @@ extension TripView {
     private func deleteItem(indexPath: IndexPath) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
-            RealmManager.sharedDelegate().deleteItem(trip: self.tripModel!, indexPath: indexPath)
+            guard let safeChecklist = tripModel?.checklist[indexPath.section] else { return }
+            RealmManager.sharedInstance.writeItem(checklist: safeChecklist, item: safeChecklist.sectionChecklist[indexPath.row], delete: true)
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
         }

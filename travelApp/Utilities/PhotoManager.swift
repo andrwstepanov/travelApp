@@ -34,10 +34,10 @@ struct PhotoManager {
     }
     private func asyncGeocoding(lat: Double, lon: Double) async throws -> [GeocodingResponse]? {
         let geoRequestURL = Config.APIPath.geocodingApiURL
-        let geoRequestKey = HiddenKeys.geocodingApiKey
-
+        guard let geoRequestKey = HiddenKeys.geocodingApiKey else { return [] }
         let stringLat = String(lat)
         let stringLon = String(lon)
+        
         let urlString = "\(geoRequestURL)?lat=\(stringLat)&lon=\(stringLon)&limit=1&appid=\(geoRequestKey)"
         return try await networkManager.getNetworkData(urlString: urlString)
     }

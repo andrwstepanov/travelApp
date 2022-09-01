@@ -88,18 +88,18 @@ class CreateNewTripVC: UIViewController {
     @IBAction func createTripTapped(_ sender: UIButton) {
         if let safeStartDate = tempStartDate, let safeFinishDate = tempFinishDate {
             tempTrip = TripModel(city: tempCity, country: tempCountry, latitude: tempLat, longitude: tempLon, startDate: safeStartDate, finishDate: safeFinishDate)
-            RealmManager.sharedDelegate().addTrip(trip: tempTrip)
+            RealmManager.sharedDelegate().writeTrip(trip: tempTrip)
 
             //remove intro trip
             let userDefaults = UserDefaults.standard
             if let introID = userDefaults.string(forKey: Config.UserDefaultsNames.introID) {
-                RealmManager.sharedDelegate().deleteTripByID(id: introID)
+       //         RealmManager.sharedDelegate().deleteTripByID(id: introID)
                 userDefaults.removeObject(forKey: Config.UserDefaultsNames.introID)
             }
 
             // add test data
-            RealmManager.sharedDelegate().addChecklistToTrip(trip: tempTrip, checklist: PackingManager.sharedInstance.testChecklist)
-            RealmManager.sharedDelegate().addChecklistToTrip(trip: tempTrip, checklist: PackingManager.sharedInstance.electronicsChecklist)
+            RealmManager.sharedDelegate().writeSection(trip: tempTrip, section: PackingManager.sharedInstance.testChecklist)
+            RealmManager.sharedDelegate().writeSection(trip: tempTrip, section: PackingManager.sharedInstance.electronicsChecklist)
 
             backgroundRealm.requestTripDataAndWrite(for: tempTrip)
             Config.popToMainScreen(navController: navigationController!)

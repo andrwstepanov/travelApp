@@ -39,7 +39,7 @@ struct WeatherManager {
     }
     private func asyncFetchWeather(trip: TripModel) async throws -> WeatherResponse? {
         let weatherAPIURL = Config.APIPath.weatherApiURL
-        let weatherAPIKey = HiddenKeys.weatherApiKey
+        guard let weatherAPIKey = HiddenKeys.weatherApiKey else { return nil }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-d"
         let tripStart = dateFormatter.string(from: trip.startDate)

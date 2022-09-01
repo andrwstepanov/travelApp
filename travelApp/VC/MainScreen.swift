@@ -83,7 +83,7 @@ class MainScreen: UIViewController {
     private func checkDataSourceAndAddIntro() {
         if trips.count == 0 {
             let introTrip = TripModel.intro()
-            RealmManager.sharedDelegate().addTrip(trip: introTrip)
+            RealmManager.sharedDelegate().writeTrip(trip: introTrip)
             let userDefaults = UserDefaults.standard
             let key = "\(introTrip.id)"
             userDefaults.set(key, forKey: Config.UserDefaultsNames.introID)
