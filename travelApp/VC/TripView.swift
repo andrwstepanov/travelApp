@@ -13,20 +13,20 @@ import NukeExtensions
 
 class TripView: UIViewController, UIGestureRecognizerDelegate {
 
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var headerLocationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var headerUIView: UIView!
-    @IBOutlet var mainView: UIView!
     @IBOutlet weak var headerRoundedCornersView: UIView!
     @IBOutlet weak var headerTripDates: UILabel!
     @IBOutlet weak var headerDotsButton: UIButton!
 
-    var mainMenu = UIMenu()
-    var tripModel: TripModel
-    var notificationToken: NotificationToken?
+    let tripModel: TripModel
     let backgroundRealm: BackgroundRealm
-    var config: Config
+    let config: Config
+    var notificationToken: NotificationToken?
+    var mainMenu = UIMenu()
 
     init?(coder: NSCoder, tripModel: TripModel, config: Config, backgroundWriter: BackgroundRealm) {
         self.tripModel = tripModel
@@ -56,15 +56,15 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         tableView.delegate = self
         watchChanges()
         setupUI()
-
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editItem" {
-            let taskEdit = segue.destination as! ItemEditVC
-            taskEdit.optionalIndexPath = sender as? IndexPath
-            taskEdit.tripModel = tripModel
-            taskEdit.modalPresentationStyle = .formSheet
+
+    func editItem(index: IndexPath?) {
+        guard let viewController = storyboard?.instantiateViewController(identifier: "ItemEditVC", creator: {[unowned self] coder in
+            return ItemEditVC(coder: coder, trip: self.tripModel, index: index)
+        }) else {
+            fatalError("Failed to load ItemEditVC from storyboard.")
         }
+        self.present(viewController, animated: true)
     }
 
     private func watchChanges() {
@@ -80,7 +80,6 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     private func setupUI() {
-     //   guard let safeTripModel = tripModel else { return }
         guard let location = tripModel.location else { return }
         headerLocationLabel.text = "\(location.cityName), \(location.countryName)"
         registerCells()
@@ -96,14 +95,18 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         headerRoundedCornersView.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
-        headerTripDates.text = "\(dateFormatter.string(from: tripModel.startDate)) - \(dateFormatter.string(from: tripModel.finishDate))"
+        let startDateString = dateFormatter.string(from: tripModel.startDate)
+        let finishDateString = dateFormatter.string(from: tripModel.finishDate)
+        headerTripDates.text = "\(startDateString) - \(finishDateString)"
         if let image = tripModel.cityImage {
             var options = ImageLoadingOptions(
                 failureImage: UIImage(named: "tripPlaceholder")
             )
             let pipeline = ImagePipeline(configuration: .withDataCache)
             options.pipeline = pipeline
-            let processors = [ImageProcessors.CoreImageFilter(name: "CIExposureAdjust", parameters: [kCIInputEVKey: -0.3], identifier: "nuke-filter-ev")]
+            let processors = [ImageProcessors.CoreImageFilter(name: "CIExposureAdjust",
+                                                              parameters: [kCIInputEVKey: -0.3],
+                                                              identifier: "nuke-filter-ev")]
             let request = ImageRequest(
                 url: URL(string: image),
                 processors: processors
@@ -113,9 +116,11 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
             headerImageView.image = UIImage(named: "tripPlaceholder")
         }
         mainMenu = UIMenu(title: "", children: [
-            UIAction(title: "Delete trip", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
-                self.deleteTrip()
-            }
+            UIAction(title: "Delete trip",
+                     image: UIImage(systemName: "trash"),
+                     attributes: .destructive) {[unowned self] _ in
+                         self.deleteTrip()
+                     }
         ])
         headerDotsButton.menu = mainMenu
         headerDotsButton.showsMenuAsPrimaryAction = true
@@ -161,7 +166,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         floatingButton.addTarget(self, action: #selector(addChecklistItem(_ :)), for: .touchUpInside)
     }
     @objc func addChecklistItem(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "editItem", sender: nil)
+        editItem(index: nil)
     }
 
     private func navBarCompact() {
@@ -245,9 +250,9 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
         tripModel.checklist[section].sectionHeader
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-            if !tripModel.isInvalidated {
-                return tripModel.checklist.count
-            } else { return 0 }
+        if !tripModel.isInvalidated {
+            return tripModel.checklist.count
+        } else { return 0 }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tripModel.checklist[section].sectionChecklist.count
@@ -285,9 +290,11 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "packlistCell", for: indexPath) as! PacklistCell
             cell.dotsButton.menu = UIMenu(title: "", children: [
                 UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) {[unowned self] _ in
-                    self.performSegue(withIdentifier: "editItem", sender: indexPath)
+                    editItem(index: indexPath)
                 },
-                UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) {[unowned self] _ in
+                UIAction(title: "Delete",
+                         image: UIImage(systemName: "trash"),
+                         attributes: .destructive) {[unowned self] _ in
                     self.deleteItem(indexPath: indexPath)
                 }
 
@@ -307,7 +314,9 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
 
 extension TripView {
     private func deleteTrip() {
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Confirm",
+                                              message: "Are you sure you want to delete this?",
+                                              preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
             RealmManager.sharedInstance.writeTrip(trip: tripModel, delete: true)
             self.popToPrevious()
@@ -320,10 +329,14 @@ extension TripView {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     private func deleteItem(indexPath: IndexPath) {
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Confirm",
+                                              message: "Are you sure you want to delete this?",
+                                              preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
             let checklist = tripModel.checklist[indexPath.section]
-            RealmManager.sharedInstance.writeItem(checklist: checklist, item: checklist.sectionChecklist[indexPath.row], delete: true)
+            RealmManager.sharedInstance.writeItem(checklist: checklist,
+                                                  item: checklist.sectionChecklist[indexPath.row],
+                                                  delete: true)
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
         }
