@@ -80,10 +80,10 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionDelegate?.didTapCell(data: cells[indexPath.row])
+        collectionDelegate?.didTapCell(trip: cells[indexPath.row])
     }
 }
 
 protocol TripCollectionViewDelegate: AnyObject {
-    func didTapCell(data: TripModel)
+    func didTapCell(trip: TripModel)
 }

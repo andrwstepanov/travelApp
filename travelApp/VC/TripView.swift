@@ -23,11 +23,20 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerDotsButton: UIButton!
 
     var mainMenu = UIMenu()
-    var tripModel: TripModel?
+    var tripModel: TripModel
     var notificationToken: NotificationToken?
-    let backgroundRealm = BackgroundRealm()
- //   var config: Config!
+    let backgroundRealm: BackgroundRealm
+    var config: Config
 
+    init?(coder: NSCoder, tripModel: TripModel, config: Config, backgroundWriter: BackgroundRealm) {
+        self.tripModel = tripModel
+        self.config = config
+        backgroundRealm = backgroundWriter
+        super.init(coder: coder)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private let floatingButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
@@ -59,7 +68,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func watchChanges() {
-        notificationToken = tripModel?.checklist.observe {[unowned self] changes in
+        notificationToken = tripModel.checklist.observe {[unowned self] changes in
             switch changes {
             case .initial(_):
                 break
@@ -71,9 +80,9 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     private func setupUI() {
-        guard let safeTripModel = tripModel else { return }
-        guard let safeLocation = safeTripModel.location else { return }
-        headerLocationLabel.text = "\(safeLocation.cityName), \(safeLocation.countryName)"
+     //   guard let safeTripModel = tripModel else { return }
+        guard let location = tripModel.location else { return }
+        headerLocationLabel.text = "\(location.cityName), \(location.countryName)"
         registerCells()
         addFloatingButton()
         tableView.tableHeaderView = headerUIView
@@ -87,8 +96,8 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
         headerRoundedCornersView.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
-        headerTripDates.text = "\(dateFormatter.string(from: safeTripModel.startDate)) - \(dateFormatter.string(from: tripModel!.finishDate))"
-        if let image = safeTripModel.cityImage {
+        headerTripDates.text = "\(dateFormatter.string(from: tripModel.startDate)) - \(dateFormatter.string(from: tripModel.finishDate))"
+        if let image = tripModel.cityImage {
             var options = ImageLoadingOptions(
                 failureImage: UIImage(named: "tripPlaceholder")
             )
@@ -157,7 +166,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
 
     private func navBarCompact() {
         if navigationItem.title == "" {
-            navigationItem.title = "\(tripModel?.location!.cityName ?? ""), \(tripModel?.location!.countryName ?? "")"
+            navigationItem.title = "\(tripModel.location!.cityName), \(tripModel.location!.countryName)"
             //            if #available(iOS 13.0, *) {
             //                let navBarAppearance = UINavigationBarAppearance()
             //                navBarAppearance.backgroundColor = .white
@@ -217,8 +226,7 @@ class TripView: UIViewController, UIGestureRecognizerDelegate {
 extension TripView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let safeTripModel = tripModel else { return }
-        RealmManager.sharedDelegate().toggleItem(trip: safeTripModel, index: indexPath)
+        RealmManager.sharedDelegate().toggleItem(trip: tripModel, index: indexPath)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
@@ -234,17 +242,15 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        tripModel?.checklist[section].sectionHeader
+        tripModel.checklist[section].sectionHeader
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let safeTripModel = tripModel {
-            if !safeTripModel.isInvalidated {
-                return safeTripModel.checklist.count
+            if !tripModel.isInvalidated {
+                return tripModel.checklist.count
             } else { return 0 }
-        } else { return 0 }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tripModel?.checklist[section].sectionChecklist.count ?? 0
+        tripModel.checklist[section].sectionChecklist.count
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
@@ -259,7 +265,7 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
 
             cell.selectionStyle = .none
 
-            if let temperature = tripModel?.weather {
+            if let temperature = tripModel.weather {
                 let userDefaults = UserDefaults.standard
                 let isCelsius: Bool = userDefaults.bool(forKey: Config.UserDefaultsNames.userUnitsIsCelsius)
                 let userUnitsString = isCelsius ? "°C" : "°F"
@@ -272,7 +278,7 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
                 cell.weatherTemperatureLabel.text = "\(minTemp)...\(maxTemp)\(userUnitsString)"
                 cell.weatherConditionLabel.text = "\(avgTemp)\(userUnitsString) \(onAverageString)"
             } else {
-                backgroundRealm.requestTripDataAndWrite(for: tripModel!)
+                backgroundRealm.requestTripDataAndWrite(for: tripModel)
             }
             return cell
         } else {
@@ -286,12 +292,11 @@ extension TripView: UITableViewDelegate, UITableViewDataSource {
                 }
 
             ])
-            if let checklist = tripModel?.checklist[indexPath.section].sectionChecklist[indexPath.row] {
-                cell.cellLabel.text = checklist.title
-                cell.quantityLabel.text = "\(checklist.quantity)"
-                cell.checkButton.isSelected = checklist.isDone
-                cell.checkButton.isUserInteractionEnabled = false
-            }
+            let checklist = tripModel.checklist[indexPath.section].sectionChecklist[indexPath.row]
+            cell.cellLabel.text = checklist.title
+            cell.quantityLabel.text = "\(checklist.quantity)"
+            cell.checkButton.isSelected = checklist.isDone
+            cell.checkButton.isUserInteractionEnabled = false
             cell.selectionStyle = .none
             return cell
         }
@@ -304,8 +309,7 @@ extension TripView {
     private func deleteTrip() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
-            guard let safeTrip = tripModel else { return }
-            RealmManager.sharedInstance.writeTrip(trip: safeTrip, delete: true)
+            RealmManager.sharedInstance.writeTrip(trip: tripModel, delete: true)
             self.popToPrevious()
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
@@ -318,8 +322,8 @@ extension TripView {
     private func deleteItem(indexPath: IndexPath) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ -> Void in
-            guard let safeChecklist = tripModel?.checklist[indexPath.section] else { return }
-            RealmManager.sharedInstance.writeItem(checklist: safeChecklist, item: safeChecklist.sectionChecklist[indexPath.row], delete: true)
+            let checklist = tripModel.checklist[indexPath.section]
+            RealmManager.sharedInstance.writeItem(checklist: checklist, item: checklist.sectionChecklist[indexPath.row], delete: true)
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) {_ -> Void in
         }

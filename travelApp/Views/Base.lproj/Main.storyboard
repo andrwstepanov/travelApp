@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UCi-dm-8RJ">
-                                <rect key="frame" x="20" y="108" width="560" height="541"/>
+                                <rect key="frame" x="20" y="108" width="335" height="541"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wIA-z0-aFH">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="381"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="381"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="335" id="i4W-tE-5UU"/>
@@ -90,7 +90,7 @@
                                         </variation>
                                     </collectionView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="CbL-WH-EG7">
-                                        <rect key="frame" x="0.0" y="381" width="560" height="160"/>
+                                        <rect key="frame" x="0.0" y="381" width="335" height="160"/>
                                         <color key="tintColor" name="darkGreen"/>
                                         <color key="pageIndicatorTintColor" systemColor="systemGray4Color"/>
                                         <color key="currentPageIndicatorTintColor" name="darkGreen"/>
@@ -845,7 +845,7 @@
         <!--Trip View-->
         <scene sceneID="d1K-QD-BLK">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="n01-yG-ydS" customClass="TripView" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripView" extendedLayoutIncludesOpaqueBars="YES" id="n01-yG-ydS" customClass="TripView" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0qr-5E-HCZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

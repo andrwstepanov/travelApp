@@ -130,17 +130,16 @@ class MainScreen: UIViewController {
 }
 
 extension MainScreen: TripCollectionViewDelegate {
-    func didTapCell(data: TripModel) {
-        self.performSegue(withIdentifier: "openTripCard", sender: data)
+    func didTapCell(trip: TripModel) {
+        showTrip(trip: trip)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openTripCard" {
-            if let trip = sender as? TripModel {
-                if let targetVC = segue.destination as? TripView {
-                    targetVC.tripModel = trip
-                }
-            }
+    func showTrip(trip: TripModel) {
+        guard let viewController = storyboard?.instantiateViewController(identifier: "TripView", creator: { coder in
+            return TripView(coder: coder, tripModel: trip, config: Config(), backgroundWriter: BackgroundRealm())
+        }) else {
+            fatalError("Failed to load TripView from storyboard.")
         }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
