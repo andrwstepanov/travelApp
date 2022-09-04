@@ -47,6 +47,7 @@
 		C285FA7B28849DA40084E03E /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C285FA7A28849DA40084E03E /* keys.swift */; };
 		C2B4A92E28AED2EE00F6F39A /* BackgroundRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */; };
 		C2C94C3528BDFAE000DF3615 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C94C3428BDFAE000DF3615 /* NetworkManager.swift */; };
+		C2D8F19928C486CC005E2038 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D8F19828C486CC005E2038 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		C285FA7A28849DA40084E03E /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		C2B4A92D28AED2EE00F6F39A /* BackgroundRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRealm.swift; sourceTree = "<group>"; };
 		C2C94C3428BDFAE000DF3615 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C2D8F19828C486CC005E2038 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				C216606B287DFCEA0035EA42 /* DatePickerVC.swift */,
 				C216606C287DFCEA0035EA42 /* ItemEditVC.swift */,
 				C2166069287DFCEA0035EA42 /* TripCollectionView.swift */,
+				C2D8F19828C486CC005E2038 /* Coordinator.swift */,
 			);
 			name = VC;
 			path = travelApp/VC;
@@ -173,11 +176,11 @@
 				C2166063287DFCEA0035EA42 /* VC */,
 				C216607C287DFCEA0035EA42 /* Views */,
 				C2166072287DFCEA0035EA42 /* AppDelegate.swift */,
+				C2166061287DFCEA0035EA42 /* SceneDelegate.swift */,
 				C2166088287DFCEA0035EA42 /* Assets.xcassets */,
 				C2166062287DFCEA0035EA42 /* Info.plist */,
 				C285FA7A28849DA40084E03E /* keys.swift */,
 				C2166087287DFCEA0035EA42 /* Localizable.strings */,
-				C2166061287DFCEA0035EA42 /* SceneDelegate.swift */,
 				C248B0512812DC0E00544A5F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				C2166099287DFCEA0035EA42 /* Extentions.swift in Sources */,
 				C216609C287DFCEA0035EA42 /* WeatherManager.swift in Sources */,
 				C285FA7B28849DA40084E03E /* keys.swift in Sources */,
+				C2D8F19928C486CC005E2038 /* Coordinator.swift in Sources */,
 				C2166092287DFCEA0035EA42 /* DatePickerVC.swift in Sources */,
 				C21660A2287DFCEA0035EA42 /* WeatherCell.swift in Sources */,
 				C21660A0287DFCEA0035EA42 /* PhotoManager.swift in Sources */,
@@ -480,10 +484,10 @@
 				INFOPLIST_FILE = travelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -511,10 +515,10 @@
 				INFOPLIST_FILE = travelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class MainScreen: UIViewController {
+class MainScreen: UIViewController, Storyboarded {
 
     // MARK: - IBOutlets
     @IBOutlet weak var helloLabel: UILabel!
@@ -19,6 +19,7 @@ class MainScreen: UIViewController {
     @IBOutlet weak var upcomingTripsStack: UIStackView!
     @IBOutlet weak var selectorHorizontalStack: UIStackView!
 
+    weak var delegate: MainScreenDelegate?
     private var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
     private var notificationToken: NotificationToken?
@@ -40,6 +41,7 @@ class MainScreen: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
         self.addCollectionView()
         trips = RealmManager.sharedInstance.getTrips()
         self.checkDataSourceAndAddIntro()
@@ -142,4 +144,15 @@ extension MainScreen: TripCollectionViewDelegate {
         }
         navigationController?.pushViewController(viewController, animated: true)
     }
+}
+
+extension MainScreen: MainScreenDelegate {
+    func openSettings() {
+        print("implementation from vc")
+    }
+
+}
+
+protocol MainScreenDelegate: AnyObject {
+    func openSettings()
 }
