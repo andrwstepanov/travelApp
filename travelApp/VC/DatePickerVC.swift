@@ -8,6 +8,10 @@
 import UIKit
 import FSCalendar
 
+protocol DatePickerControllerDelegate: AnyObject {
+    func tripDatesConfirmed(starting: Date?, finishing: Date?)
+}
+
 class DatePickerVC: UIViewController {
 
     @IBOutlet weak var suggestionLabel: UILabel!
@@ -118,8 +122,4 @@ extension DatePickerVC: FSCalendarDelegate, FSCalendarDataSource {
             datesRange = []
         }
     }
-}
-
-protocol DatePickerControllerDelegate: AnyObject {
-    func tripDatesConfirmed(starting: Date?, finishing: Date?)
 }

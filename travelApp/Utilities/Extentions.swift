@@ -7,18 +7,6 @@
 
 import UIKit
 
-extension Storyboarded where Self: UIViewController {
-    static func instatiate() -> Self {
-        let id = String(describing: self)
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        return storyboard.instantiateViewController(withIdentifier: id) as! Self
-    }
-}
-
-protocol Storyboarded {
-   static func instatiate() -> Self
-}
-
 extension Double {
     func convertWeatherToUserUnits(celsius: Bool) -> String {
         let input = Measurement(value: self, unit: UnitTemperature.kelvin)

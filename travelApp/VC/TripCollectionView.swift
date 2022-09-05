@@ -12,6 +12,10 @@ import RealmSwift
 import NukeUI
 import NukeExtensions
 
+protocol TripCollectionViewDelegate: AnyObject {
+    func didTapCell(trip: TripModel)
+}
+
 class TripCollectionView: UICollectionView {
     weak var collectionDelegate: TripCollectionViewDelegate?
     var notificationToken: NotificationToken?
@@ -82,8 +86,4 @@ extension TripCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionDelegate?.didTapCell(trip: cells[indexPath.row])
     }
-}
-
-protocol TripCollectionViewDelegate: AnyObject {
-    func didTapCell(trip: TripModel)
 }

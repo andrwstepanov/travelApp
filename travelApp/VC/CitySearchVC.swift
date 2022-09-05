@@ -9,6 +9,10 @@ import UIKit
 import CoreLocation
 import MapKit
 
+protocol CitySearchDelegate: AnyObject {
+    func citySelected(locationResponse: MKMapItem)
+}
+
 class CitySearchVC: UIViewController, UITableViewDelegate {
     private var suggestionController: CitySuggestionsTableVC!
     private var searchController: UISearchController!
@@ -75,6 +79,3 @@ extension CitySearchVC: UISearchBarDelegate {
     }
 }
 
-protocol CitySearchDelegate: AnyObject {
-    func citySelected(locationResponse: MKMapItem)
-}

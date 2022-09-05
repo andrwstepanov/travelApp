@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class MainScreen: UIViewController, Storyboarded {
+class MainScreen: UIViewController, Storyboarded, Coordinating {
 
     // MARK: - IBOutlets
     @IBOutlet weak var helloLabel: UILabel!
@@ -25,6 +25,7 @@ class MainScreen: UIViewController, Storyboarded {
     private var notificationToken: NotificationToken?
     private var tripHistorySelected = false
     private var selectorIndicator: UIView!
+    var coordinator: Coordinator?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -151,8 +152,4 @@ extension MainScreen: MainScreenDelegate {
         print("implementation from vc")
     }
 
-}
-
-protocol MainScreenDelegate: AnyObject {
-    func openSettings()
 }
