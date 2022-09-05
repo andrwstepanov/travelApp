@@ -106,13 +106,18 @@ class MainScreen: UIViewController, Storyboarded, Coordinating {
     // MARK: IBActions
 
     @IBAction func addNewTrip(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "addNew", sender: self)
+       //self.performSegue(withIdentifier: "addNew", sender: self)
+        coordinator?.eventOccured(with: .addNewTrip)
+        
     }
     @IBAction func tapOnUpcomingTrips(_ sender: UIButton) {
         if tripHistorySelected { toggleTripSelection(sender: sender) }
     }
     @IBAction func tapOnTripHistory(_ sender: UIButton) {
         if !tripHistorySelected { toggleTripSelection(sender: sender) }
+    }
+    @IBAction func settingsTapped(_ sender: UIButton) {
+        coordinator?.eventOccured(with: .settingsTapped)
     }
 
     private func toggleTripSelection(sender: UIButton) {

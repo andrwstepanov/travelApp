@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SettingsVC: UIViewController {
+class SettingsVC: UIViewController, Storyboarded, Coordinating {
+    var coordinator: Coordinator?
+    
     @IBOutlet weak var unitsChangerSwitch: UISegmentedControl!
     @IBOutlet weak var genderChangerSwitch: UISegmentedControl!
     @IBOutlet weak var saveButton: UIButton!

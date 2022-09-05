@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import FSCalendar
 
-class CreateNewTripVC: UIViewController {
+class CreateNewTripVC: UIViewController, Storyboarded, Coordinating {
 
     @IBOutlet weak var citySearchButton: UIButton!
     @IBOutlet weak var tripDatesButton: UIButton!
@@ -25,6 +25,7 @@ class CreateNewTripVC: UIViewController {
     var tempStartDate: Date?
     var tempFinishDate: Date?
     let backgroundRealm = BackgroundRealm()
+    var coordinator: Coordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

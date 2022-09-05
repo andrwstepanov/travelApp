@@ -181,11 +181,11 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsVC" id="cT9-xG-j9k" customClass="SettingsVC" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gzo-wo-MuA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oDu-Mw-dru">
-                                <rect key="frame" x="20" y="406.66666666666669" width="335" height="32"/>
+                                <rect key="frame" x="20" y="450.66666666666669" width="335" height="32"/>
                                 <segments>
                                     <segment title="Celsius"/>
                                     <segment title="Fahrenheit"/>
@@ -195,25 +195,25 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcH-D3-xEd">
-                                <rect key="frame" x="159.33333333333334" y="260" width="56.666666666666657" height="20.333333333333314"/>
+                                <rect key="frame" x="159.33333333333334" y="304" width="56.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcU-nI-5dt">
-                                <rect key="frame" x="20" y="99" width="184" height="40.666666666666657"/>
+                                <rect key="frame" x="20" y="143" width="184" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aa5-h3-Rns">
-                                <rect key="frame" x="167.66666666666666" y="366.33333333333331" width="39.666666666666657" height="20.333333333333314"/>
+                                <rect key="frame" x="167.66666666666666" y="410.33333333333331" width="39.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Df6-ix-QrT">
-                                <rect key="frame" x="20" y="679" width="335" height="44"/>
+                                <rect key="frame" x="20" y="699" width="335" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeZ-M0-nEN">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
@@ -232,13 +232,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up your preferences to customize your packing lists." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umz-yX-zJx">
-                                <rect key="frame" x="20" y="174.66666666666666" width="335" height="50.333333333333343"/>
+                                <rect key="frame" x="20" y="218.66666666666666" width="335" height="50.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zfz-m5-f6k">
-                                <rect key="frame" x="20" y="300.33333333333331" width="335" height="32"/>
+                                <rect key="frame" x="20" y="344.33333333333331" width="335" height="32"/>
                                 <segments>
                                     <segment title="Male"/>
                                     <segment title="Female"/>
@@ -329,7 +329,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="cT9-xG-j9k" kind="showDetail" id="xfg-2R-zRv"/>
+                                            <action selector="settingsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7W-r1-VJh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -506,7 +506,7 @@
         <!--Add new trip-->
         <scene sceneID="C4T-30-III">
             <objects>
-                <viewController id="AzA-vC-2qt" customClass="CreateNewTripVC" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateNewTripVC" id="AzA-vC-2qt" customClass="CreateNewTripVC" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gBN-pK-oSl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -971,9 +971,6 @@
             <point key="canvasLocation" x="1768.8" y="-591.13300492610836"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="xfg-2R-zRv"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="beach" width="42" height="27.333333969116211"/>
         <image name="capsule.fill" catalog="system" width="128" height="94"/>

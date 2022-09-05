@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
     var navigationController : UINavigationController? { get set }
     func start()
@@ -18,31 +18,42 @@ protocol MainScreenDelegate: AnyObject {
     func openSettings()
 }
 
-protocol Coordinating {
+protocol Coordinating: AnyObject {
     var coordinator: Coordinator? { get set }
 }
 
 enum Event {
     case settingsTapped
+    case addNewTrip
 }
 
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
-//    init(navigationController: UINavigationController) {
-//
-//        self.navigationController = navigationController
-//    }
-
 
     func eventOccured(with type: Event) {
         switch type {
-        case .settingsTapped: print("settings tap registred")
+        case .settingsTapped: openVC(with: SettingsVC.instantiate(), modal: true)
+        case .addNewTrip: openVC(with: CreateNewTripVC.instantiate())
         }
     }
 
+    private func openVC(with viewController: UIViewController & Coordinating, modal: Bool = false) {
+        var nextController: UIViewController & Coordinating = viewController
+        nextController.coordinator = self
+
+        if modal {
+            nextController.modalPresentationStyle = .formSheet
+            navigationController?.showDetailViewController(nextController, sender: self)
+        } else {
+            navigationController?.show(nextController, sender: self)
+
+        }
+    }
+
+
     func start() {
-        var viewController: UIViewController & Coordinating = MainScreen.instatiate()
+        let viewController: UIViewController & Coordinating = MainScreen.instantiate()
         viewController.coordinator = self
         navigationController?.setViewControllers([viewController], animated: false)
 
