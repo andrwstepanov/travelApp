@@ -47,7 +47,9 @@ class MainCoordinator: Coordinator {
             navigationController?.showDetailViewController(nextController, sender: self)
         } else {
             navigationController?.show(nextController, sender: self)
-
+//            let child = BuyCoordinator(navigationController: navigationController)
+//            childCoordinators.append(child)
+//            child.start()
         }
     }
 

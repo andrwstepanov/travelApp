@@ -17,13 +17,9 @@ class CreateNewTripVC: UIViewController, Storyboarded, Coordinating {
     @IBOutlet weak var workToggleButton: UIButton!
     @IBOutlet weak var beachToggleButton: UIButton!
     @IBOutlet weak var sportToggleButton: UIButton!
-    var tempTrip: TripModel!
-    var tempCity: String!
-    var tempCountry: String!
-    var tempLat: Double!
-    var tempLon: Double!
-    var tempStartDate: Date?
-    var tempFinishDate: Date?
+
+    var tripLocation: MKMapItem?
+    var tripDates: [Date]?
     let backgroundRealm = BackgroundRealm()
     var coordinator: Coordinator?
 
@@ -86,35 +82,59 @@ class CreateNewTripVC: UIViewController, Storyboarded, Coordinating {
         toggleButton(button: sender)
     }
     @IBAction func createTripTapped(_ sender: UIButton) {
-        if let safeStartDate = tempStartDate, let safeFinishDate = tempFinishDate {
-            tempTrip = TripModel(city: tempCity, country: tempCountry, latitude: tempLat, longitude: tempLon, startDate: safeStartDate, finishDate: safeFinishDate)
-            RealmManager.sharedDelegate().writeTrip(trip: tempTrip)
+        //formulate trip according to user data
+        guard let trip = generateTrip() else { return }
 
-            //remove intro trip
-            let userDefaults = UserDefaults.standard
-            if let introID = userDefaults.string(forKey: Config.UserDefaultsNames.introID) {
-       //         RealmManager.sharedDelegate().deleteTripByID(id: introID)
-                userDefaults.removeObject(forKey: Config.UserDefaultsNames.introID)
-            }
+        RealmManager.sharedDelegate().writeTrip(trip: trip)
 
-            // add test data
-            RealmManager.sharedDelegate().writeSection(trip: tempTrip, section: PackingManager.sharedInstance.testChecklist)
-            RealmManager.sharedDelegate().writeSection(trip: tempTrip, section: PackingManager.sharedInstance.electronicsChecklist)
-
-            backgroundRealm.requestTripDataAndWrite(for: tempTrip)
-            Config.popToMainScreen(navController: navigationController!)
+        //remove intro trip
+        let userDefaults = UserDefaults.standard
+        if let introID = userDefaults.string(forKey: Config.UserDefaultsNames.introID) {
+            guard let ref = RealmManager.sharedDelegate().getReference(id: introID) as? TripModel else { return }
+            RealmManager.sharedDelegate().writeTrip(trip: ref, delete: true)
+            userDefaults.removeObject(forKey: Config.UserDefaultsNames.introID)
         }
+
+        // add test data
+        RealmManager.sharedDelegate().writeSection(trip: trip, section: PackingManager.sharedInstance.testChecklist)
+        RealmManager.sharedDelegate().writeSection(trip: trip, section: PackingManager.sharedInstance.electronicsChecklist)
+
+        backgroundRealm.requestTripDataAndWrite(for: trip)
+        Config.popToMainScreen(navController: navigationController!)
+
+    }
+
+    private func generateTrip() -> TripModel? {
+        guard let safeLocation = tripLocation, let safeDates = tripDates else { return nil }
+        let city = safeLocation.name ?? ""
+        let country = safeLocation.placemark.country ?? ""
+        let lat = safeLocation.placemark.coordinate.latitude
+        let lon = safeLocation.placemark.coordinate.longitude
+        let startDate = safeDates[0]
+        let finishDate = safeDates[1]
+
+        let trip = TripModel(city: city,
+                                 country: country,
+                                 latitude: lat,
+                                 longitude: lon,
+                                 startDate: startDate,
+                                 finishDate: finishDate)
+        return trip
     }
 }
 
+
 extension CreateNewTripVC: DatePickerControllerDelegate {
     func tripDatesConfirmed(starting: Date?, finishing: Date?) {
-        tempStartDate = starting
-        tempFinishDate = finishing
+        guard let safeStarting = starting, let safeFinishing = finishing else { return }
+        tripDates = [safeStarting, safeFinishing]
+
+        // Display chosen dates on button
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
-        tripDatesButton.setTitle("\(dateFormatter.string(from: starting!)) - \(dateFormatter.string(from: finishing!))", for: UIControl.State.normal)
-        if tempStartDate != nil && tempFinishDate != nil && tempCity != nil {
+        tripDatesButton.setTitle("\(dateFormatter.string(from: safeStarting)) - \(dateFormatter.string(from: safeFinishing))",
+                                 for: UIControl.State.normal)
+        if tripDates != nil && tripLocation != nil {
             nextButton.isEnabled = true
         }
     }
@@ -122,13 +142,11 @@ extension CreateNewTripVC: DatePickerControllerDelegate {
 
 extension CreateNewTripVC: CitySearchDelegate {
     func citySelected(locationResponse: MKMapItem) {
-        tempCity = locationResponse.name ?? ""
-        tempCountry = locationResponse.placemark.country
-        tempLat = locationResponse.placemark.coordinate.latitude
-        tempLon = locationResponse.placemark.coordinate.longitude
-        citySearchButton.setTitle(tempCity, for: .normal)
-        if tempStartDate != nil && tempFinishDate != nil && tempCity != nil {
-            nextButton.isEnabled = true
-        }
+        tripLocation = locationResponse
+
+        // Display chosen location on button
+        citySearchButton.setTitle(locationResponse.name ?? "", for: .normal)
+
+        if tripDates != nil && tripLocation != nil { nextButton.isEnabled = true }
     }
 }

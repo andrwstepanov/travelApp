@@ -79,6 +79,12 @@ class RealmManager {
             print("Error toggling item")
         }
     }
+    func getReference<T: Object>(id: String) -> T? {
+        let realm = getRealm()
+        if let ref = realm.object(ofType: T.self, forPrimaryKey: id) {
+            return ref
+        } else { return nil }
+    }
 
     private func getRealm() -> Realm {
         return try! Realm(configuration: RealmManager.realmConfig)
@@ -126,11 +132,4 @@ class RealmManager {
 }
 
 
-//    func getReference<T: Object>(id: String) -> T {
-//        let realm = getRealm()
-//        if let ref = realm.object(ofType: T.self, forPrimaryKey: id) {
-//            self.deleteObject(object: ref)
-//        } else {
-//            print("error deleting by reference")
-//        }
-//    }
+
