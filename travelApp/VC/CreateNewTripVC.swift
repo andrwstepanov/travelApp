@@ -82,24 +82,29 @@ class CreateNewTripVC: UIViewController, Storyboarded, Coordinating {
         toggleButton(button: sender)
     }
     @IBAction func createTripTapped(_ sender: UIButton) {
-        //formulate trip according to user data
+        // Formulate trip according to user data
         guard let trip = generateTrip() else { return }
 
         RealmManager.sharedDelegate().writeTrip(trip: trip)
 
-        //remove intro trip
+        // Remove intro trip
         let userDefaults = UserDefaults.standard
         if let introID = userDefaults.string(forKey: Config.UserDefaultsNames.introID) {
-            guard let ref = RealmManager.sharedDelegate().getReference(id: introID) as? TripModel else { return }
+            guard let ref: TripModel = RealmManager.sharedDelegate().getReference(id: introID) else { return }
             RealmManager.sharedDelegate().writeTrip(trip: ref, delete: true)
             userDefaults.removeObject(forKey: Config.UserDefaultsNames.introID)
+
         }
 
-        // add test data
-        RealmManager.sharedDelegate().writeSection(trip: trip, section: PackingManager.sharedInstance.testChecklist)
-        RealmManager.sharedDelegate().writeSection(trip: trip, section: PackingManager.sharedInstance.electronicsChecklist)
+
+        // Add test data
+        RealmManager.sharedDelegate().writeSection(trip: trip,
+                                                   section: PackingManager.sharedInstance.testChecklist)
+        RealmManager.sharedDelegate().writeSection(trip: trip,
+                                                   section: PackingManager.sharedInstance.electronicsChecklist)
 
         backgroundRealm.requestTripDataAndWrite(for: trip)
+
         Config.popToMainScreen(navController: navigationController!)
 
     }
