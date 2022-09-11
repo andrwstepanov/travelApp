@@ -42,7 +42,16 @@
       "location" : "https://github.com/realm/realm-swift.git",
       "state" : {
         "branch" : "master",
-        "revision" : "fa1c61607f9d59f849359e6f0e8ece575b569ba3"
+        "revision" : "95ebae968d1183decef9ac5990a7f097d02b603e"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
       }
     }
   ],

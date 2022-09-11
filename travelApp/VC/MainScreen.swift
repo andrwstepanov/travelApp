@@ -19,7 +19,8 @@ class MainScreen: UIViewController, Storyboarded, Coordinating {
     @IBOutlet weak var upcomingTripsStack: UIStackView!
     @IBOutlet weak var selectorHorizontalStack: UIStackView!
 
-    weak var delegate: MainScreenDelegate?
+
+//    weak var delegate: MainScreenDelegate?
     private var trips: Results<TripModel>!
     private var tripCollectionView = TripCollectionView()
     private var notificationToken: NotificationToken?
@@ -42,11 +43,10 @@ class MainScreen: UIViewController, Storyboarded, Coordinating {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+//        delegate = self
         self.addCollectionView()
         trips = RealmManager.sharedInstance.getTrips()
         self.checkDataSourceAndAddIntro()
-        checkIfOnboarded()
 
         mainScreenCaption.colorString(text: Config.MainScreenText.stringOne,
                                       coloredText: Config.MainScreenText.stringTwo,
@@ -76,13 +76,7 @@ class MainScreen: UIViewController, Storyboarded, Coordinating {
         tripCollectionView.bottomAnchor.constraint(equalTo: addTripButton.topAnchor, constant: -30).isActive = true
         tripCollectionView.collectionDelegate = self
     }
-    private func checkIfOnboarded() {
-        let userDefaults = UserDefaults.standard
-        if Config.resetApp { userDefaults.set(false, forKey: Config.UserDefaultsNames.launchedBefore) }
-        if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) {
-            self.performSegue(withIdentifier: "openOnboarding", sender: self)
-        }
-    }
+
     private func checkDataSourceAndAddIntro() {
         if trips.count == 0 {
             let introTrip = TripModel.intro()
@@ -152,9 +146,9 @@ extension MainScreen: TripCollectionViewDelegate {
     }
 }
 
-extension MainScreen: MainScreenDelegate {
-    func openSettings() {
-        print("implementation from vc")
-    }
-
-}
+//extension MainScreen: MainScreenDelegate {
+//    func openSettings() {
+//        print("implementation from vc")
+//    }
+//
+//}

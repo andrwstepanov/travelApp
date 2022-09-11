@@ -7,7 +7,9 @@
 
 import UIKit
 
-class OnboardingVC: UIViewController {
+class OnboardingVC: UIViewController, Storyboarded, Coordinating {
+    var coordinator: Coordinator?
+
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -27,7 +29,8 @@ class OnboardingVC: UIViewController {
 extension OnboardingVC {
     @IBAction func nextTapped(_ sender: UIButton) {
         if pageControl.page == 2 {
-            performSegue(withIdentifier: Config.Segues.initialSettings, sender: self)
+         //   performSegue(withIdentifier: Config.Segues.initialSettings, sender: self)
+            coordinator?.eventOccured(with: .settingsTapped)
         } else {
             let nextPage = pageControl.page + 1
             showItem(at: nextPage)

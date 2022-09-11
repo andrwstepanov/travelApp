@@ -14,9 +14,9 @@ protocol Coordinator: AnyObject {
     func eventOccured(with type: Event)
 }
 
-protocol MainScreenDelegate: AnyObject {
-    func openSettings()
-}
+//protocol MainScreenDelegate: AnyObject {
+//    func openSettings()
+//}
 
 protocol Coordinating: AnyObject {
     var coordinator: Coordinator? { get set }
@@ -24,6 +24,7 @@ protocol Coordinating: AnyObject {
 
 enum Event {
     case settingsTapped
+    case settingsSaved
     case addNewTrip
 }
 
@@ -33,8 +34,9 @@ class MainCoordinator: Coordinator {
 
     func eventOccured(with type: Event) {
         switch type {
-        case .settingsTapped: openVC(with: SettingsVC.instantiate(), modal: true)
+        case .settingsTapped: openVC(with: SettingsVC(), modal: true)
         case .addNewTrip: openVC(with: CreateNewTripVC.instantiate())
+        case .settingsSaved: settingsSaved()
         }
     }
 
@@ -43,8 +45,7 @@ class MainCoordinator: Coordinator {
         nextController.coordinator = self
 
         if modal {
-            nextController.modalPresentationStyle = .formSheet
-            navigationController?.showDetailViewController(nextController, sender: self)
+            navigationController?.present(nextController, animated: true)
         } else {
             navigationController?.show(nextController, sender: self)
 //            let child = BuyCoordinator(navigationController: navigationController)
@@ -53,13 +54,39 @@ class MainCoordinator: Coordinator {
         }
     }
 
+    private func checkInOnboarded() -> Bool {
+        let userDefaults = UserDefaults.standard
+        if Config.resetApp { userDefaults.set(false, forKey: Config.UserDefaultsNames.launchedBefore) }
+        if !userDefaults.bool(forKey: Config.UserDefaultsNames.launchedBefore) { return false }
+        return true
+    }
 
-    func start() {
+    private func settingsSaved() {
+        let onboarded = checkInOnboarded()
+        if onboarded {
+            navigationController?.popViewController(animated: true)
+        } else {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(true, forKey: Config.UserDefaultsNames.launchedBefore)
+            startMain()
+        }
+    }
+
+    private func startMain() {
         let viewController: UIViewController & Coordinating = MainScreen.instantiate()
         viewController.coordinator = self
         navigationController?.setViewControllers([viewController], animated: false)
+    }
 
-   //     navigationController?.pushViewController(viewController, animated: false)
+    private func startIntro() {
+        let viewController: UIViewController & Coordinating = OnboardingVC.instantiate()
+        viewController.coordinator = self
+        navigationController?.setViewControllers([viewController], animated: false)
+    }
+
+    func start() {
+        let onboarded = checkInOnboarded()
+        if onboarded { startMain() } else { startIntro() }
     }
 
 }
