@@ -73,7 +73,7 @@ class MainCoordinator: Coordinator {
     }
 
     private func startMain() {
-        let viewController: UIViewController & Coordinating = MainScreen.instantiate()
+        let viewController: UIViewController & Coordinating = MainScreenVC()
         viewController.coordinator = self
         navigationController?.setViewControllers([viewController], animated: false)
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uKZ-MC-tFp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -163,7 +163,7 @@
             <objects>
                 <viewController id="da1-Ew-RLh" customClass="CitySearchVC" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5DI-gS-n9t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="EIo-4y-pZf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -174,148 +174,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTN-Lu-Omd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1879" y="-632"/>
-        </scene>
-        <!--Main Screen-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="MainScreen" id="BYZ-38-t0r" customClass="MainScreen" customModule="travelAppiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jJK-ZB-9wD" userLabel="Hello stack">
-                                <rect key="frame" x="19.999999999999996" y="121.99999999999999" width="52.666666666666657" height="25.333333333333329"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQh-Xi-XcC">
-                                        <rect key="frame" x="0.0" y="0.0" width="52.666666666666664" height="25.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" name="textDarkGrey"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nhh-mb-SPw" userLabel="New trip stack">
-                                <rect key="frame" x="145.33333333333334" y="696.33333333333337" width="84.333333333333343" height="61.666666666666629"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmy-2Y-H8b">
-                                        <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="61.666666666666664"/>
-                                        <color key="tintColor" name="darkGreen"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="addNewTrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aqr-qy-wd9"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CEl-nB-DME" userLabel="Avatar stack">
-                                <rect key="frame" x="295.33333333333331" y="110.00000000000001" width="59.666666666666686" height="41.666666666666671"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9e-8Y-2LD">
-                                        <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="41.666666666666664"/>
-                                        <color key="tintColor" name="darkGreen"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="settingsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7W-r1-VJh"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Jar-yM-Gix" userLabel="Upcoming selector stack">
-                                <rect key="frame" x="20" y="339.33333333333331" width="335" height="29"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="iqk-Du-JIT">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWy-5Y-6If">
-                                                <rect key="frame" x="0.0" y="0.0" width="141.66666666666666" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="My upcoming trips">
-                                                    <color key="titleColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="selected">
-                                                    <color key="titleColor" name="darkGreen"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tapOnUpcomingTrips:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iPK-y5-Pde"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1M-cr-dhP">
-                                                <rect key="frame" x="193.66666666666663" y="0.0" width="141.33333333333337" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="My trip history">
-                                                    <color key="titleColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="selected" title="My trip history">
-                                                    <color key="titleColor" name="darkGreen"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tapOnTripHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VWH-CV-bzA"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="REN-V2-AtE" userLabel="My trips stack">
-                                <rect key="frame" x="20" y="180.33333333333334" width="160.33333333333334" height="126.00000000000003"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2k-Dt-okJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.33333333333334" height="126"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="My trips &amp; packing lists">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.26700000000000002" green="0.24299999999999999" blue="0.24299999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="36" name="SFCompact-Semibold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Jar-yM-Gix" firstAttribute="top" secondItem="REN-V2-AtE" secondAttribute="bottom" constant="33" id="0an-iC-WQ2"/>
-                            <constraint firstItem="jJK-ZB-9wD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="34" id="9Co-HM-BHj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nhh-mb-SPw" secondAttribute="bottom" constant="20" id="GMo-5D-AMo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CEl-nB-DME" secondAttribute="trailing" constant="20" id="Kow-wa-nWM"/>
-                            <constraint firstItem="nhh-mb-SPw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NgA-Xs-REg"/>
-                            <constraint firstItem="CEl-nB-DME" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="VsV-NK-81D"/>
-                            <constraint firstItem="Jar-yM-Gix" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wbg-FA-oe0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jar-yM-Gix" secondAttribute="trailing" constant="20" id="mob-ZL-9r7"/>
-                            <constraint firstItem="REN-V2-AtE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="reA-Gx-i6q"/>
-                            <constraint firstItem="jJK-ZB-9wD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="t9J-rg-KAT"/>
-                            <constraint firstItem="Jar-yM-Gix" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tUf-VM-CSC"/>
-                            <constraint firstItem="REN-V2-AtE" firstAttribute="top" secondItem="jJK-ZB-9wD" secondAttribute="bottom" constant="33" id="xOM-ln-Cqj"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="VrT-Lq-SB4"/>
-                    <connections>
-                        <outlet property="addTripButton" destination="bmy-2Y-H8b" id="H7H-ck-LfL"/>
-                        <outlet property="helloLabel" destination="BQh-Xi-XcC" id="cIT-CV-IYK"/>
-                        <outlet property="mainScreenCaption" destination="R2k-Dt-okJ" id="fsI-xH-XJs"/>
-                        <outlet property="selectorHorizontalStack" destination="Jar-yM-Gix" id="8LR-fd-xw5"/>
-                        <outlet property="tripHistoryButton" destination="t1M-cr-dhP" id="Boo-o0-cgy"/>
-                        <outlet property="upcomingTripsButton" destination="eWy-5Y-6If" id="A9v-Hx-cXi"/>
-                        <outlet property="upcomingTripsStack" destination="Jar-yM-Gix" id="JPx-D1-ovx"/>
-                        <segue destination="AzA-vC-2qt" kind="show" identifier="addNew" id="m1T-gN-7u1"/>
-                        <segue destination="n01-yG-ydS" kind="show" identifier="openTripCard" id="iLe-mD-AXG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="297" y="97"/>
         </scene>
         <!--Date PickerVC-->
         <scene sceneID="cvf-mv-0Ta">
@@ -409,7 +267,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Next"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRm-pW-KyF">
-                                <rect key="frame" x="20" y="292.66666666666669" width="335" height="44"/>
+                                <rect key="frame" x="20" y="248.66666666666663" width="335" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="A5G-Vg-3wv"/>
@@ -443,26 +301,26 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n4-1r-8cd">
-                                <rect key="frame" x="20" y="148" width="31.333333333333329" height="20.333333333333343"/>
+                                <rect key="frame" x="20" y="104" width="31.333333333333329" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of stay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Io-i0-u5E">
-                                <rect key="frame" x="20.000000000000007" y="356.66666666666669" width="95.666666666666686" height="20.333333333333314"/>
+                                <rect key="frame" x="20.000000000000007" y="312.66666666666669" width="95.666666666666686" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ICy-gN-3Yj">
-                                <rect key="frame" x="20" y="389" width="335" height="32"/>
+                                <rect key="frame" x="20" y="345" width="335" height="32"/>
                                 <segments>
                                     <segment title="Hotel or Flat"/>
                                     <segment title="Outdoor"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ly-yf-HnD">
-                                <rect key="frame" x="20" y="188.33333333333334" width="335" height="44"/>
+                                <rect key="frame" x="20" y="144.33333333333334" width="335" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="qrY-YB-yAL"/>
@@ -475,7 +333,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="7j3-vd-aXQ">
-                                <rect key="frame" x="20" y="480.33333333333331" width="335" height="97.666666666666686"/>
+                                <rect key="frame" x="20" y="436.33333333333331" width="335" height="97.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-Qy-kMX">
                                         <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="97.666666666666671"/>
@@ -531,13 +389,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGq-VY-5Pp">
-                                <rect key="frame" x="20" y="440" width="72" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="396" width="72" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gp2-ZJ-Dei">
-                                <rect key="frame" x="19.999999999999996" y="252.33333333333334" width="45.666666666666657" height="20.333333333333343"/>
+                                <rect key="frame" x="19.999999999999996" y="208.33333333333334" width="45.666666666666657" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -583,26 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvJ-Ud-21w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768.8" y="96.798029556650249"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="raU-db-IEq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uKZ-MC-tFp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GG9-eL-F5G">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="darkGreen"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7h6-LE-NDo"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vDo-ml-mAE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-382" y="97"/>
+            <point key="canvasLocation" x="1769" y="97"/>
         </scene>
         <!--Item EditVC-->
         <scene sceneID="Wfe-ct-19l">
@@ -729,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZY-3W-pXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84" y="860.83743842364538"/>
+            <point key="canvasLocation" x="2" y="97"/>
         </scene>
         <!--Trip View-->
         <scene sceneID="d1K-QD-BLK">
@@ -839,7 +678,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gk6-38-qSG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="861"/>
+            <point key="canvasLocation" x="921" y="97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hle-i8-s32">
@@ -847,7 +686,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ddt-Or-Bcs" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="shO-Cu-LB2">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -864,9 +703,7 @@
         <image name="beach" width="42" height="27.333333969116211"/>
         <image name="capsule.fill" catalog="system" width="128" height="94"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="laptopcomputer" catalog="system" width="128" height="73"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="slide1" width="297" height="297"/>
         <image name="sport" width="44" height="36.666667938232422"/>
         <image name="tripPlaceholder" width="1280" height="1920"/>
